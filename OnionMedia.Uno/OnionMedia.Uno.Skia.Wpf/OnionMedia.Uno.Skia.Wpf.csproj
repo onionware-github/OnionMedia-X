@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
+    <OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup Label="AssemblyInfo">
+    <AssemblyAttribute Include="System.Runtime.InteropServices.ComVisibleAttribute">
+      <_Parameter1>false</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Windows.ThemeInfo">
+      <_Parameter1>System.Windows.ResourceDictionaryLocation.None</_Parameter1>
+      <_Parameter1_IsLiteral>true</_Parameter1_IsLiteral>
+      <_Parameter2>System.Windows.ResourceDictionaryLocation.SourceAssembly</_Parameter2>
+      <_Parameter2_IsLiteral>true</_Parameter2_IsLiteral>
+    </AssemblyAttribute>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="FFMpegCore" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="Uno.CommunityToolkit.Common" Version="7.1.100-dev.15.g12261e2626" />
+    <PackageReference Include="Uno.CommunityToolkit.WinUI" Version="7.1.100-dev.15.g12261e2626" />
+    <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Animations" Version="7.1.100-dev.15.g12261e2626" />
+    <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.100-dev.15.g12261e2626" />
+    <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Controls" Version="7.1.100-dev.15.g12261e2626" />
+    <PackageReference Include="Uno.WinUI.Skia.Wpf" Version="4.5.12" />
+    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.5.12" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.5.12" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="..\OnionMedia.Uno.Shared\**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\uno-fluentui-assets.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="YoutubeDLSharp">
+      <HintPath>..\..\YoutubeDLSharp-master\YoutubeDLSharp\bin\Release\netstandard2.0\YoutubeDLSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <Import Project="..\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems" Label="Shared" />
+</Project>
