@@ -18,12 +18,15 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
     <PackageReference Include="Uno.CommunityToolkit.Common" Version="7.1.100-dev.15.g12261e2626" />
     <PackageReference Include="Uno.CommunityToolkit.WinUI" Version="7.1.100-dev.15.g12261e2626" />
+    <PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100-dev.15.g12261e2626" />
     <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Animations" Version="7.1.100-dev.15.g12261e2626" />
     <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.100-dev.15.g12261e2626" />
     <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Controls" Version="7.1.100-dev.15.g12261e2626" />
-    <PackageReference Include="Uno.WinUI.Skia.Gtk" Version="4.5.12" />
-    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.5.12" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
     <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.5.12" />
+    <PackageReference Include="Uno.UI.Skia.Gtk" Version="4.6.0-dev.756" />
+    <PackageReference Include="Uno.WinUI" Version="4.6.0-dev.756" />
+    <PackageReference Include="Uno.WinUI.Skia.Gtk" Version="4.6.0-dev.756" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />

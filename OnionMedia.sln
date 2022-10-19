@@ -13,13 +13,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OnionMedia.Uno.Shared", "On
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{A99A1C7F-130D-42D1-A999-22DE99C9E194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Wasm", "OnionMedia.Uno\OnionMedia.Uno.Wasm\OnionMedia.Uno.Wasm.csproj", "{410BEC41-87CA-400B-9FED-880588426DE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Uno.Mobile", "OnionMedia.Uno\OnionMedia.Uno.Mobile\OnionMedia.Uno.Mobile.csproj", "{75597DF6-A651-4283-BABF-87EA6CA2F827}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Mobile", "OnionMedia.Uno\OnionMedia.Uno.Mobile\OnionMedia.Uno.Mobile.csproj", "{75597DF6-A651-4283-BABF-87EA6CA2F827}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Uno.Skia.Gtk", "OnionMedia.Uno\OnionMedia.Uno.Skia.Gtk\OnionMedia.Uno.Skia.Gtk.csproj", "{5B003220-17BA-4C13-A929-276027905D4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Skia.Gtk", "OnionMedia.Uno\OnionMedia.Uno.Skia.Gtk\OnionMedia.Uno.Skia.Gtk.csproj", "{5B003220-17BA-4C13-A929-276027905D4A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Windows", "OnionMedia.Uno\OnionMedia.Uno.Windows\OnionMedia.Uno.Windows.csproj", "{0DE64076-FA38-44AA-B253-3CF55DF4AEC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Uno.Windows", "OnionMedia.Uno\OnionMedia.Uno.Windows\OnionMedia.Uno.Windows.csproj", "{0DE64076-FA38-44AA-B253-3CF55DF4AEC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,22 +87,6 @@ Global
 		{24D1E659-DBE7-48A0-8060-0A91DE7C46A3}.Release|x64.Build.0 = Release|Any CPU
 		{24D1E659-DBE7-48A0-8060-0A91DE7C46A3}.Release|x86.ActiveCfg = Release|Any CPU
 		{24D1E659-DBE7-48A0-8060-0A91DE7C46A3}.Release|x86.Build.0 = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|arm64.Build.0 = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|x64.Build.0 = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Debug|x86.Build.0 = Debug|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|arm64.ActiveCfg = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|arm64.Build.0 = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|x64.ActiveCfg = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|x64.Build.0 = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|x86.ActiveCfg = Release|Any CPU
-		{410BEC41-87CA-400B-9FED-880588426DE0}.Release|x86.Build.0 = Release|Any CPU
 		{75597DF6-A651-4283-BABF-87EA6CA2F827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75597DF6-A651-4283-BABF-87EA6CA2F827}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75597DF6-A651-4283-BABF-87EA6CA2F827}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -168,7 +150,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{410BEC41-87CA-400B-9FED-880588426DE0} = {A99A1C7F-130D-42D1-A999-22DE99C9E194}
 		{75597DF6-A651-4283-BABF-87EA6CA2F827} = {A99A1C7F-130D-42D1-A999-22DE99C9E194}
 		{5B003220-17BA-4C13-A929-276027905D4A} = {A99A1C7F-130D-42D1-A999-22DE99C9E194}
 		{0DE64076-FA38-44AA-B253-3CF55DF4AEC6} = {A99A1C7F-130D-42D1-A999-22DE99C9E194}
@@ -178,7 +159,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		OnionMedia.Uno\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems*{0de64076-fa38-44aa-b253-3cf55df4aec6}*SharedItemsImports = 5
-		OnionMedia.Uno\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems*{410bec41-87ca-400b-9fed-880588426de0}*SharedItemsImports = 5
 		OnionMedia.Uno\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems*{5b003220-17ba-4c13-a929-276027905d4a}*SharedItemsImports = 5
 		OnionMedia.Uno\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
 		OnionMedia.Uno\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems*{75597df6-a651-4283-babf-87ea6ca2f827}*SharedItemsImports = 5
