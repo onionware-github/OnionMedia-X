@@ -1,32 +1,47 @@
-﻿/*
- * Copyright (C) 2022 Jaden Phil Nebel (Onionware)
- *
- * This file is part of OnionMedia.
- * OnionMedia is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
- * OnionMedia is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
- * You should have received a copy of the GNU Affero General Public License along with OnionMedia. If not, see <https://www.gnu.org/licenses/>.
- */
-
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using OnionMedia.Core.ViewModels;
 using Windows.ApplicationModel.DataTransfer;
+using OnionMedia.Core;
+using OnionMedia.Core.Models;
+
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace OnionMedia.Uno.Views
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class MediaPage : Page
     {
         public MediaViewModel ViewModel { get; }
 
-        public MediaPage()
+        #region StaticReferences
+        FFmpegCodecConfig FFmpegCodecs => GlobalResources.FFmpegCodecs;
+
+        BitrateFormatter BitrateFormatter => BitrateFormatter.Instance;
+
+        //Reference to the first ConversionPreset (customPreset)
+        ConversionPreset CustomConversionPreset => ViewModel.ConversionPresets[0];
+
+        string GetFilenameWithoutExtension() => Path.GetFileNameWithoutExtension(ViewModel.SelectedItem.MediaFile.FileInfo.Name);
+        #endregion
+
+public MediaPage()
         {
-            ViewModel = Ioc.Default.GetService<MediaViewModel>();
+            ViewModel = IoC.Default.GetService<MediaViewModel>();
             this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Required;
             this.Loaded += OnLoaded;
             InitializeComponent();

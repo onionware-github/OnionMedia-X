@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -11,30 +11,8 @@
 		<UseWinUI>true</UseWinUI>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 	</PropertyGroup>
-	<ItemGroup>
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset" />
-	  <None Remove="ExternalBinaries\ffmpeg+yt-dlp\README.txt" />
-	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset" />
-		<Content Include="ExternalBinaries\ffmpeg+yt-dlp\README.txt" />
 		<Content Include="Images\SplashScreen.scale-200.png" />
 		<Content Include="Images\LockScreenLogo.scale-200.png" />
 		<Content Include="Images\Square150x150Logo.scale-200.png" />
@@ -45,17 +23,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-		<PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
-		<PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="FFMpegCore" Version="4.7.0" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.3" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.196" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.8" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
 
 		<Manifest Include="$(ApplicationManifest)" />
@@ -66,6 +39,14 @@
        package has not yet been restored -->
 	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnablePreviewMsixTooling)'=='true'">
 		<ProjectCapability Include="Msix" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="YoutubeDLSharp">
+	    <HintPath>..\..\YoutubeDLSharp-master\YoutubeDLSharp\bin\Release\netstandard2.0\publish\YoutubeDLSharp.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -80,16 +61,6 @@
 		-->
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22000.25" />
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.25" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <ProjectReference Include="..\..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Reference Include="YoutubeDLSharp">
-	    <HintPath>..\..\YoutubeDLSharp-master\YoutubeDLSharp\bin\Release\netstandard2.0\YoutubeDLSharp.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 	
 	<Import Project="..\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems" Label="Shared" />

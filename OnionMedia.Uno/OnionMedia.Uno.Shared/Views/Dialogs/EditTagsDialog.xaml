@@ -10,7 +10,7 @@
 -->
 
 <ContentDialog
-    x:Class="OnionMedia.Uno.Views.Dialogs.EditTagsDialog"
+    x:Class="OnionMedia.Views.Dialogs.EditTagsDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OnionMedia.Views.Dialogs"
@@ -32,9 +32,9 @@
             <TextBox x:Uid="/EditTagsDialog/description" Text="{x:Bind FileTags.Description}"/>
             <TextBox x:Uid="/EditTagsDialog/artist" Text="{x:Bind FileTags.Artist}"/>
             <TextBox x:Uid="/EditTagsDialog/album" Text="{x:Bind FileTags.Album}"/>
-            <NumberBox x:Uid="/EditTagsDialog/track" Value="{x:Bind FileTags.Track}" Maximum="99999" NumberFormatter="{x:Bind onionmedia:BitrateFormatter.Instance, Mode=OneTime}"/>
+            <NumberBox x:Uid="/EditTagsDialog/track" Value="{x:Bind FileTags.Track}" Maximum="99999" NumberFormatter="{x:Bind BitrateFormatter, Mode=OneTime}"/>
             <TextBox x:Uid="/EditTagsDialog/genre" Text="{x:Bind FileTags.Genre}"/>
-            <NumberBox x:Uid="/EditTagsDialog/year" Value="{x:Bind FileTags.Year}" Maximum="99999" NumberFormatter="{x:Bind onionmedia:BitrateFormatter.Instance, Mode=OneTime}"/>
+            <NumberBox x:Uid="/EditTagsDialog/year" Value="{x:Bind FileTags.Year}" Maximum="99999" NumberFormatter="{x:Bind BitrateFormatter, Mode=OneTime}"/>
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>

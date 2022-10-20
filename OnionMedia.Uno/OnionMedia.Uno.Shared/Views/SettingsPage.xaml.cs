@@ -16,6 +16,9 @@ using Microsoft.UI.Xaml.Controls;
 using OnionMedia.Core.ViewModels;
 using System;
 using Windows.Globalization.NumberFormatting;
+using OnionMedia.Core;
+using OnionMedia.Core.Models;
+using YoutubeDLSharp.Options;
 
 namespace OnionMedia.Uno.Views
 {
@@ -23,6 +26,14 @@ namespace OnionMedia.Uno.Views
     {
         public SettingsViewModel ViewModel { get; }
         private DecimalFormatter RoundingFormatter { get; }
+
+        #region StaticReferences
+        private HardwareEncoder[] HardwareEncoders => GlobalResources.HardwareEncoders;
+        private AudioConversionFormat[] AudioConversionFormats => GlobalResources.AudioConversionFormats;
+        string INVALIDFILENAMECHARACTERSREGEX => GlobalResources.INVALIDFILENAMECHARACTERSREGEX;
+        int SystemThreadCount => GlobalResources.SystemThreadCount;
+        AppSettings AppSettings => AppSettings.Instance;
+        #endregion
 
         public SettingsPage()
         {

@@ -10,6 +10,7 @@
  */
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.WinUI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -18,7 +19,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using OnionMedia.Core;
-using OnionMedia.Core.Extensions;
 using OnionMedia.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -32,11 +32,14 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace OnionMedia.Uno.Views.Dialogs
+namespace OnionMedia.Views.Dialogs
 {
     [INotifyPropertyChanged]
     public sealed partial class ConversionPresetDialog : ContentDialog
     {
+        #region StaticReferences
+        FFmpegCodecConfig FFmpegCodecs => GlobalResources.FFmpegCodecs;
+        #endregion
         public ConversionPresetDialog(IEnumerable<string> forbiddenNames = null)
         {
             InitializeComponent();

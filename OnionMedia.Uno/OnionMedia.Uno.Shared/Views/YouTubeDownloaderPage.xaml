@@ -19,7 +19,7 @@
     xmlns:m="using:OnionMedia.Core.Models"
     xmlns:i="using:Microsoft.Xaml.Interactivity" 
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:uc="using:OnionMedia.UserControls"
+    xmlns:uc="using:OnionMedia.Uno.UserControls"
     xmlns:ext="using:CommunityToolkit.WinUI.UI"
     xmlns:ani="using:CommunityToolkit.WinUI.UI.Animations"
     xmlns:bhv="using:CommunityToolkit.WinUI.UI.Behaviors"

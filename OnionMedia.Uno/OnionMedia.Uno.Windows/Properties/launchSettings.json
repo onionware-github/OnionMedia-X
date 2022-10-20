@@ -2,10 +2,6 @@
   "profiles": {
     "OnionMedia.Uno.Windows": {
       "commandName": "MsixPackage"
-    },
-    "WSL": {
-      "commandName": "WSL2",
-      "distributionName": ""
     }
   }
 }

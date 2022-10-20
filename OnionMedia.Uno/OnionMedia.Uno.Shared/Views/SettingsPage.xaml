@@ -74,9 +74,9 @@
                         </Expander.Header>
                         <Expander.Content>
                             <StackPanel Spacing="10" MaxWidth="550">
-                                <RadioButton GroupName="fixedPaths" x:Uid="/SettingsPage/askForStoragePath" IsChecked="{x:Bind m:AppSettings.Instance.UseFixedStoragePaths, Mode=OneTime, Converter={StaticResource InverseBoolConverter}}"/>
-                                <RadioButton GroupName="fixedPaths" x:Uid="/SettingsPage/setStoragePaths" IsChecked="{x:Bind m:AppSettings.Instance.UseFixedStoragePaths}"/>
-                                <StackPanel Spacing="10" Visibility="{x:Bind m:AppSettings.Instance.UseFixedStoragePaths, Mode=OneWay}">
+                                <RadioButton GroupName="fixedPaths" x:Uid="/SettingsPage/askForStoragePath" IsChecked="{x:Bind AppSettings.UseFixedStoragePaths, Mode=OneTime, Converter={StaticResource InverseBoolConverter}}"/>
+                                <RadioButton GroupName="fixedPaths" x:Uid="/SettingsPage/setStoragePaths" IsChecked="{x:Bind AppSettings.UseFixedStoragePaths}"/>
+                                <StackPanel Spacing="10" Visibility="{x:Bind AppSettings.UseFixedStoragePaths, Mode=OneWay}">
                                     <ctc:DockPanel>
                                         <Button VerticalAlignment="Bottom"
                                                 ctc:DockPanel.Dock="Right"
@@ -85,7 +85,7 @@
                                                 CommandParameter="{x:Bind m:PathType.ConvertedVideofiles, Mode=OneTime}">
                                             <SymbolIcon Symbol="OpenLocal"/>
                                         </Button>
-                                        <TextBox x:Uid="/SettingsPage/convertedVideos" Text="{x:Bind m:AppSettings.Instance.ConvertedVideoSavePath, Mode=OneWay}" IsReadOnly="True"/>
+                                        <TextBox x:Uid="/SettingsPage/convertedVideos" Text="{x:Bind AppSettings.ConvertedVideoSavePath, Mode=OneWay}" IsReadOnly="True"/>
                                     </ctc:DockPanel>
                                     <ctc:DockPanel>
                                         <Button VerticalAlignment="Bottom"
@@ -95,7 +95,7 @@
                                                 CommandParameter="{x:Bind m:PathType.ConvertedAudiofiles, Mode=OneTime}">
                                             <SymbolIcon Symbol="OpenLocal"/>
                                         </Button>
-                                        <TextBox x:Uid="/SettingsPage/convertedAudios" Text="{x:Bind m:AppSettings.Instance.ConvertedAudioSavePath, Mode=OneWay}" IsReadOnly="True"/>
+                                        <TextBox x:Uid="/SettingsPage/convertedAudios" Text="{x:Bind AppSettings.ConvertedAudioSavePath, Mode=OneWay}" IsReadOnly="True"/>
                                     </ctc:DockPanel>
                                     <ctc:DockPanel>
                                         <Button VerticalAlignment="Bottom"
@@ -105,7 +105,7 @@
                                                 CommandParameter="{x:Bind m:PathType.DownloadedVideofiles, Mode=OneTime}">
                                             <SymbolIcon Symbol="OpenLocal"/>
                                         </Button>
-                                        <TextBox x:Uid="/SettingsPage/downloadedVideos" Text="{x:Bind m:AppSettings.Instance.DownloadsVideoSavePath, Mode=OneWay}" IsReadOnly="True"/>
+                                        <TextBox x:Uid="/SettingsPage/downloadedVideos" Text="{x:Bind AppSettings.DownloadsVideoSavePath, Mode=OneWay}" IsReadOnly="True"/>
                                     </ctc:DockPanel>
                                     <ctc:DockPanel>
                                         <Button VerticalAlignment="Bottom"
@@ -115,12 +115,12 @@
                                                 CommandParameter="{x:Bind m:PathType.DownloadedAudiofiles, Mode=OneTime}">
                                             <SymbolIcon Symbol="OpenLocal"/>
                                         </Button>
-                                        <TextBox x:Uid="/SettingsPage/downloadedAudios" Text="{x:Bind m:AppSettings.Instance.DownloadsAudioSavePath, Mode=OneWay}" IsReadOnly="True"/>
+                                        <TextBox x:Uid="/SettingsPage/downloadedAudios" Text="{x:Bind AppSettings.DownloadsAudioSavePath, Mode=OneWay}" IsReadOnly="True"/>
                                     </ctc:DockPanel>
                                     <TextBox x:Name="filenameSuffix"
                                              x:Uid="/SettingsPage/filenameSuffix"
-                                             Text="{x:Bind m:AppSettings.Instance.ConvertedFilenameSuffix}"
-                                             ext:TextBoxExtensions.Regex="{x:Bind c:GlobalResources.INVALIDFILENAMECHARACTERSREGEX, Mode=OneTime}"
+                                             Text="{x:Bind AppSettings.ConvertedFilenameSuffix}"
+                                             ext:TextBoxExtensions.Regex="{x:Bind INVALIDFILENAMECHARACTERSREGEX, Mode=OneTime}"
                                              ext:TextBoxExtensions.IsValid="{x:Bind ViewModel.InvalidFilename}"/>
                                     <TeachingTip x:Uid="/SettingsPage/forbiddenChars"
                                                  Target="{x:Bind filenameSuffix, Mode=OneTime}"
@@ -148,7 +148,7 @@
                         </Expander.Header>
                         <Expander.Content>
                             <StackPanel Spacing="10">
-                                <ComboBox x:Uid="/SettingsPage/amountOfSimultaneousOperations" SelectedItem="{x:Bind m:AppSettings.Instance.SimultaneousOperationCount}">
+                                <ComboBox x:Uid="/SettingsPage/amountOfSimultaneousOperations" SelectedItem="{x:Bind AppSettings.SimultaneousOperationCount}">
                                     <x:Int32>1</x:Int32>
                                     <x:Int32>2</x:Int32>
                                     <x:Int32>3</x:Int32>
@@ -156,18 +156,18 @@
                                     <x:Int32>5</x:Int32>
                                 </ComboBox>
 
-                                <CheckBox x:Name="limitDownloadSpeed" x:Uid="/SettingsPage/limitDownloadSpeed" Margin="{StaticResource XSmallTopMargin}" IsChecked="{x:Bind m:AppSettings.Instance.LimitDownloadSpeed}"/>
+                                <CheckBox x:Name="limitDownloadSpeed" x:Uid="/SettingsPage/limitDownloadSpeed" Margin="{StaticResource XSmallTopMargin}" IsChecked="{x:Bind AppSettings.LimitDownloadSpeed}"/>
                                 <StackPanel Orientation="Horizontal" Spacing="5" Visibility="{x:Bind limitDownloadSpeed.IsChecked, Mode=OneWay}">
-                                    <NumberBox x:Uid="/SettingsPage/maxDownloadSpeedPerFile" Value="{x:Bind m:AppSettings.Instance.MaxDownloadSpeed}" Minimum="0.1"/>
+                                    <NumberBox x:Uid="/SettingsPage/maxDownloadSpeedPerFile" Value="{x:Bind AppSettings.MaxDownloadSpeed}" Minimum="0.1"/>
                                     <TextBlock Text="MBit/s" VerticalAlignment="Bottom" Margin="3,5"/>
                                 </StackPanel>
 
-                                <CheckBox x:Uid="/SettingsPage/clearListsAfterOperation" IsChecked="{x:Bind m:AppSettings.Instance.ClearListsAfterOperation}"/>
-                                <CheckBox x:Uid="/SettingsPage/fallbackToSoftwareEncoding" IsChecked="{x:Bind m:AppSettings.Instance.FallBackToSoftwareEncoding}"/>
-                                <CheckBox x:Name="convertToH264" x:Uid="/SettingsPage/autoConvertToH264" IsChecked="{x:Bind m:AppSettings.Instance.AutoConvertToH264AfterDownload}"/>
+                                <CheckBox x:Uid="/SettingsPage/clearListsAfterOperation" IsChecked="{x:Bind AppSettings.ClearListsAfterOperation}"/>
+                                <CheckBox x:Uid="/SettingsPage/fallbackToSoftwareEncoding" IsChecked="{x:Bind AppSettings.FallBackToSoftwareEncoding}"/>
+                                <CheckBox x:Name="convertToH264" x:Uid="/SettingsPage/autoConvertToH264" IsChecked="{x:Bind AppSettings.AutoConvertToH264AfterDownload}"/>
                                 <StackPanel Visibility="{x:Bind convertToH264.IsChecked, Mode=OneWay}">
-                                    <CheckBox x:Name="useHwAccelerated" x:Uid="/SettingsPage/useHwAccelerated" Margin="15,0" IsChecked="{x:Bind m:AppSettings.Instance.UseHardwareAcceleratedEncoding}"/>
-                                    <ComboBox x:Uid="/SettingsPage/hardwareEncoder" Margin="15,0" ItemsSource="{x:Bind c:GlobalResources.HardwareEncoders, Mode=OneTime}" SelectedItem="{x:Bind m:AppSettings.Instance.HardwareEncoder}" Visibility="{x:Bind useHwAccelerated.IsChecked, Mode=OneWay}">
+                                    <CheckBox x:Name="useHwAccelerated" x:Uid="/SettingsPage/useHwAccelerated" Margin="15,0" IsChecked="{x:Bind AppSettings.UseHardwareAcceleratedEncoding}"/>
+                                    <ComboBox x:Uid="/SettingsPage/hardwareEncoder" Margin="15,0" ItemsSource="{x:Bind HardwareEncoders, Mode=OneTime}" SelectedItem="{x:Bind AppSettings.HardwareEncoder}" Visibility="{x:Bind useHwAccelerated.IsChecked, Mode=OneWay}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate x:DataType="m:HardwareEncoder">
                                                 <ContentPresenter Content="{x:Bind Converter={StaticResource EnumDisplayNameConverter}, Mode=OneTime}"/>
@@ -178,9 +178,9 @@
                                         <m:HardwareEncoder>2</m:HardwareEncoder>
                                     </ComboBox>
                                 </StackPanel>
-                                <ComboBox x:Uid="/SettingsPage/audioDownloadFormat" ItemsSource="{x:Bind c:GlobalResources.AudioConversionFormats, Mode=OneTime}" SelectedItem="{x:Bind m:AppSettings.Instance.DownloadsAudioFormat}"/>
+                                <ComboBox x:Uid="/SettingsPage/audioDownloadFormat" ItemsSource="{x:Bind AudioConversionFormats, Mode=OneTime}" SelectedItem="{x:Bind AppSettings.DownloadsAudioFormat}"/>
 
-                                <ComboBox x:Uid="/SettingsPage/videoOrPlaylist" ItemsSource="{x:Bind m:AppSettings.VideoAddModes, Mode=OneTime}" SelectedItem="{x:Bind m:AppSettings.Instance.VideoAddMode}">
+                                <ComboBox x:Uid="/SettingsPage/videoOrPlaylist" ItemsSource="{x:Bind m:AppSettings.VideoAddModes, Mode=OneTime}" SelectedItem="{x:Bind AppSettings.VideoAddMode}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="e:VideoAddMode">
                                             <ContentPresenter Content="{x:Bind Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage, Mode=OneTime}"/>
@@ -188,26 +188,26 @@
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
                                 
-                                <CheckBox x:Uid="/SettingsPage/tryAgainAfterFail" IsChecked="{x:Bind m:AppSettings.Instance.AutoRetryDownload}" Margin="{StaticResource SmallTopMargin}"/>
+                                <CheckBox x:Uid="/SettingsPage/tryAgainAfterFail" IsChecked="{x:Bind AppSettings.AutoRetryDownload}" Margin="{StaticResource SmallTopMargin}"/>
                                 <NumberBox x:Uid="/SettingsPage/amountOfRetries"
-                                           Value="{x:Bind m:AppSettings.Instance.CountOfDownloadRetries}"
+                                           Value="{x:Bind AppSettings.CountOfDownloadRetries}"
                                            Minimum="1"
                                            Maximum="5"
                                            NumberFormatter="{x:Bind RoundingFormatter, Mode=OneTime}"
                                            SpinButtonPlacementMode="Inline"
                                            MaxWidth="155" HorizontalAlignment="Left"
-                                           Visibility="{x:Bind m:AppSettings.Instance.AutoRetryDownload, Mode=OneWay}"/>
+                                           Visibility="{x:Bind AppSettings.AutoRetryDownload, Mode=OneWay}"/>
 
                                 <TextBlock x:Uid="/SettingsPage/threadsForConversion" TextWrapping="WrapWholeWords"/>
-                                <CheckBox x:Name="autoSelectThreadCount" x:Uid="/SettingsPage/autoSelectThreadCount" IsChecked="{x:Bind m:AppSettings.Instance.AutoSelectThreadsForConversion}"/>
+                                <CheckBox x:Name="autoSelectThreadCount" x:Uid="/SettingsPage/autoSelectThreadCount" IsChecked="{x:Bind AppSettings.AutoSelectThreadsForConversion}"/>
                                 <StackPanel Orientation="Horizontal" Spacing="15" Visibility="{x:Bind autoSelectThreadCount.IsChecked, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True, Mode=OneWay}">
-                                    <NumberBox Value="{x:Bind m:AppSettings.Instance.MaxThreadCountForConversion}"
+                                    <NumberBox Value="{x:Bind AppSettings.MaxThreadCountForConversion}"
                                        Minimum="1"
-                                       Maximum="{x:Bind c:GlobalResources.SystemThreadCount, Mode=OneTime}"
+                                       Maximum="{x:Bind SystemThreadCount, Mode=OneTime}"
                                        NumberFormatter="{x:Bind RoundingFormatter, Mode=OneTime}"/>
                                     <TextBlock VerticalAlignment="Center">
                                 <Run Text="/  "/>
-                                <Run Text="{x:Bind c:GlobalResources.SystemThreadCount, Mode=OneTime}"/>
+                                <Run Text="{x:Bind SystemThreadCount, Mode=OneTime}"/>
                                     </TextBlock>
                                 </StackPanel>
                             </StackPanel>
@@ -228,8 +228,8 @@
                         </Expander.Header>
                         <Expander.Content>
                             <StackPanel Spacing="10">
-                                <ToggleSwitch x:Uid="/SettingsPage/notifyAfterConversion" IsOn="{x:Bind m:AppSettings.Instance.SendMessageAfterConversion}"/>
-                                <ToggleSwitch x:Uid="/SettingsPage/notifyAfterDownload" IsOn="{x:Bind m:AppSettings.Instance.SendMessageAfterDownload}"/>
+                                <ToggleSwitch x:Uid="/SettingsPage/notifyAfterConversion" IsOn="{x:Bind AppSettings.SendMessageAfterConversion}"/>
+                                <ToggleSwitch x:Uid="/SettingsPage/notifyAfterDownload" IsOn="{x:Bind AppSettings.SendMessageAfterDownload}"/>
                             </StackPanel>
                         </Expander.Content>
                     </Expander>
@@ -239,10 +239,9 @@
 
                         <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"/>
 
-                        <TextBlock
-                    x:Uid="Settings_AboutDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
+                        <TextBlock x:Uid="Settings_AboutDescription"
+                                   Margin="{StaticResource XSmallTopMargin}"
+                                   Style="{ThemeResource BodyTextBlockStyle}" />
 
                         <ctc:WrapPanel Orientation="Horizontal" HorizontalSpacing="10" VerticalSpacing="10" Margin="{StaticResource SmallTopBottomMargin}" x:DefaultBindMode="OneTime">
                             <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink"/>

@@ -27,14 +27,19 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using OnionMedia.Core;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace OnionMedia.Uno.Views.Dialogs
+namespace OnionMedia.Views.Dialogs
 {
     public sealed partial class CustomPresetSelectorDialog : ContentDialog
     {
+        #region StaticReferences
+        FFmpegCodecConfig FFmpegCodecs => GlobalResources.FFmpegCodecs;
+        #endregion
+
         public CustomPresetSelectorDialog()
         {
             InitializeComponent();

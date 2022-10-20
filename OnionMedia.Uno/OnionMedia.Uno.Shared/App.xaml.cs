@@ -1,21 +1,15 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using FFMpegCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using OnionMedia.Activation;
-using OnionMedia.Contracts.Services;
-using OnionMedia.Core;
-using OnionMedia.Core.Services;
-using OnionMedia.Core.ViewModels;
-using OnionMedia.Services;
-using OnionMedia.ViewModels;
 using OnionMedia.Uno.Views;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using OnionMedia.Core.Services;
+using OnionMedia.Core;
 
 namespace OnionMedia.Uno
 {
@@ -24,8 +18,7 @@ namespace OnionMedia.Uno
     /// </summary>
     public sealed partial class App : Application
     {
-        public static Window MainWindow => _window;
-        private static Window _window;
+        private Window _window;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -36,14 +29,13 @@ namespace OnionMedia.Uno
             InitializeLogging();
 
             this.InitializeComponent();
+            var services = ConfigureServices();
+            Ioc.Default.ConfigureServices(services);
+            IoC.Default.InitializeServices(services);
 
 #if HAS_UNO || NETFX_CORE
             this.Suspending += OnSuspending;
 #endif
-            var services = ConfigureServices();
-            Ioc.Default.ConfigureServices(services);
-            IoC.Default.InitializeServices(services);
-            GlobalFFOptions.Configure(options => options.BinaryFolder = IoC.Default.GetService<IPathProvider>().ExternalBinariesDir);
         }
 
         /// <summary>
@@ -59,7 +51,7 @@ namespace OnionMedia.Uno
                 // this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            await IoC.Default.GetService<IFFmpegStartup>().InitializeFormatsAndCodecsAsync();
+
 #if NET6_0_OR_GREATER && WINDOWS && !HAS_UNO
             _window = new Window();
             _window.Activate();
@@ -68,7 +60,7 @@ namespace OnionMedia.Uno
 #endif
 
             var rootFrame = _window.Content as Frame;
-
+            //await IoC.Default.GetService<IFFmpegStartup>().InitializeFormatsAndCodecsAsync();
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -96,7 +88,7 @@ namespace OnionMedia.Uno
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MediaPage), args.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), args.Arguments);
                 }
                 // Ensure the current window is active
                 _window.Activate();
@@ -195,53 +187,14 @@ namespace OnionMedia.Uno
 #endif
 #endif
         }
-        private static IServiceProvider ConfigureServices()
+
+        static IServiceProvider ConfigureServices()
         {
-            //Register your services, viewmodels and pages here
-            var services = new ServiceCollection();
-
-            // Default Activation Handler
-            services.AddTransient<ActivationHandler<Microsoft.UI.Xaml.LaunchActivatedEventArgs>, DefaultActivationHandler>();
-
-            // Other Activation Handlers
-
-            // Services
-            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-            services.AddTransient<INavigationViewService, NavigationViewService>();
-
-            services.AddSingleton<IActivationService, ActivationService>();
-            services.AddSingleton<IPageService, PageService>();
-            services.AddSingleton<INavigationService, NavigationService>();
+            ServiceCollection services = new();
 
             // Core Services
-            services.AddSingleton<IDialogService, DialogService>();
-            services.AddSingleton<IDownloaderDialogService, DownloaderDialogService>();
-            services.AddSingleton<IThirdPartyLicenseDialog, ThirdPartyLicenseDialog>();
-            services.AddSingleton<IConversionPresetDialog, ConversionPresetDialog>();
-            services.AddSingleton<IFiletagEditorDialog, FiletagEditorDialog>();
-            services.AddSingleton<ICustomPresetSelectorDialog, CustomPresetSelectorDialog>();
-            services.AddSingleton<IDispatcherService, DispatcherService>();
-            services.AddSingleton<INetworkStatusService, NetworkStatusService>();
-            services.AddSingleton<IUrlService, UrlService>();
-            services.AddSingleton<IToastNotificationService, ToastNotificationService>();
-            services.AddSingleton<IStringResourceService, StringResourceService>();
-            services.AddSingleton<ISettingsService, SettingsService>();
-            services.AddSingleton<IPathProvider, PathProvider>();
-            services.AddSingleton<IVersionService, VersionService>();
-            services.AddSingleton<IWindowClosingService, WindowClosingService>();
             services.AddSingleton<IFFmpegStartup, FFmpegStartup>();
 
-            // Views and ViewModels
-            services.AddTransient<ShellViewModel>();
-            services.AddTransient<ShellPage>();
-            services.AddTransient<MediaViewModel>();
-            services.AddTransient<MediaPage>();
-            services.AddTransient<YouTubeDownloaderViewModel>();
-            services.AddTransient<YouTubeDownloaderPage>();
-            services.AddTransient<PlaylistsViewModel>();
-            services.AddTransient<PlaylistsPage>();
-            services.AddTransient<SettingsViewModel>();
-            services.AddTransient<SettingsPage>();
             return services.BuildServiceProvider();
         }
     }
