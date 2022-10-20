@@ -33,7 +33,7 @@ namespace OnionMedia.Uno.Views
         {
             btnProgressRing.IsActive = false;
             btnProgressRing.IsActive = true;
-            rotateInSearchIconTrigger.Value = false;
+            //rotateInSearchIconTrigger.Value = false;
             videolink.Focus(FocusState.Programmatic);
         }
 

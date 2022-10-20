@@ -10,6 +10,8 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using OnionMedia.Core.Services;
 using OnionMedia.Core;
+using OnionMedia.Core.ViewModels;
+using OnionMedia.Uno.Services;
 
 namespace OnionMedia.Uno
 {
@@ -18,6 +20,7 @@ namespace OnionMedia.Uno
     /// </summary>
     public sealed partial class App : Application
     {
+        public static Window CurrentWindow { get; private set; }
         private Window _window;
 
         /// <summary>
@@ -60,7 +63,7 @@ namespace OnionMedia.Uno
 #endif
 
             var rootFrame = _window.Content as Frame;
-            //await IoC.Default.GetService<IFFmpegStartup>().InitializeFormatsAndCodecsAsync();
+            await IoC.Default.GetService<IFFmpegStartup>().InitializeFormatsAndCodecsAsync();
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -88,11 +91,12 @@ namespace OnionMedia.Uno
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), args.Arguments);
+                    rootFrame.Navigate(typeof(YouTubeDownloaderPage), args.Arguments);
                 }
                 // Ensure the current window is active
                 _window.Activate();
             }
+            CurrentWindow = _window;
         }
 
         /// <summary>
@@ -194,6 +198,32 @@ namespace OnionMedia.Uno
 
             // Core Services
             services.AddSingleton<IFFmpegStartup, FFmpegStartup>();
+            services.AddSingleton<IDialogService, DialogService>();
+            services.AddSingleton<IDownloaderDialogService, DownloaderDialogService>();
+            services.AddSingleton<IThirdPartyLicenseDialog, ThirdPartyLicenseDialog>();
+            services.AddSingleton<IConversionPresetDialog, ConversionPresetDialog>();
+            services.AddSingleton<IFiletagEditorDialog, FiletagEditorDialog>();
+            services.AddSingleton<ICustomPresetSelectorDialog, CustomPresetSelectorDialog>();
+            services.AddSingleton<IDispatcherService, DispatcherService>();
+            services.AddSingleton<INetworkStatusService, NetworkStatusService>();
+            services.AddSingleton<IUrlService, UrlService>();
+            services.AddSingleton<IToastNotificationService, ToastNotificationService>();
+            services.AddSingleton<IStringResourceService, StringResourceService>();
+            services.AddSingleton<ISettingsService, SettingsService>();
+            services.AddSingleton<IPathProvider, PathProvider>();
+            services.AddSingleton<IVersionService, VersionService>();
+            services.AddSingleton<IWindowClosingService, WindowClosingService>();
+            services.AddSingleton<IFFmpegStartup, FFmpegStartup>();
+
+            // Views and ViewModels
+            services.AddTransient<MediaViewModel>();
+            services.AddTransient<MediaPage>();
+            services.AddTransient<YouTubeDownloaderViewModel>();
+            services.AddTransient<YouTubeDownloaderPage>();
+            services.AddTransient<PlaylistsViewModel>();
+            services.AddTransient<PlaylistsPage>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<SettingsPage>();
 
             return services.BuildServiceProvider();
         }

@@ -19,6 +19,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)BitrateFormatter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ConversionPresetDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CustomPresetSelectorDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DispatcherService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DownloaderDialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FiletagEditorDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\NetworkStatusService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PathProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\StringResourceService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ThirdPartyLicenseDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UrlService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\VersionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\WindowClosingService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserControls\TimeRangeSelector.xaml.cs">
       <DependentUpon>TimeRangeSelector.xaml</DependentUpon>
     </Compile>
@@ -162,9 +175,6 @@
     <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
     <!--
 		 Add files present in the shared project folder, excluding the ones
 		 explicitly included in the projitem, so files can be added from vscode
@@ -181,7 +191,6 @@
     <_Globbed_Compile Include="$(MSBuildThisFileDirectory)**/*.cs" Exclude="@(Compile);@(_Globbed_Compile)" />
     <Compile Include="@(_Globbed_Compile)" />
     <_Globbed_PRIResource Include="$(MSBuildThisFileDirectory)**/*.resw" Exclude="@(PRIResource)" />
-    <PRIResource Include="@(_Globbed_PRIResource)" />
     <_Globbed_Content Include="$(MSBuildThisFileDirectory)Assets/**/*.*" Exclude="@(Content)" />
     <Content Include="@(_Globbed_Content)" />
     <!-- Mark the files from this folder as being part of WinUI -->
@@ -189,5 +198,40 @@
     <ApplicationDefinition Update="$(MSBuildThisFileDirectory)**/*.xaml" XamlRuntime="WinUI" />
     <!-- Make sure XAML files force reevaluation of up-to-date checks -->
     <UpToDateCheckInput Include="$(MSBuildThisFileDirectory)**/*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Dialogs\ConversionPresetDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Dialogs\DeletePresetDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Dialogs\DialogResources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Dialogs\EditTagsDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Dialogs\LicenseDialogs.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Dialogs\PlaylistSelectorDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\DownloaderPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\MediaPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\ProgressStates.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\SettingsPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Dialogs\ConversionPresetDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Dialogs\DeletePresetDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Dialogs\DialogResources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Dialogs\EditTagsDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Dialogs\LicenseDialogs.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Dialogs\PlaylistSelectorDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\DownloaderPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\MediaPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\ProgressStates.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\SettingsPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Dialogs\ConversionPresetDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Dialogs\DeletePresetDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Dialogs\DialogResources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Dialogs\EditTagsDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Dialogs\LicenseDialogs.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Dialogs\PlaylistSelectorDialog.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\DownloaderPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\MediaPage.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\ProgressStates.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\SettingsPage.resw" />
   </ItemGroup>
 </Project>

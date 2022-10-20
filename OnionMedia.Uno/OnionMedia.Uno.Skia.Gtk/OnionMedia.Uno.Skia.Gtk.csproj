@@ -13,6 +13,20 @@
     <UpToDateCheckInput Include="..\OnionMedia.Uno.Shared\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Data\codecs.json" />
+    <None Remove="Data\ConversionPresets.json" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset" />
+    <None Remove="ExternalBinaries\ffmpeg+yt-dlp\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
     <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Animations" Version="7.1.100-dev.15.g12261e2626" />
     <PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.100-dev.15.g12261e2626" />
@@ -30,4 +44,22 @@
     </Reference>
   </ItemGroup>
   <Import Project="..\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <_Globbed_Compile Remove="Services\DialogService.cs" />
+    <_Globbed_Compile Remove="Services\ToastNotificationService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\codecs.json" />
+    <Content Include="Data\ConversionPresets.json" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset" />
+    <Content Include="ExternalBinaries\ffmpeg+yt-dlp\README.txt" />
+  </ItemGroup>
 </Project>

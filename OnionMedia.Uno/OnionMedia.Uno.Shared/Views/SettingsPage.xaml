@@ -148,7 +148,7 @@
                         </Expander.Header>
                         <Expander.Content>
                             <StackPanel Spacing="10">
-                                <ComboBox x:Uid="/SettingsPage/amountOfSimultaneousOperations" SelectedItem="{x:Bind AppSettings.SimultaneousOperationCount}">
+                                <ComboBox x:Uid="/SettingsPage/amountOfSimultaneousOperations" Header="{x:Bind AmountOfSimultaneousOperationsHeader, Mode=OneTime}"  SelectedItem="{x:Bind AppSettings.SimultaneousOperationCount}">
                                     <x:Int32>1</x:Int32>
                                     <x:Int32>2</x:Int32>
                                     <x:Int32>3</x:Int32>
@@ -167,7 +167,7 @@
                                 <CheckBox x:Name="convertToH264" x:Uid="/SettingsPage/autoConvertToH264" IsChecked="{x:Bind AppSettings.AutoConvertToH264AfterDownload}"/>
                                 <StackPanel Visibility="{x:Bind convertToH264.IsChecked, Mode=OneWay}">
                                     <CheckBox x:Name="useHwAccelerated" x:Uid="/SettingsPage/useHwAccelerated" Margin="15,0" IsChecked="{x:Bind AppSettings.UseHardwareAcceleratedEncoding}"/>
-                                    <ComboBox x:Uid="/SettingsPage/hardwareEncoder" Margin="15,0" ItemsSource="{x:Bind HardwareEncoders, Mode=OneTime}" SelectedItem="{x:Bind AppSettings.HardwareEncoder}" Visibility="{x:Bind useHwAccelerated.IsChecked, Mode=OneWay}">
+                                    <ComboBox x:Uid="/SettingsPage/hardwareEncoder" Header="{x:Bind HardwareEncoderHeader, Mode=OneTime}" Margin="15,0" ItemsSource="{x:Bind HardwareEncoders, Mode=OneTime}" SelectedItem="{x:Bind AppSettings.HardwareEncoder}" Visibility="{x:Bind useHwAccelerated.IsChecked, Mode=OneWay}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate x:DataType="m:HardwareEncoder">
                                                 <ContentPresenter Content="{x:Bind Converter={StaticResource EnumDisplayNameConverter}, Mode=OneTime}"/>

@@ -36,7 +36,7 @@ namespace OnionMedia.Uno.Views
         //Reference to the first ConversionPreset (customPreset)
         ConversionPreset CustomConversionPreset => ViewModel.ConversionPresets[0];
 
-        string GetFilenameWithoutExtension() => Path.GetFileNameWithoutExtension(ViewModel.SelectedItem.MediaFile.FileInfo.Name);
+        string GetFilenameWithoutExtension() => Path.GetFileNameWithoutExtension(ViewModel.SelectedItem?.MediaFile.FileInfo.Name);
         #endregion
 
 public MediaPage()

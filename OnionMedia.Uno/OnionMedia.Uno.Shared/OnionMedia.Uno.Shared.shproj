@@ -32,6 +32,19 @@
   </ItemGroup>
   <ItemGroup>
     <_Globbed_Compile Remove="BitrateFormatter.cs" />
+    <_Globbed_Compile Remove="Services\ConversionPresetDialog.cs" />
+    <_Globbed_Compile Remove="Services\CustomPresetSelectorDialog.cs" />
+    <_Globbed_Compile Remove="Services\DispatcherService.cs" />
+    <_Globbed_Compile Remove="Services\DownloaderDialogService.cs" />
+    <_Globbed_Compile Remove="Services\FiletagEditorDialog.cs" />
+    <_Globbed_Compile Remove="Services\NetworkStatusService.cs" />
+    <_Globbed_Compile Remove="Services\PathProvider.cs" />
+    <_Globbed_Compile Remove="Services\SettingsService.cs" />
+    <_Globbed_Compile Remove="Services\StringResourceService.cs" />
+    <_Globbed_Compile Remove="Services\ThirdPartyLicenseDialog.cs" />
+    <_Globbed_Compile Remove="Services\UrlService.cs" />
+    <_Globbed_Compile Remove="Services\VersionService.cs" />
+    <_Globbed_Compile Remove="Services\WindowClosingService.cs" />
     <_Globbed_Compile Remove="UIResources.cs" />
     <_Globbed_Compile Remove="UserControls\TimeRangeSelector.xaml.cs" />
     <_Globbed_Compile Remove="ValueConverters\BitToKilobitConverter.cs" />
@@ -55,6 +68,41 @@
     <_Globbed_Compile Remove="Views\PlaylistsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SettingsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\YouTubeDownloaderPage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <_Globbed_PRIResource Remove="Strings\de-de\Dialogs\ConversionPresetDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\Dialogs\DeletePresetDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\Dialogs\DialogResources.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\Dialogs\EditTagsDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\Dialogs\LicenseDialogs.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\Dialogs\PlaylistSelectorDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\DownloaderPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\MediaPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\ProgressStates.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\Resources.resw" />
+    <_Globbed_PRIResource Remove="Strings\de-de\SettingsPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Dialogs\ConversionPresetDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Dialogs\DeletePresetDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Dialogs\DialogResources.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Dialogs\EditTagsDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Dialogs\LicenseDialogs.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Dialogs\PlaylistSelectorDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\DownloaderPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\MediaPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\ProgressStates.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\Resources.resw" />
+    <_Globbed_PRIResource Remove="Strings\en-us\SettingsPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Dialogs\ConversionPresetDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Dialogs\DeletePresetDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Dialogs\DialogResources.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Dialogs\EditTagsDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Dialogs\LicenseDialogs.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Dialogs\PlaylistSelectorDialog.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\DownloaderPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\MediaPage.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\ProgressStates.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\Resources.resw" />
+    <_Globbed_PRIResource Remove="Strings\es\SettingsPage.resw" />
   </ItemGroup>
   <ItemGroup>
     <_Globbled_Page Remove="Styles\Page.xaml" />

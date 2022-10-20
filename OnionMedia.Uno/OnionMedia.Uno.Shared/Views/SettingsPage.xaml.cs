@@ -17,6 +17,7 @@ using OnionMedia.Core.ViewModels;
 using System;
 using Windows.Globalization.NumberFormatting;
 using OnionMedia.Core;
+using OnionMedia.Core.Extensions;
 using OnionMedia.Core.Models;
 using YoutubeDLSharp.Options;
 
@@ -33,6 +34,9 @@ namespace OnionMedia.Uno.Views
         string INVALIDFILENAMECHARACTERSREGEX => GlobalResources.INVALIDFILENAMECHARACTERSREGEX;
         int SystemThreadCount => GlobalResources.SystemThreadCount;
         AppSettings AppSettings => AppSettings.Instance;
+
+        string AmountOfSimultaneousOperationsHeader => "amountOfSimultaneousOperationsHeader".GetLocalized("SettingsPage");
+        private string HardwareEncoderHeader => "hardwareEncoderHeader".GetLocalized("SettingsPage");
         #endregion
 
         public SettingsPage()
