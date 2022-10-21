@@ -13,11 +13,13 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OnionMedia.Uno.Shared", "On
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{29FEB7FE-03BB-4827-9163-69C29708FE7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Mobile", "OnionMedia.Uno\OnionMedia.Uno.Mobile\OnionMedia.Uno.Mobile.csproj", "{BE394691-822A-4FA1-A5FE-E98768CAF7AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Uno.Mobile", "OnionMedia.Uno\OnionMedia.Uno.Mobile\OnionMedia.Uno.Mobile.csproj", "{BE394691-822A-4FA1-A5FE-E98768CAF7AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Skia.Gtk", "OnionMedia.Uno\OnionMedia.Uno.Skia.Gtk\OnionMedia.Uno.Skia.Gtk.csproj", "{9667D83A-F0EA-4CC0-B018-F47E9C648504}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Uno.Skia.Gtk", "OnionMedia.Uno\OnionMedia.Uno.Skia.Gtk\OnionMedia.Uno.Skia.Gtk.csproj", "{9667D83A-F0EA-4CC0-B018-F47E9C648504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionMedia.Uno.Windows", "OnionMedia.Uno\OnionMedia.Uno.Windows\OnionMedia.Uno.Windows.csproj", "{FFE4FF9D-603D-4EE6-AA64-04B6360B5DB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Uno.Windows", "OnionMedia.Uno\OnionMedia.Uno.Windows\OnionMedia.Uno.Windows.csproj", "{FFE4FF9D-603D-4EE6-AA64-04B6360B5DB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeDLSharp", "YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj", "{0D6A4238-F239-489D-93C1-4646A8E8EDCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +147,22 @@ Global
 		{FFE4FF9D-603D-4EE6-AA64-04B6360B5DB8}.Release|x86.ActiveCfg = Release|x86
 		{FFE4FF9D-603D-4EE6-AA64-04B6360B5DB8}.Release|x86.Build.0 = Release|x86
 		{FFE4FF9D-603D-4EE6-AA64-04B6360B5DB8}.Release|x86.Deploy.0 = Release|x86
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|arm64.Build.0 = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Debug|x86.Build.0 = Debug|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|arm64.ActiveCfg = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|arm64.Build.0 = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|x64.ActiveCfg = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|x64.Build.0 = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|x86.ActiveCfg = Release|Any CPU
+		{0D6A4238-F239-489D-93C1-4646A8E8EDCE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

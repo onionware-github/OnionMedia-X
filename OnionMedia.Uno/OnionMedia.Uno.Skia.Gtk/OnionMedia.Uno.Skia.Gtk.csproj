@@ -37,11 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="YoutubeDLSharp">
-      <HintPath>..\..\YoutubeDLSharp-master\YoutubeDLSharp\bin\Release\netstandard2.0\publish\YoutubeDLSharp.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
   </ItemGroup>
   <Import Project="..\OnionMedia.Uno.Shared\OnionMedia.Uno.Shared.projitems" Label="Shared" />
   <ItemGroup>
