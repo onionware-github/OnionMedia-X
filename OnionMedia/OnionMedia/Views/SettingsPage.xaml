@@ -22,8 +22,7 @@
     xmlns:ext="using:CommunityToolkit.WinUI.UI"
     xmlns:ctc="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d"
-    x:DefaultBindMode="TwoWay"
-    Style="{StaticResource PageStyle}">
+    x:DefaultBindMode="TwoWay">
     <Page.Resources>
         <ResourceDictionary Source="../XamlDicts/ExternalResources.xaml"/>
     </Page.Resources>
@@ -51,15 +50,34 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+            <VisualStateGroup x:Name="theme">
+                <VisualState x:Name="winEleven">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{x:Bind g:UIResources.RunningOnWin11, Mode=OneTime}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="contentArea.Style" Value="{StaticResource GridStyleWin11}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="defaultStyle">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="True"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="contentArea.Style" Value="{StaticResource GridStyle}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid>
+
+        <Grid x:Name="contentArea">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer x:Name="ContentArea" VerticalScrollBarVisibility="Auto" Padding="10,0">
-                <StackPanel Margin="{StaticResource XSmallTopMargin}" Spacing="15" Padding="15">
+            <ScrollViewer x:Name="ContentArea" Margin="{StaticResource XSmallTopMargin}" VerticalScrollBarVisibility="Auto" Padding="7,0">
+                <StackPanel Spacing="15" Padding="7">
                     <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                         <Expander.Header>
                             <Grid ColumnSpacing="10" Height="60">
@@ -187,7 +205,7 @@
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                
+
                                 <CheckBox x:Uid="/SettingsPage/tryAgainAfterFail" IsChecked="{x:Bind m:AppSettings.Instance.AutoRetryDownload}" Margin="{StaticResource SmallTopMargin}"/>
                                 <NumberBox x:Uid="/SettingsPage/amountOfRetries"
                                            Value="{x:Bind m:AppSettings.Instance.CountOfDownloadRetries}"
@@ -203,13 +221,38 @@
                                 <StackPanel Orientation="Horizontal" Spacing="15" Visibility="{x:Bind autoSelectThreadCount.IsChecked, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True, Mode=OneWay}">
                                     <NumberBox Value="{x:Bind m:AppSettings.Instance.MaxThreadCountForConversion}"
                                        Minimum="1"
-                                       Maximum="{x:Bind c:GlobalResources.SystemThreadCount, Mode=OneTime}"
+                                       Maximum="{x:Bind g:UIResources.SystemThreadCount, Mode=OneTime}"
                                        NumberFormatter="{x:Bind RoundingFormatter, Mode=OneTime}"/>
                                     <TextBlock VerticalAlignment="Center">
                                 <Run Text="/  "/>
-                                <Run Text="{x:Bind c:GlobalResources.SystemThreadCount, Mode=OneTime}"/>
+                                <Run Text="{x:Bind g:UIResources.SystemThreadCount, Mode=OneTime}"/>
                                     </TextBlock>
                                 </StackPanel>
+                            </StackPanel>
+                        </Expander.Content>
+                    </Expander>
+
+                    <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <Expander.Header>
+                            <Grid ColumnSpacing="10" Height="60">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;" VerticalAlignment="Center"/>
+                                <TextBlock x:Uid="/SettingsPage/personalization" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,2" TextTrimming="CharacterEllipsis" FontSize="20"/>
+                            </Grid>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <StackPanel Spacing="10">
+                                <ComboBox x:Uid="/SettingsPage/startPageBox" ItemsSource="{x:Bind m:AppSettings.StartPageTypes, Mode=OneTime}" SelectedItem="{x:Bind m:AppSettings.Instance.StartPageType}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="m:StartPageType">
+                                            <ContentPresenter Content="{x:Bind Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage, Mode=OneTime}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                         </Expander.Content>
                     </Expander>

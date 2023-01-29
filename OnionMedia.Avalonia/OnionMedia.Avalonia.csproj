@@ -1,0 +1,261 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
+    <TrimMode>copyused</TrimMode>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <LangVersion>11</LangVersion>   
+    <DefineConstants Condition="'$(OS)' == 'Windows_NT'">WINDOWS</DefineConstants>
+    <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' == 'osx-x64'">MAC</DefineConstants>
+    <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' != 'osx-x64'">LINUX</DefineConstants>
+    <DefineConstants Condition="'$(TargetFramework)' == 'netstandard2.0'">WEB</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Platforms\Mac" />
+    <Folder Include="Services\" />
+    <AvaloniaResource Include="Assets\**" />
+    <Folder Include="Views\Dialogs\LicenseDialogPages" />
+    <None Remove=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--This helps with theme dll-s trimming.
+	If you will publish your application in self-contained mode with p:PublishTrimmed=true and it will use Fluent theme Default theme will be trimmed from the output and vice versa.
+	https://github.com/AvaloniaUI/Avalonia/issues/5593 -->
+    <TrimmableAssembly Include="Avalonia.Themes.Fluent" />
+    <TrimmableAssembly Include="Avalonia.Themes.Default" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.0-preview4" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.0-preview4" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0-preview4" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview4" />
+    <PackageReference Include="FluentAvaloniaUI" Version="2.0.0-preview4" />
+    <PackageReference Include="Jab" Version="0.8.4" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
+    <ProjectReference Include="..\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\de-de\Dialogs\ConversionPresetDialog.resw" />
+    <PRIResource Include="Strings\de-de\Dialogs\DeletePresetDialog.resw" />
+    <PRIResource Include="Strings\de-de\Dialogs\DialogResources.resw" />
+    <PRIResource Include="Strings\de-de\Dialogs\EditTagsDialog.resw" />
+    <PRIResource Include="Strings\de-de\Dialogs\LicenseDialogs.resw" />
+    <PRIResource Include="Strings\de-de\Dialogs\PlaylistSelectorDialog.resw" />
+    <PRIResource Include="Strings\de-de\DownloaderPage.resw" />
+    <PRIResource Include="Strings\de-de\MediaPage.resw" />
+    <PRIResource Include="Strings\de-de\ProgressStates.resw" />
+    <PRIResource Include="Strings\de-de\Resources.resw" />
+    <PRIResource Include="Strings\de-de\SettingsPage.resw" />
+    <PRIResource Include="Strings\en-us\Dialogs\ConversionPresetDialog.resw" />
+    <PRIResource Include="Strings\en-us\Dialogs\DeletePresetDialog.resw" />
+    <PRIResource Include="Strings\en-us\Dialogs\DialogResources.resw" />
+    <PRIResource Include="Strings\en-us\Dialogs\EditTagsDialog.resw" />
+    <PRIResource Include="Strings\en-us\Dialogs\LicenseDialogs.resw" />
+    <PRIResource Include="Strings\en-us\Dialogs\PlaylistSelectorDialog.resw" />
+    <PRIResource Include="Strings\en-us\DownloaderPage.resw" />
+    <PRIResource Include="Strings\en-us\MediaPage.resw" />
+    <PRIResource Include="Strings\en-us\ProgressStates.resw" />
+    <PRIResource Include="Strings\en-us\Resources.resw" />
+    <PRIResource Include="Strings\en-us\SettingsPage.resw" />
+    <PRIResource Include="Strings\es\Dialogs\ConversionPresetDialog.resw" />
+    <PRIResource Include="Strings\es\Dialogs\DeletePresetDialog.resw" />
+    <PRIResource Include="Strings\es\Dialogs\DialogResources.resw" />
+    <PRIResource Include="Strings\es\Dialogs\EditTagsDialog.resw" />
+    <PRIResource Include="Strings\es\Dialogs\LicenseDialogs.resw" />
+    <PRIResource Include="Strings\es\Dialogs\PlaylistSelectorDialog.resw" />
+    <PRIResource Include="Strings\es\DownloaderPage.resw" />
+    <PRIResource Include="Strings\es\MediaPage.resw" />
+    <PRIResource Include="Strings\es\ProgressStates.resw" />
+    <PRIResource Include="Strings\es\Resources.resw" />
+    <PRIResource Include="Strings\es\SettingsPage.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\de-de\Dialogs\ConversionPresetDialog.json" />
+    <Content Include="Resources\de-de\Dialogs\ConversionPresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\Dialogs\DeletePresetDialog.json" />
+    <Content Include="Resources\de-de\Dialogs\DeletePresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\Dialogs\DialogResources.json" />
+    <Content Include="Resources\de-de\Dialogs\DialogResources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\Dialogs\EditTagsDialog.json" />
+    <Content Include="Resources\de-de\Dialogs\EditTagsDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\Dialogs\LicenseDialogs.json" />
+    <Content Include="Resources\de-de\Dialogs\LicenseDialogs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\Dialogs\PlaylistSelectorDialog.json" />
+    <Content Include="Resources\de-de\Dialogs\PlaylistSelectorDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\DownloaderPage.json" />
+    <Content Include="Resources\de-de\DownloaderPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\MediaPage.json" />
+    <Content Include="Resources\de-de\MediaPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\ProgressStates.json" />
+    <Content Include="Resources\de-de\ProgressStates.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\Resources.json" />
+    <Content Include="Resources\de-de\Resources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\de-de\SettingsPage.json" />
+    <Content Include="Resources\de-de\SettingsPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Dialogs\ConversionPresetDialog.json" />
+    <Content Include="Resources\en-us\Dialogs\ConversionPresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Dialogs\DeletePresetDialog.json" />
+    <Content Include="Resources\en-us\Dialogs\DeletePresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Dialogs\DialogResources.json" />
+    <Content Include="Resources\en-us\Dialogs\DialogResources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Dialogs\EditTagsDialog.json" />
+    <Content Include="Resources\en-us\Dialogs\EditTagsDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Dialogs\LicenseDialogs.json" />
+    <Content Include="Resources\en-us\Dialogs\LicenseDialogs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Dialogs\PlaylistSelectorDialog.json" />
+    <Content Include="Resources\en-us\Dialogs\PlaylistSelectorDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\DownloaderPage.json" />
+    <Content Include="Resources\en-us\DownloaderPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\MediaPage.json" />
+    <Content Include="Resources\en-us\MediaPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\ProgressStates.json" />
+    <Content Include="Resources\en-us\ProgressStates.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\Resources.json" />
+    <Content Include="Resources\en-us\Resources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\en-us\SettingsPage.json" />
+    <Content Include="Resources\en-us\SettingsPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Dialogs\ConversionPresetDialog.json" />
+    <Content Include="Resources\es\Dialogs\ConversionPresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Dialogs\DeletePresetDialog.json" />
+    <Content Include="Resources\es\Dialogs\DeletePresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Dialogs\DialogResources.json" />
+    <Content Include="Resources\es\Dialogs\DialogResources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Dialogs\EditTagsDialog.json" />
+    <Content Include="Resources\es\Dialogs\EditTagsDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Dialogs\LicenseDialogs.json" />
+    <Content Include="Resources\es\Dialogs\LicenseDialogs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Dialogs\PlaylistSelectorDialog.json" />
+    <Content Include="Resources\es\Dialogs\PlaylistSelectorDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\DownloaderPage.json" />
+    <Content Include="Resources\es\DownloaderPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\MediaPage.json" />
+    <Content Include="Resources\es\MediaPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\ProgressStates.json" />
+    <Content Include="Resources\es\ProgressStates.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\Resources.json" />
+    <Content Include="Resources\es\Resources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\es\SettingsPage.json" />
+    <Content Include="Resources\es\SettingsPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\README.txt" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\README.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe" />
+    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\Data\ConversionPresets.json" />
+    <Content Include="Platforms\Windows\Data\ConversionPresets.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Platforms\Windows\Data\codecs.json" />
+    <Content Include="Platforms\Windows\Data\codecs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

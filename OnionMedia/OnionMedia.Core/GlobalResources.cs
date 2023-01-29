@@ -14,17 +14,20 @@ namespace OnionMedia.Core
 {
     public static class GlobalResources
     {
-        private static readonly IPathProvider pathProvider = IoC.Default.GetService<IPathProvider>();
+        private static readonly IPathProvider pathProvider = IoC.Default.GetService<IPathProvider>() ?? throw new ArgumentNullException();
 
         public static HardwareEncoder[] HardwareEncoders { get; } = Enum.GetValues<HardwareEncoder>();
         public static AudioConversionFormat[] AudioConversionFormats { get; } = Enum.GetValues<AudioConversionFormat>().Take(Range.StartAt(2)).ToArray();
+
+        //TODO: Use Path.Combine
         public static LibraryInfo[] LibraryLicenses { get; } =
         {
-            new LibraryInfo("FFmpeg", "FFmpeg 64-bit static Windows build from www.gyan.dev", "GNU GPL v3", pathProvider.InstallPath + @"\ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE", "https://github.com/FFmpeg/FFmpeg/commit/9687cae2b4"),
+            new LibraryInfo("FFmpeg", "FFmpeg 64-bit static Windows build from www.gyan.dev", "GNU GPL v3", Path.Combine(pathProvider.InstallPath, "ExternalBinaries", "ffmpeg+yt-dlp", "FFmpeg_LICENSE"), "https://github.com/FFmpeg/FFmpeg/commit/9687cae2b4"),
             new LibraryInfo("yt-dlp", "yt-dlp", "Unlicense", pathProvider.LicensesDir + "yt-dlp.txt", "https://github.com/yt-dlp/yt-dlp"),
             new LibraryInfo("CommunityToolkit", "Microsoft", "MIT License", pathProvider.LicensesDir + "communitytoolkit.txt", "https://github.com/CommunityToolkit/WindowsCommunityToolkit"),
             new LibraryInfo("FFMpegCore", "Vlad Jerca", "MIT License", pathProvider.LicensesDir + "FFMpegCore.txt", "https://github.com/rosenbjerg/FFMpegCore"),
             new LibraryInfo("Newtonsoft.Json", "James Newton-King", "MIT License", pathProvider.LicensesDir + "newtonsoft_json.txt", "https://github.com/JamesNK/Newtonsoft.Json"),
+            new LibraryInfo("PInvoke.User32", ".NET Foundation", "MIT License", pathProvider.LicensesDir + "pinvoke_user32.txt", "https://github.com/dotnet/pinvoke"),
             new LibraryInfo("TagLib#", "mono", "LGPL v2.1", pathProvider.LicensesDir + "TagLibSharp.txt", "https://github.com/mono/taglib-sharp"),
             new LibraryInfo("xFFmpeg.NET", "Tobias Haimerl(cmxl)", "MIT License", pathProvider.LicensesDir + "xFFmpeg.NET.txt", "https://github.com/cmxl/FFmpeg.NET"),
             new LibraryInfo("XamlBehaviors", "Microsoft", "MIT License", pathProvider.LicensesDir + "microsoft_mit_license.txt", "https://github.com/Microsoft/XamlBehaviors"),
@@ -32,7 +35,6 @@ namespace OnionMedia.Core
             new LibraryInfo("YoutubeExplode", "Tyrrrz", "LGPL v3", pathProvider.LicensesDir + "YoutubeExplode.txt", "https://github.com/Tyrrrz/YoutubeExplode")
         };
 
-        public static int SystemThreadCount => Environment.ProcessorCount;
         public static FFmpegCodecConfig FFmpegCodecs { get; set; }
         public const string INVALIDFILENAMECHARACTERSREGEX = @"[<|>:""/\?*]";
         public const string FFMPEGTIMEFROMOUTPUTREGEX = "time=[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{2}";

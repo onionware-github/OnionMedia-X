@@ -254,10 +254,19 @@ namespace OnionMedia.Core.Models
                 //TODO: Add setting to choose what should happen with the same codec (recode or ignore)
                 if (MediaInfo.PrimaryAudioStream.CodecName != options.AudioEncoder)
                     argBuilder.Append($"-codec:a {audioCodec} ");
-                else
+
+                //Only copy audio codec when there are no changes to audio specific options like bitrate
+                else if (AudioBitrate <= 0 && AudioSamplerate <= 0 && AudioVolumeInPercent == 100)
                     argBuilder.Append("-acodec copy ");
+
                 if (AudioBitrate > 0)
                     argBuilder.Append($"-b:a {AudioBitrate} ");
+
+                if (AudioSamplerate > 0)
+                    argBuilder.Append($"-ar {AudioSamplerate} ");
+
+                if (AudioVolumeInPercent != 100)
+                    argBuilder.Append($"-af \"volume={(AudioVolumeInPercent / 100).ToString().Replace(',', '.')}\" ");
             }
 
             //Remove video when video is deactivated
@@ -364,9 +373,12 @@ namespace OnionMedia.Core.Models
         }
         private ConversionPreset customOptions = new();
 
+
         public uint Width { get; set; }
 
         public uint Height { get; set; }
+
+        public double AudioVolumeInPercent { get; set; } = 100;
 
         public double FPS { get; set; }
 
@@ -382,6 +394,9 @@ namespace OnionMedia.Core.Models
 
         [ObservableProperty]
         private long videoBitrate;
+
+        [ObservableProperty]
+        private long audioSamplerate;
 
         [ObservableProperty]
         private FFmpegConversionState conversionState;

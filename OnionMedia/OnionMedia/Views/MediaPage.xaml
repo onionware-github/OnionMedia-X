@@ -22,13 +22,11 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:io="using:System.IO"
     xmlns:muxc="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:g="using:OnionMedia"
     xmlns:ctc="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:onionmedia="using:OnionMedia"
+    xmlns:vm="using:OnionMedia.Core.ViewModels"
     mc:Ignorable="d"
-    x:DefaultBindMode="OneWay"
-    Style="{StaticResource PageStyle}">
-
+    x:DefaultBindMode="OneWay">
     <Page.Resources>
         <ResourceDictionary Source="../XamlDicts/ExternalResources.xaml"/>
     </Page.Resources>
@@ -38,7 +36,6 @@
              In diesem Fall wird die Positionierung der Elemente auf verschiedene Größen angepasst -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="mediaPageVisualGroup">
-
                 <VisualState x:Name="normalUnwrappedWindow">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="750"/>
@@ -86,6 +83,24 @@
                         <Setter Target="addFilesOnLeftViewBox.(Grid.RowSpan)" Value="1"/>
                         <Setter Target="addFilesOnLeftViewBox.(Grid.Column)" Value="0"/>
                         <Setter Target="addFilesOnLeftViewBox.(Grid.ColumnSpan)" Value="3"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="theme">
+                <VisualState x:Name="winEleven">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{x:Bind onionmedia:UIResources.RunningOnWin11, Mode=OneTime}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentArea.Style" Value="{StaticResource GridStyleWin11}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="defaultStyle">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="True"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentArea.Style" Value="{StaticResource GridStyle}"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -338,6 +353,16 @@
                                     </StackPanel>
                                 </StackPanel>
                             </ContentControl>
+                            <ContentControl IsEnabled="{x:Bind ViewModel.StartConversionCommand.IsRunning, Converter={StaticResource InverseBoolConverter}}" Visibility="{x:Bind ViewModel.ItemSelected}">
+                                <StackPanel Orientation="Horizontal" Spacing="5" Visibility="{x:Bind ViewModel.SelectedItem.AudioStreamAvailable}">
+                                    <NumberBox x:Uid="/MediaPage/audioVolume"
+                                               IsEnabled="{x:Bind ViewModel.SelectedConversionPreset.AudioAvailable}"
+                                               Value="{x:Bind ViewModel.SelectedItem.AudioVolumeInPercent, Mode=TwoWay}"
+                                               Minimum="0"
+                                               Maximum="100000"/>
+                                    <TextBlock Text="%" VerticalAlignment="Bottom" Margin="5"/>
+                                </StackPanel>
+                            </ContentControl>
 
                             <!-- SHORT VIDEO -->
                             <TextBlock x:Uid="/MediaPage/shortFile" FontSize="20" Margin="{StaticResource XSmallTopMargin}" Visibility="{x:Bind ViewModel.ItemSelected}"/>
@@ -355,6 +380,23 @@
                                                    IsEnabled="{x:Bind ViewModel.SelectedConversionPreset.AudioAvailable}"
                                                    Width="125"/>
                                         <TextBlock Text="kbit/s" Margin="{StaticResource LargeTopMargin}"/>
+                                    </StackPanel>
+                                    <!-- Audiosamplerate -->
+                                    <StackPanel Orientation="Horizontal" Spacing="3" Visibility="{x:Bind ViewModel.SelectedItem.AudioStreamAvailable}">
+                                        <ComboBox PlaceholderText="Audiosamplerate"
+                                                  Header="Audio samplerate"
+                                                  SelectedIndex="0"
+                                                  SelectedItem="{x:Bind ViewModel.SelectedItem.AudioSamplerate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
+                                                  IsEnabled="{x:Bind ViewModel.SelectedConversionPreset.AudioAvailable}"
+                                                  ItemsSource="{x:Bind vm:MediaViewModel.KHzSampleRates, Mode=OneTime}"
+                                                  Width="125">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate x:DataType="x:Double">
+                                                    <ContentPresenter Content="{x:Bind Converter={StaticResource SampleRateComboBoxConverter}, Mode=OneTime}"/>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBlock Text="kHz" Margin="{StaticResource LargeTopMargin}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Spacing="3" Visibility="{x:Bind ViewModel.SelectedItem.VideoStreamAvailable}">
                                         <NumberBox x:Uid="/MediaPage/videobitrate"

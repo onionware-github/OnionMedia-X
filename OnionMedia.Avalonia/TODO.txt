@@ -1,0 +1,6 @@
+﻿Add Hash-Checks to executable/linkable files (ffmpeg, ffprobe, yt-dlp)!!!
+Add VisualStates
+Add Styles from Main project
+Add (working) NavigationUris and method to open URLs (Link + URL protocols like mailto:)
+Add SVG Images
+Select the right folder with localization
