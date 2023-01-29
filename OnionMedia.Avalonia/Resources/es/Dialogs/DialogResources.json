@@ -1,1 +1,18 @@
-{"conversionFilesCantBeSaved":"No se han podido guardar {0} archivos en la ubicaci\u00F3n seleccionada. No se encontr\u00F3 la ruta, no hay permisos de escritura o no hay suficiente espacio de almacenamiento disponible.","conversionFilesCantBeSavedTitle":"Error al guardar los archivos.","conversionFilesNoWriteAccess":"{0} archivo(s) no pudieron ser guardados en la ubicaci\u00F3n seleccionada porque la ruta no es escribible.","conversionFilesNoWriteAccessTitle":"No hay acceso de escritura en la ruta de almacenamiento seleccionada.","conversionFilesPathNotFound":"No se han podido guardar {0} archivos porque no se ha encontrado la ruta.","conversionFilesPathNotFoundTitle":"Directorio no encontrado.","fileNotSupported":"El archivo no es compatible.","fileNotSupportedText":"Las partes del archivo no son compatibles.","filesNotSupported":"Los archivos no son compatibles.","filesNotSupportedText":"Algunas partes de los archivos no son compatibles.","nameAlreadyInUse.Text":"Este nombre ya est\u00E1 en uso.","nameIsEmpty.Text":"Introduzca un nombre para el preajuste.","notEnoughSpace":"No se han podido guardar {0} archivos porque no hay suficiente espacio en el disco.","notEnoughSpaceTitle":"No hay suficiente espacio de almacenamiento disponible.","specificFilesNotSupported":"Los archivos no son compatibles.","specificFilesNotSupportedText":"Las partes de {0} archivo(s) no son compatibles."}
+{
+  "conversionFilesCantBeSaved": "No se han podido guardar {0} archivos en la ubicaci\u00F3n seleccionada. No se encontr\u00F3 la ruta, no hay permisos de escritura o no hay suficiente espacio de almacenamiento disponible.",
+  "conversionFilesCantBeSavedTitle": "Error al guardar los archivos.",
+  "conversionFilesNoWriteAccess": "{0} archivo(s) no pudieron ser guardados en la ubicaci\u00F3n seleccionada porque la ruta no es escribible.",
+  "conversionFilesNoWriteAccessTitle": "No hay acceso de escritura en la ruta de almacenamiento seleccionada.",
+  "conversionFilesPathNotFound": "No se han podido guardar {0} archivos porque no se ha encontrado la ruta.",
+  "conversionFilesPathNotFoundTitle": "Directorio no encontrado.",
+  "fileNotSupported": "El archivo no es compatible.",
+  "fileNotSupportedText": "Las partes del archivo no son compatibles.",
+  "filesNotSupported": "Los archivos no son compatibles.",
+  "filesNotSupportedText": "Algunas partes de los archivos no son compatibles.",
+  "nameAlreadyInUse.Text": "Este nombre ya est\u00E1 en uso.",
+  "nameIsEmpty.Text": "Introduzca un nombre para el preajuste.",
+  "notEnoughSpace": "No se han podido guardar {0} archivos porque no hay suficiente espacio en el disco.",
+  "notEnoughSpaceTitle": "No hay suficiente espacio de almacenamiento disponible.",
+  "specificFilesNotSupported": "Los archivos no son compatibles.",
+  "specificFilesNotSupportedText": "Las partes de {0} archivo(s) no son compatibles."
+}

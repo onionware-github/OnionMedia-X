@@ -1,1 +1,12 @@
-{"album.Header":"Album:","artist.Header":"Artist:","description.Header":"Description:","editTagsDlg.PrimaryButtonText":"Apply","editTagsDlg.SecondaryButtonText":"Cancel","editTagsDlg.Title":"Edit filetags","genre.Header":"Genre:","title.Header":"Title:","track.Header":"Track:","year.Header":"Year:"}
+{
+  "album.Header": "Album:",
+  "artist.Header": "Artist:",
+  "description.Header": "Description:",
+  "editTagsDlg.PrimaryButtonText": "Apply",
+  "editTagsDlg.SecondaryButtonText": "Cancel",
+  "editTagsDlg.Title": "Edit filetags",
+  "genre.Header": "Genre:",
+  "title.Header": "Title:",
+  "track.Header": "Track:",
+  "year.Header": "Year:"
+}

@@ -1,1 +1,7 @@
-{"playlistSelectorDialog.PrimaryButtonText":"Hinzuf\u00FCgen","playlistSelectorDialog.SecondaryButtonText":"Abbrechen","playlistSelectorDialog.Title":"Playlist hinzuf\u00FCgen","selectAll.Content":"Alle ausw\u00E4hlen","videosToBeAdded.Text":"Video(s) werden hinzugef\u00FCgt."}
+{
+  "playlistSelectorDialog.PrimaryButtonText": "Hinzuf\u00FCgen",
+  "playlistSelectorDialog.SecondaryButtonText": "Abbrechen",
+  "playlistSelectorDialog.Title": "Playlist hinzuf\u00FCgen",
+  "selectAll.Content": "Alle ausw\u00E4hlen",
+  "videosToBeAdded.Text": "Video(s) werden hinzugef\u00FCgt."
+}

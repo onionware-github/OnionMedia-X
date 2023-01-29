@@ -1,1 +1,27 @@
-{"addToPlaylistBtn.Text":"Speichern","addVideosOnLeft.Text":"F\u00FCge auf der linken Seite Videos hinzu.","converting.Text":"Wird konvertiert","currentPlaylist.Text":"Aktuelle Playlist","done.Text":"Fertig","downloading.Text":"Wird heruntergeladen","downloadStreamBtn.Text":"Herunterladen","failed.Text":"Fehlgeschlagen","Mp3.Content":"Nur Ton","Mp4.Content":"Video","noInternetConnection.Text":"Keine Internetverbindung","noInternetConnectionDescription.Text":"Bitte stellen Sie sicher, dass sie mit dem Internet verbunden sind, damit Dateien heruntergeladen werden k\u00F6nnen.","noVideoFound.Subtitle":"Es wurde kein Video \u00FCber diese URL gefunden.","noVideoFound.Title":"Video nicht gefunden","openURLInBrowser.Text":"URL im Browser \u00F6ffnen","progress.Text":"Fortschritt:","removeBtn.Text":"Entfernen","restartBtn.Text":"Neustarten","savingFile.Text":"Wird gespeichert...","selectFileFormat.Text":"Dateiformat ausw\u00E4hlen:","selectQuality.Text":"Qualit\u00E4t ausw\u00E4hlen:","shortVideo.Text":"Video k\u00FCrzen:","upTo.Text":"Bis zu:","videoInfoHeaderText.Text":"Video Informationen","videolink.PlaceholderText":"Video suchen oder Link einf\u00FCgen..."}
+{
+  "addToPlaylistBtn.Text": "Speichern",
+  "addVideosOnLeft.Text": "F\u00FCge auf der linken Seite Videos hinzu.",
+  "converting.Text": "Wird konvertiert",
+  "currentPlaylist.Text": "Aktuelle Playlist",
+  "done.Text": "Fertig",
+  "downloading.Text": "Wird heruntergeladen",
+  "downloadStreamBtn.Text": "Herunterladen",
+  "failed.Text": "Fehlgeschlagen",
+  "Mp3.Content": "Nur Ton",
+  "Mp4.Content": "Video",
+  "noInternetConnection.Text": "Keine Internetverbindung",
+  "noInternetConnectionDescription.Text": "Bitte stellen Sie sicher, dass sie mit dem Internet verbunden sind, damit Dateien heruntergeladen werden k\u00F6nnen.",
+  "noVideoFound.Subtitle": "Es wurde kein Video \u00FCber diese URL gefunden.",
+  "noVideoFound.Title": "Video nicht gefunden",
+  "openURLInBrowser.Text": "URL im Browser \u00F6ffnen",
+  "progress.Text": "Fortschritt:",
+  "removeBtn.Text": "Entfernen",
+  "restartBtn.Text": "Neustarten",
+  "savingFile.Text": "Wird gespeichert...",
+  "selectFileFormat.Text": "Dateiformat ausw\u00E4hlen:",
+  "selectQuality.Text": "Qualit\u00E4t ausw\u00E4hlen:",
+  "shortVideo.Text": "Video k\u00FCrzen:",
+  "upTo.Text": "Bis zu:",
+  "videoInfoHeaderText.Text": "Video Informationen",
+  "videolink.PlaceholderText": "Video suchen oder Link einf\u00FCgen..."
+}

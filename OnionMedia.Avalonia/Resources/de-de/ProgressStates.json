@@ -1,1 +1,8 @@
-{"Complete":"Fertig","Downloading":"Wird heruntergeladen","Error":"Fehlgeschlagen","None":"","PostProcessing":"Wird konvertiert","PreProcessing":"Information sammeln..."}
+{
+  "Complete": "Fertig",
+  "Downloading": "Wird heruntergeladen",
+  "Error": "Fehlgeschlagen",
+  "None": "",
+  "PostProcessing": "Wird konvertiert",
+  "PreProcessing": "Information sammeln..."
+}
