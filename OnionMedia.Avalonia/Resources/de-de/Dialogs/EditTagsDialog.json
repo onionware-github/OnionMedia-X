@@ -1,8 +1,8 @@
 {
   "album.Header": "Album:",
-  "artist.Header": "K\u00FCnstler:",
+  "artist.Header": "Künstler:",
   "description.Header": "Beschreibung:",
-  "editTagsDlg.PrimaryButtonText": "\u00DCbernehmen",
+  "editTagsDlg.PrimaryButtonText": "Übernehmen",
   "editTagsDlg.SecondaryButtonText": "Abbrechen",
   "editTagsDlg.Title": "Dateitags bearbeiten",
   "genre.Header": "Genre:",

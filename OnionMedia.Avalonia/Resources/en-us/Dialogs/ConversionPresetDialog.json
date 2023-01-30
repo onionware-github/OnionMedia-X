@@ -3,7 +3,7 @@
   "outputFormat.Header": "Output format",
   "primarybuttonapply": "Apply",
   "primarybuttoncreate": "Create",
-  "specificOptions.PrimaryButtonText": "\u00DCbernehmen",
+  "specificOptions.PrimaryButtonText": "Übernehmen",
   "specificOptions.SecondaryButtonText": "Abbrechen",
   "specificOptions.Title": "Specific convertoptions",
   "titleEditPreset": "Edit preset",

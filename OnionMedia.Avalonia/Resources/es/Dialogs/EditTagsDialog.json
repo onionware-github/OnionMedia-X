@@ -1,12 +1,12 @@
 {
-  "album.Header": "\u00C1lbum:",
+  "album.Header": "Álbum:",
   "artist.Header": "Artista:",
-  "description.Header": "Descripci\u00F3n:",
+  "description.Header": "Descripción:",
   "editTagsDlg.PrimaryButtonText": "Aplicar",
   "editTagsDlg.SecondaryButtonText": "Cancelar",
   "editTagsDlg.Title": "Editar las etiquetas de los archivos",
-  "genre.Header": "G\u00E9nero:",
-  "title.Header": "T\u00EDtulo:",
+  "genre.Header": "Género:",
+  "title.Header": "Título:",
   "track.Header": "Pista:",
-  "year.Header": "A\u00F1o:"
+  "year.Header": "Año:"
 }

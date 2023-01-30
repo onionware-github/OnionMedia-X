@@ -1,7 +1,7 @@
 {
-  "playlistSelectorDialog.PrimaryButtonText": "Hinzuf\u00FCgen",
+  "playlistSelectorDialog.PrimaryButtonText": "Hinzufügen",
   "playlistSelectorDialog.SecondaryButtonText": "Abbrechen",
-  "playlistSelectorDialog.Title": "Playlist hinzuf\u00FCgen",
-  "selectAll.Content": "Alle ausw\u00E4hlen",
-  "videosToBeAdded.Text": "Video(s) werden hinzugef\u00FCgt."
+  "playlistSelectorDialog.Title": "Playlist hinzufügen",
+  "selectAll.Content": "Alle auswählen",
+  "videosToBeAdded.Text": "Video(s) werden hinzugefügt."
 }

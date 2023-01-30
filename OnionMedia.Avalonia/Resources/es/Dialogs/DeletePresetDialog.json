@@ -1,6 +1,6 @@
 {
   "cancel": "Cancelar",
-  "content": "\u00BFDesea eliminar el preajuste \u0022{0}\u0022?",
+  "content": "¿Desea eliminar el preajuste \"{0}\"?",
   "delete": "Eliminar",
   "title": "Borrar el preajuste"
 }

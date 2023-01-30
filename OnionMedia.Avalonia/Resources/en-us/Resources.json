@@ -43,7 +43,7 @@
   "specialThanks": "Special thanks to:",
   "specialThanksText": "Marvin Miltkau (Design concepts, Icons)\r\n\r\nBobaFett012345 (Much testing and bug reports)\r\nOnionware | Lorenz Otto (Much testing and bug reports)\r\n\r\npukkandan (development and support for yt-dlp)",
   "AppDescription": "OnionMedia is a free video and audio file converter and downloader. It supports a large number of formats and codecs and is available on GitHub and the Microsoft Store.",
-  "askForPlaylistDownloadContent": "You\u0027ve entered an URL to a playlist. Do you want to add the video only or the entire playlist?",
+  "askForPlaylistDownloadContent": "You've entered an URL to a playlist. Do you want to add the video only or the entire playlist?",
   "askForPlaylistDownloadTitle": "Download the playlist?",
   "playlist": "Playlist",
   "video": "Video"

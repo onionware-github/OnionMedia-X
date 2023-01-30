@@ -1,6 +1,6 @@
 {
   "cancel": "Abbrechen",
-  "content": "M\u00F6chten Sie die Vorlage \u0022{0}\u0022 l\u00F6schen?",
-  "delete": "L\u00F6schen",
-  "title": "Vorlage l\u00F6schen"
+  "content": "Möchten Sie die Vorlage \"{0}\" löschen?",
+  "delete": "Löschen",
+  "title": "Vorlage löschen"
 }

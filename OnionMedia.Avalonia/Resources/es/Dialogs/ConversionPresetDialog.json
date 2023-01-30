@@ -5,10 +5,10 @@
   "primarybuttoncreate": "Crear",
   "specificOptions.PrimaryButtonText": "Aplicar",
   "specificOptions.SecondaryButtonText": "Cancelar",
-  "specificOptions.Title": "Opciones espec\u00EDficas de conversi\u00F3n",
+  "specificOptions.Title": "Opciones específicas de conversión",
   "titleEditPreset": "Editar preajuste",
-  "titleNewPreset": "Crear un nuevo preajuste de conversi\u00F3n",
+  "titleNewPreset": "Crear un nuevo preajuste de conversión",
   "useAudio.Content": "Audio",
-  "useSpecificOptions.Content": "Utilice las opciones de conversi\u00F3n personalizadas para este archivo",
-  "useVideo.Content": "V\u00EDdeo"
+  "useSpecificOptions.Content": "Utilice las opciones de conversión personalizadas para este archivo",
+  "useVideo.Content": "Vídeo"
 }

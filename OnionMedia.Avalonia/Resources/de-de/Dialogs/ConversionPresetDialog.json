@@ -1,14 +1,14 @@
 {
   "conversionDialog.SecondaryButtonText": "Abbrechen",
   "outputFormat.Header": "Ausgabeformat",
-  "primarybuttonapply": "\u00DCbernehmen",
+  "primarybuttonapply": "Übernehmen",
   "primarybuttoncreate": "Erstellen",
-  "specificOptions.PrimaryButtonText": "\u00DCbernehmen",
+  "specificOptions.PrimaryButtonText": "Übernehmen",
   "specificOptions.SecondaryButtonText": "Abbrechen",
   "specificOptions.Title": "Spezifische Konvertierungsoptionen",
   "titleEditPreset": "Vorlage bearbeiten",
   "titleNewPreset": "Neue Vorlage erstellen",
   "useAudio.Content": "Audio",
-  "useSpecificOptions.Content": "Andere Konvertierungsoptionen f\u00FCr diese Datei verwenden",
+  "useSpecificOptions.Content": "Andere Konvertierungsoptionen für diese Datei verwenden",
   "useVideo.Content": "Video"
 }
