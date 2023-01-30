@@ -1,11 +1,13 @@
-﻿using Avalonia;
+﻿using System.Text.RegularExpressions;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using OnionMedia.Core;
 using OnionMedia.Core.ViewModels;
 
 namespace OnionMedia.Avalonia.Views;
 
-public partial class SettingsPage : UserControl
+public sealed partial class SettingsPage : UserControl
 {
     public SettingsPage()
     {
@@ -17,4 +19,14 @@ public partial class SettingsPage : UserControl
     {
         AvaloniaXamlLoader.Load(this);
     }
+
+    private void FilenameSuffix_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        string text = (sender as TextBox)?.Text ?? string.Empty;
+        ((SettingsViewModel)DataContext).InvalidFilename = InvalidFileNameCharRegex().IsMatch(text);
+    }
+
+    [GeneratedRegex(GlobalResources.INVALIDFILENAMECHARACTERSREGEX)]
+    private static partial Regex InvalidFileNameCharRegex();
+
 }

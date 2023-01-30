@@ -1,0 +1,95 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <!--Common texts-->
+    <Style Selector="TextBlock.PageTitleStyle">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="SemiLight" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
+    <Style Selector="TextBlock.BodyTextStyle">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    
+    <Style Selector="TextBlock.BodyTextBlockStyle">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="LineHeight" Value="20"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    
+    <!-- Large margins -->
+    <Style Selector="Control.LargeTopMargin">
+        <Setter Property="Margin" Value="0,36,0,0"/>
+    </Style>
+    <Style Selector="Control.LargeTopBottomMargin">
+        <Setter Property="Margin" Value="0,36"/>
+    </Style>
+
+    <!--Medium size margins-->
+    <Style Selector="Control.MediumTopMargin">
+        <Setter Property="Margin" Value="0,24,0,0"/>
+    </Style>
+    <Style Selector="Control.MediumTopBottomMargin">
+        <Setter Property="Margin" Value="0,24"/>
+    </Style>
+    <Style Selector="Control.MediumLeftRightMargin">
+        <Setter Property="Margin" Value="24,0"/>
+    </Style>
+    <Style Selector="Control.MediumBottomMargin">
+        <Setter Property="Margin" Value="0,0,0,24"/>
+    </Style>
+
+    <!--Small size margins-->
+    <Style Selector="Control.SmallLeftMargin">
+        <Setter Property="Margin" Value="12,0,0,0"/>
+    </Style>
+    <Style Selector="Control.SmallLeftRightMargin">
+        <Setter Property="Margin" Value="12,0"/>
+    </Style>
+    <Style Selector="Control.SmallTopMargin">
+        <Setter Property="Margin" Value="0,12,0,0"/>
+    </Style>
+    <Style Selector="Control.SmallRightMargin">
+        <Setter Property="Margin" Value="0,0,12,0"/>
+    </Style>
+    <Style Selector="Control.SmallTopBottomMargin">
+        <Setter Property="Margin" Value="0,12"/>
+    </Style>
+
+    <!--Extra Small size margins-->
+    <Style Selector="Control.XSmallLeftMargin">
+        <Setter Property="Margin" Value="8,0,0,0"/>
+    </Style>
+    <Style Selector="Control.XSmallTopMargin">
+        <Setter Property="Margin" Value="0,8,0,0"/>
+    </Style>
+    <Style Selector="Control.XSmallLeftTopRightBottomMargin">
+        <Setter Property="Margin" Value="8"/>
+    </Style>
+
+    <!--Extra Extra Small size margins-->
+    <Style Selector="Control.XXSmallTopMargin">
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+    <Style Selector="Control.XXSmallLeftTopRightBottomMargin">
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+
+    <!--ListDetails size margins-->
+    <Style Selector="Control.DetailPageMargin">
+        <Setter Property="Margin" Value="52,40,52,0"/>
+    </Style>
+</Styles>

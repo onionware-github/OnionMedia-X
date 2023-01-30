@@ -12,7 +12,7 @@ using OnionMedia.Core.Services;
 
 namespace OnionMedia.Avalonia
 {
-	public partial class App : Application
+	public sealed partial class App : Application
 	{
 		public static MainWindow MainWindow { get; private set; }
 		public static readonly SoftwareVersion Version = new(2, 0, 0, 0);

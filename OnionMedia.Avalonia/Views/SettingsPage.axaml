@@ -21,7 +21,7 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer x:Name="ContentArea" Margin="{StaticResource XSmallTopMargin}" VerticalScrollBarVisibility="Auto"
+        <ScrollViewer x:Name="ContentArea" Classes="XSmallTopMargin" VerticalScrollBarVisibility="Auto"
                       Padding="14,7">
             <StackPanel Spacing="15">
                 <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
@@ -42,7 +42,7 @@
                         <StackPanel Spacing="10" MaxWidth="550">
                             <RadioButton GroupName="fixedPaths"
                                          Content="{me:Resource SettingsPage/askForStoragePath.Content}"
-                                         IsChecked="{Binding UseFixedStoragePaths, Mode=OneTime, Converter={StaticResource InverseBoolConverter}, Source={x:Static m:AppSettings.Instance}}" />
+                                         IsChecked="{Binding !UseFixedStoragePaths, Mode=OneTime, Source={x:Static m:AppSettings.Instance}}" />
                             <RadioButton GroupName="fixedPaths"
                                          Content="{me:Resource SettingsPage/setStoragePaths.Content}"
                                          IsChecked="{Binding UseFixedStoragePaths, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
@@ -112,8 +112,7 @@
                                     <TextBlock Text="{me:Resource SettingsPage/filenameSuffix.Header}" />
                                     <TextBox x:Name="filenameSuffix"
                                              Text="{Binding ConvertedFilenameSuffix, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
-                                             ext:TextBoxExtensions.Regex="{x:Static c:GlobalResources.INVALIDFILENAMECHARACTERSREGEX}"
-                                             ext:TextBoxExtensions.IsValid="{Binding InvalidFilename, Mode=TwoWay}" />
+                                             TextChanged="FilenameSuffix_OnTextChanged"/>
                                 </StackPanel>
                                 <controls:TeachingTip Subtitle="{me:Resource SettingsPage/forbiddenChars.Subtitle}"
                                                       Title="{me:Resource SettingsPage/forbiddenChars.Title}"
@@ -130,7 +129,7 @@
 
                 <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                     <Expander.Header>
-                        <Grid ColumnSpacing="10" Height="60">
+                        <Grid Height="60">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
@@ -138,7 +137,7 @@
 
                             <controls:SymbolIcon Symbol="Sync" VerticalAlignment="Center" />
                             <TextBlock Text="{me:Resource SettingsPage/convertAndDownloadSettings.Text}"
-                                       Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,2"
+                                       Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,2"
                                        TextTrimming="CharacterEllipsis" FontSize="20" />
                         </Grid>
                     </Expander.Header>
@@ -157,7 +156,7 @@
 
                             <CheckBox x:Name="limitDownloadSpeed"
                                       Content="{me:Resource SettingsPage/limitDownloadSpeed.Content}"
-                                      Margin="{StaticResource XSmallTopMargin}"
+                                      Classes="XSmallTopMargin"
                                       IsChecked="{Binding LimitDownloadSpeed, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
                             <StackPanel Orientation="Horizontal" Spacing="5"
                                         IsVisible="{Binding #limitDownloadSpeed.IsChecked, Mode=OneWay}">
@@ -208,8 +207,7 @@
                                           SelectedItem="{Binding VideoAddMode, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="enums:VideoAddMode">
-                                            <ContentPresenter
-                                                Content="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage, Mode=OneTime}" />
+                                            <ContentPresenter Content="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage, Mode=OneTime}" />
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -217,12 +215,13 @@
 
                             <CheckBox Content="{me:Resource SettingsPage/tryAgainAfterFail.Content}"
                                       IsChecked="{Binding AutoRetryDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
-                                      Margin="{StaticResource SmallTopMargin}" />
+                                      Classes="SmallTopMargin" />
+                            <!-- TODO: Use NumberFormatter-->
+                            <!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
                             <controls:NumberBox Header="{me:Resource SettingsPage/amountOfRetries.Header}"
                                                 Value="{Binding CountOfDownloadRetries, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                                 Minimum="1"
                                                 Maximum="5"
-                                                NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}"
                                                 SpinButtonPlacementMode="Inline"
                                                 MaxWidth="155" HorizontalAlignment="Left"
                                                 IsVisible="{Binding AutoRetryDownload, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}" />
@@ -234,14 +233,15 @@
                                       IsChecked="{Binding AutoSelectThreadsForConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
                             <StackPanel Orientation="Horizontal" Spacing="15"
                                         IsVisible="{Binding #autoSelectThreadCount.IsChecked, Mode=OneWay}">
+                                <!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
+                                <!-- TODO: Use NumberFormatter and bind the correct thread count to "Maximum" and the TextBlock below the NumberBox -->
                                 <controls:NumberBox
                                     Value="{Binding MaxThreadCountForConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                     Minimum="1"
-                                    Maximum="{x:Static system:Environment.ProcessorCount}"
-                                    NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" />
+                                    Maximum="30"/>
                                 <TextBlock VerticalAlignment="Center">
                                     <Run Text="/  " />
-                                    <Run Text="{Binding Source={x:Static system:Environment.ProcessorCount}, StringFormat='{0}', Mode=OneTime}" />
+                                    <Run Text="30" />
                                 </TextBlock>
                             </StackPanel>
                         </StackPanel>
@@ -250,7 +250,7 @@
 
                 <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                     <Expander.Header>
-                        <Grid ColumnSpacing="10" Height="60">
+                        <Grid Height="60">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
@@ -259,7 +259,7 @@
                             <controls:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"
                                                VerticalAlignment="Center" />
                             <TextBlock Text="{me:Resource SettingsPage/personalization.Text}" Grid.Column="1"
-                                       VerticalAlignment="Center" Margin="0,0,0,2" TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center" Margin="10,0,0,2" TextTrimming="CharacterEllipsis"
                                        FontSize="20" />
                         </Grid>
                     </Expander.Header>
@@ -283,7 +283,7 @@
 
                 <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                     <Expander.Header>
-                        <Grid ColumnSpacing="10" Height="60">
+                        <Grid Height="60">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
@@ -291,7 +291,7 @@
 
                             <controls:SymbolIcon Symbol="Message" VerticalAlignment="Center" />
                             <TextBlock Text="{me:Resource SettingsPage/notifications.Text}" Grid.Column="1"
-                                       VerticalAlignment="Center" Margin="0,0,0,2" TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center" Margin="10,0,0,2" TextTrimming="CharacterEllipsis"
                                        FontSize="20" />
                         </Grid>
                     </Expander.Header>
@@ -311,18 +311,17 @@
 
                 <StackPanel x:Name="integratedInfoArea">
                     <TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
-                               Margin="{StaticResource SmallTopBottomMargin}" />
+                               Classes="SmallTopBottomMargin" />
 
                     <TextBlock Text="{Binding VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
 
                     <TextBlock
                         Text="{me:Resource Resources/Settings_AboutDescription.Text}"
-                        Margin="{StaticResource XSmallTopMargin}"
-                        Style="{ThemeResource BodyTextBlockStyle}" />
+                        Classes="XSmallTopMargin BodyTextBlockStyle"/>
 
                     <!-- HorizontalSpacing="10" VerticalSpacing="10" -->
-                    <WrapPanel Orientation="Horizontal"  Margin="{StaticResource SmallTopBottomMargin}">
-                        <controls:HyperlinkButton Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" NavigateUri="{me:Resource Resources/SettingsPage_PrivacyTermsLink.NavigateUri}" />
+                    <WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
+                        <controls:HyperlinkButton Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md" />
                         <controls:HyperlinkButton Content="Special Thanks" Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="10"/>
                         <controls:HyperlinkButton Content="{me:Resource SettingsPage/licenseBtn.Content}" Command="{Binding ShowLicenseCommand, Mode=OneTime}" Margin="10"/>
                         <controls:HyperlinkButton Content="Third-Party" Command="{Binding ShowThirdPartyLicensesCommand, Mode=OneTime}" Margin="10"/>
@@ -335,7 +334,7 @@
 
                     <!-- HorizontalSpacing="40" VerticalSpacing="30" -->
                     <WrapPanel Orientation="Horizontal" MaxHeight="350"
-                               Margin="{StaticResource SmallTopMargin}">
+                               Classes="SmallTopMargin">
                         <Image Source="../Assets/OnionMedia_Icon_New.png" Height="200" VerticalAlignment="Top"  Margin="0,0,40,30"/>
                         <Image Source="../Assets/AGPLv3_Logo.svg" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                                VerticalAlignment="Top" Margin="0,30,0,0" />
@@ -348,19 +347,18 @@
                       Width="350" Padding="0,10,10,0">
             <StackPanel>
                 <TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
-                           Margin="{StaticResource SmallTopBottomMargin}" />
+                           Classes="SmallTopBottomMargin"/>
 
                 <TextBlock Text="{Binding VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
 
                 <TextBlock
                     Text="{me:Resource Resources/Settings_AboutDescription.Text}"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
+                    Classes="XSmallTopMargin BodyTextBlockStyle"/>
 
                 <!-- HorizontalSpacing="5" VerticalSpacing="10"-->
-                <WrapPanel Orientation="Horizontal" Margin="{StaticResource SmallTopBottomMargin}">
+                <WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
                     <controls:HyperlinkButton Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}"
-                                              NavigateUri="{me:Resource Resources/SettingsPage_PrivacyTermsLink.NavigateUri}" />
+                                              NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md" />
                     <controls:HyperlinkButton Content="Special Thanks" Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="5,10"/>
                     <controls:HyperlinkButton Content="{me:Resource SettingsPage/licenseBtn.Content}"
                                               Command="{Binding ShowLicenseCommand, Mode=OneTime}"  Margin="5,10"/>
@@ -376,7 +374,7 @@
                 
                 <!-- HorizontalSpacing="40" VerticalSpacing="30"--> 
                 <WrapPanel Orientation="Horizontal" MaxHeight="350"
-                           Margin="{StaticResource SmallTopMargin}">
+                           Classes="SmallTopMargin">
                     <Image Source="../Assets/OnionMedia_Icon_New.png" Height="200" VerticalAlignment="Top" Margin="0,0,40,30"/>
                     <Image Source="../Assets/AGPLv3_Logo.svg" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                            VerticalAlignment="Top" Margin="0,30,0,0" />

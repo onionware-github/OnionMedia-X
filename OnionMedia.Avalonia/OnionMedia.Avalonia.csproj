@@ -17,6 +17,7 @@
     <Folder Include="Services\" />
     <AvaloniaResource Include="Assets\**" />
     <Folder Include="Views\Dialogs\LicenseDialogPages" />
+    <Folder Include="XamlDicts" />
     <None Remove=".gitignore" />
   </ItemGroup>
   <ItemGroup>
