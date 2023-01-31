@@ -1,4 +1,6 @@
-﻿using Jab;
+﻿using System.Globalization;
+using System.IO;
+using Jab;
 using OnionMedia.Core.Services;
 using OnionMedia.Core.ViewModels;
 using OnionMedia.Services;
@@ -30,5 +32,10 @@ namespace OnionMedia.Avalonia;
 [Transient(typeof(SettingsViewModel))]
 sealed partial class ServiceProvider
 {
-    public IStringResourceService JsonStringResourceService { get; } = new JsonResourceLoader(@"C:\Users\Jaden\source\repos\OnionMedia\OnionMedia.Avalonia\Resources\en-us\");
+    public ServiceProvider()
+    {
+        string path = JsonResourceLoader.GetCurrentLanguagePath(Path.Combine(GetService<IPathProvider>().InstallPath, "Resources"));
+        JsonStringResourceService = new JsonResourceLoader(path);
+    }
+    public IStringResourceService JsonStringResourceService { get; }
 }

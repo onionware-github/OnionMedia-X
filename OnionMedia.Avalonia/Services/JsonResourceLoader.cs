@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using OnionMedia.Core.Services;
 
@@ -18,6 +20,25 @@ sealed class JsonResourceLoader : IStringResourceService
         this.workingDirectory = workingDirectory;
         this.onlyTopLevelDirectory = onlyTopLevelDirectory;
         GetResources();
+    }
+
+    /// <summary>
+    /// Gets the current language code and returns the right folder.
+    /// </summary>
+    /// <param name="resourceFolderPath">e.g. "C:\Users\Jaden\source\repos\OnionMedia\OnionMedia.Avalonia\Resources\"</param>
+    /// <param name="defaultLanguageCode">e.g. "de-de"</param>
+    /// <returns>e.g. "C:\Users\Jaden\source\repos\OnionMedia\OnionMedia.Avalonia\Resources\de-de\"</returns>
+    public static string GetCurrentLanguagePath(string resourceFolderPath, string defaultLanguageCode = "en")
+    {
+        string[] availableCountryCodes = Directory.GetDirectories(resourceFolderPath).Select(d => d.Split(Path.DirectorySeparatorChar)[^1].ToLower()).ToArray();
+        string currentCountryCode = CultureInfo.CurrentCulture.Name.ToLower();
+        string outputPath = Path.Combine(resourceFolderPath, currentCountryCode) + Path.DirectorySeparatorChar;
+        if (Directory.Exists(outputPath)) return outputPath;
+        
+        string langCode = currentCountryCode.Split('-')[0];
+        outputPath = Path.Combine(resourceFolderPath, langCode) + Path.DirectorySeparatorChar;
+        if (Directory.Exists(outputPath)) return outputPath;
+        throw new DirectoryNotFoundException(outputPath);
     }
     
     public string GetLocalized(string resourceName, string sectionName = null)
