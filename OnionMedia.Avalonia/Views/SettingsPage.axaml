@@ -111,8 +111,8 @@
                                 <StackPanel Spacing="3">
                                     <TextBlock Text="{me:Resource SettingsPage/filenameSuffix.Header}" />
                                     <TextBox x:Name="filenameSuffix"
-                                             Text="{Binding ConvertedFilenameSuffix, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
-                                             TextChanged="FilenameSuffix_OnTextChanged"/>
+                                             Text="{Binding ConvertedFilenameSuffix, Mode=OneWay,  Source={x:Static m:AppSettings.Instance}}"
+                                             TextChanged="FilenameSuffix_OnTextChanged" LostFocus="FilenameSuffix_OnLostFocus" KeyDown="FilenameSuffix_OnKeyDown"/>
                                 </StackPanel>
                                 <controls:TeachingTip Subtitle="{me:Resource SettingsPage/forbiddenChars.Subtitle}"
                                                       Title="{me:Resource SettingsPage/forbiddenChars.Title}"
@@ -186,12 +186,9 @@
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate x:DataType="models:HardwareEncoder">
                                                 <ContentPresenter
-                                                    Content="{Binding Converter={StaticResource EnumDisplayNameConverter}, Mode=OneTime}" />
+                                                    Content="{Binding Converter={StaticResource EnumDisplayNameConverter}}" />
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
-                                        <models:HardwareEncoder>0</models:HardwareEncoder>
-                                        <models:HardwareEncoder>1</models:HardwareEncoder>
-                                        <models:HardwareEncoder>2</models:HardwareEncoder>
                                     </ComboBox>
                                 </StackPanel>
                             </StackPanel>
@@ -207,7 +204,7 @@
                                           SelectedItem="{Binding VideoAddMode, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="enums:VideoAddMode">
-                                            <ContentPresenter Content="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage, Mode=OneTime}" />
+                                            <TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -271,8 +268,7 @@
                                           SelectedItem="{Binding StartPageType, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="models:StartPageType">
-                                            <ContentPresenter
-                                                Content="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage, Mode=OneTime}" />
+                                            <TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -330,13 +326,13 @@
                     </WrapPanel>
                     <controls:HyperlinkButton Content="{me:Resource SettingsPage/donateBtn.Content}"
                                               NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
-                                              HorizontalAlignment="Stretch" BorderBrush="SlateGray" BorderThickness="1" />
+                                              HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" BorderBrush="SlateGray" BorderThickness="1" />
 
                     <!-- HorizontalSpacing="40" VerticalSpacing="30" -->
                     <WrapPanel Orientation="Horizontal" MaxHeight="350"
                                Classes="SmallTopMargin">
                         <Image Source="../Assets/OnionMedia_Icon_New.png" Height="200" VerticalAlignment="Top"  Margin="0,0,40,30"/>
-                        <Image Source="../Assets/AGPLv3_Logo.svg" Stretch="Uniform" MaxHeight="500" MinWidth="350"
+                        <Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                                VerticalAlignment="Top" Margin="0,30,0,0" />
                     </WrapPanel>
                 </StackPanel>
@@ -370,13 +366,13 @@
                 </WrapPanel>
                 <controls:HyperlinkButton Content="{me:Resource SettingsPage/donateBtn.Content}"
                                           NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
-                                          HorizontalAlignment="Stretch" BorderBrush="SlateGray" BorderThickness="1" />
+                                          HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" BorderBrush="SlateGray" BorderThickness="1" />
                 
                 <!-- HorizontalSpacing="40" VerticalSpacing="30"--> 
                 <WrapPanel Orientation="Horizontal" MaxHeight="350"
                            Classes="SmallTopMargin">
                     <Image Source="../Assets/OnionMedia_Icon_New.png" Height="200" VerticalAlignment="Top" Margin="0,0,40,30"/>
-                    <Image Source="../Assets/AGPLv3_Logo.svg" Stretch="Uniform" MaxHeight="500" MinWidth="350"
+                    <Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                            VerticalAlignment="Top" Margin="0,30,0,0" />
                 </WrapPanel>
             </StackPanel>

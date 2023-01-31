@@ -1,8 +1,11 @@
 ﻿using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using OnionMedia.Core;
+using OnionMedia.Core.Models;
 using OnionMedia.Core.ViewModels;
 
 namespace OnionMedia.Avalonia.Views;
@@ -29,4 +32,16 @@ public sealed partial class SettingsPage : UserControl
     [GeneratedRegex(GlobalResources.INVALIDFILENAMECHARACTERSREGEX)]
     private static partial Regex InvalidFileNameCharRegex();
 
+    private void FilenameSuffix_OnLostFocus(object? sender, RoutedEventArgs e)
+    {
+        string text = (sender as TextBox)?.Text ?? string.Empty;
+        AppSettings.Instance.ConvertedFilenameSuffix = text;
+    }
+
+    private void FilenameSuffix_OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key != Key.Enter) return;
+        string text = (sender as TextBox)?.Text ?? string.Empty;
+        AppSettings.Instance.ConvertedFilenameSuffix = text;
+    }
 }
