@@ -10,25 +10,88 @@
  */
 
 using System;
+using System.Collections.Generic;
 using OnionMedia.Core.Services;
 using System.Configuration;
+using System.IO;
+using System.Text;
+using System.Text.Json;
+using AngleSharp.Dom;
 
 namespace OnionMedia.Services
 {
     sealed class SettingsService : ISettingsService
     {
-        //TODO: Implement SettingsService
+        private Dictionary<string, object?> settings;
+        private string settingsFilePath;
+        
+        public SettingsService(IPathProvider pathProvider)
+        {
+            settingsFilePath = Path.Combine(pathProvider.InstallPath, "appsettings.json");
+            DeserializeSettings();
+        }
+        
         public object? GetSetting(string key)
         {
-            return null;
-            //if (key == null) throw new ArgumentNullException(nameof(key));
-            //return ConfigurationManager.AppSettings[key] ?? null;
+            var result = this.settings.ContainsKey(key) ? settings[key] : null;
+            return result is JsonElement je ? ConvertToPrimitive(je) : result;
         }
 
         public void SetSetting(string key, object value)
         {
-            //if (key == null) throw new ArgumentNullException(nameof(key));
-            //ApplicationData.Current.LocalSettings.Values[key] = value;
+            if (settings.ContainsKey(key))
+            {
+                settings[key] = value;
+            }
+            else
+            {
+                settings.Add(key, value);
+            }
+            SerializeSettings();
+        }
+
+        private void SerializeSettings()
+        {
+            File.WriteAllText(settingsFilePath, JsonSerializer.Serialize(settings), Encoding.UTF8);
+        }
+        
+        private void DeserializeSettings()
+        {
+            if (!File.Exists(settingsFilePath))
+            {
+                settings = new();
+                File.WriteAllText(settingsFilePath, JsonSerializer.Serialize(settings));
+                return;
+            }
+            try
+            {
+                settings = JsonSerializer.Deserialize<Dictionary<string, object?>>(File.ReadAllText(settingsFilePath));
+            }
+            catch
+            {
+                settings = new();
+            }
+        }
+
+        //TODO: Implement a way to support all types/save types and return the right type
+        private object? ConvertToPrimitive(JsonElement obj)
+        {
+            switch (obj.ValueKind)
+            {
+                case JsonValueKind.Number:
+                    if (obj.TryGetInt32(out int intVal))
+                        return intVal;
+                    if (obj.TryGetDouble(out double doubleVal))
+                        return doubleVal;
+                    return null;
+                
+                case JsonValueKind.String:
+                    return obj.GetString();
+                
+                case JsonValueKind.True or JsonValueKind.False:
+                    return obj.GetBoolean();
+                default: return null;
+            }
         }
     }
 }

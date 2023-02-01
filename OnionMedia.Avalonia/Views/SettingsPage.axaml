@@ -185,8 +185,7 @@
                                               IsVisible="{Binding #useHwAccelerated.IsChecked, Mode=OneWay}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate x:DataType="models:HardwareEncoder">
-                                                <ContentPresenter
-                                                    Content="{Binding Converter={StaticResource EnumDisplayNameConverter}}" />
+                                                <TextBlock Text="{Binding Converter={StaticResource EnumDisplayNameConverter}}" />
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
@@ -229,7 +228,7 @@
                                       Content="{me:Resource SettingsPage/autoSelectThreadCount.Content}"
                                       IsChecked="{Binding AutoSelectThreadsForConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
                             <StackPanel Orientation="Horizontal" Spacing="15"
-                                        IsVisible="{Binding #autoSelectThreadCount.IsChecked, Mode=OneWay}">
+                                        IsVisible="{Binding !#autoSelectThreadCount.IsChecked, Mode=OneWay}">
                                 <!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
                                 <!-- TODO: Use NumberFormatter and bind the correct thread count to "Maximum" and the TextBlock below the NumberBox -->
                                 <controls:NumberBox
@@ -295,11 +294,11 @@
                         <StackPanel Spacing="10">
                             <StackPanel Spacing="3">
                                 <TextBlock Text="{me:Resource SettingsPage/notifyAfterConversion.Header}"/>
-                                <ToggleSwitch IsEnabled="{Binding SendMessageAfterConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
+                                <ToggleSwitch IsThreeState="False" IsChecked="{Binding SendMessageAfterConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
                             </StackPanel>
                             <StackPanel Spacing="3">
                                 <TextBlock Text="{me:Resource SettingsPage/notifyAfterDownload.Header}"/>
-                                <ToggleSwitch IsEnabled="{Binding SendMessageAfterDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
+                                <ToggleSwitch IsThreeState="False" IsChecked="{Binding SendMessageAfterDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
                             </StackPanel>
                         </StackPanel>
                     </Expander.Content>
