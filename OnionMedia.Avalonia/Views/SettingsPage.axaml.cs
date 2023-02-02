@@ -1,6 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -10,17 +12,34 @@ using OnionMedia.Core.ViewModels;
 
 namespace OnionMedia.Avalonia.Views;
 
-public sealed partial class SettingsPage : UserControl
+public sealed partial class SettingsPage : UserControl, INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler? PropertyChanged;
+
     public SettingsPage()
     {
         InitializeComponent();
         DataContext = App.DefaultServiceProvider.GetService<SettingsViewModel>();
     }
 
+    public bool SmallWindowStyle { get; set; }
+
+    private void UpdateSizeStyle(object? sender, SizeChangedEventArgs e)
+    {
+        SmallWindowStyle = e.NewSize.Width < 900;
+        PropertyChanged?.Invoke(this, new(nameof(SmallWindowStyle)));
+    }
+
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
+    }
+
+    protected override void OnLoaded()
+    {
+        base.OnLoaded();
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow.SizeChanged += UpdateSizeStyle;
     }
 
     private void FilenameSuffix_OnTextChanged(object? sender, TextChangedEventArgs e)

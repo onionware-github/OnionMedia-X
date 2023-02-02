@@ -13,7 +13,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="OnionMedia.Avalonia.Views.SettingsPage"
              x:DataType="vm:SettingsViewModel"
-             x:CompileBindings="True">
+             x:CompileBindings="True"
+             x:Name="control">
 
     <Grid x:Name="contentArea">
         <Grid.ColumnDefinitions>
@@ -21,8 +22,21 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
+        <Grid.Styles>
+            <Style Selector="Grid#ContentArea.smallWrapped">
+                <Style.Setters>
+                    <Setter Property="Grid.ColumnSpan" Value="2"/>
+                </Style.Setters>
+            </Style>
+            <Style Selector="Grid#ContentArea.defaultSize">
+                <Style.Setters>
+                    <Setter Property="Grid.ColumnSpan" Value="1"/>
+                </Style.Setters>
+            </Style>
+        </Grid.Styles>
+        
         <ScrollViewer x:Name="ContentArea" Classes="XSmallTopMargin" VerticalScrollBarVisibility="Auto"
-                      Padding="14,7">
+                      Padding="14,7" Classes.defaultSize="{Binding !#control.SmallWindowStyle, Mode=OneWay}" Classes.smallWrapped="{Binding #control.SmallWindowStyle, Mode=OneWay}">
             <StackPanel Spacing="15">
                 <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                     <Expander.Header>
@@ -304,7 +318,7 @@
                     </Expander.Content>
                 </Expander>
 
-                <StackPanel x:Name="integratedInfoArea">
+                <StackPanel x:Name="integratedInfoArea" IsVisible="{Binding #control.SmallWindowStyle, Mode=OneWay}">
                     <TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
                                Classes="SmallTopBottomMargin" />
 
@@ -339,7 +353,7 @@
         </ScrollViewer>
 
         <ScrollViewer x:Name="InfoArea" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left"
-                      Width="350" Padding="0,10,10,0">
+                      Width="350" Padding="0,10,10,0" IsVisible="{Binding !#control.SmallWindowStyle, Mode=OneWay}">
             <StackPanel>
                 <TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
                            Classes="SmallTopBottomMargin"/>
