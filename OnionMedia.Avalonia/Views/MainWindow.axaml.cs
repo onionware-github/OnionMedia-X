@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using OnionMedia.Avalonia.ViewModels;
 
 namespace OnionMedia.Avalonia.Views
 {

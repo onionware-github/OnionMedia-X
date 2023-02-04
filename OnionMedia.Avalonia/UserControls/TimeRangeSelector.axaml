@@ -1,0 +1,22 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:RangeSlider.Avalonia.Controls;assembly=RangeSlider.Avalonia"
+             xmlns:userControls="clr-namespace:OnionMedia.Avalonia.UserControls"
+             xmlns:viewModels="clr-namespace:OnionMedia.Avalonia.ViewModels"
+             xmlns:behaviors="clr-namespace:OnionMedia.Avalonia.Behaviors"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OnionMedia.Avalonia.UserControls.TimeRangeSelector"
+             x:DataType="viewModels:TimeRangeSelectorViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="Auto, * ,Auto">
+        <TextBox KeyDown="TextBox_OnKeyDown" IsEnabled="{Binding IsEditable}" TextAlignment="Center" VerticalAlignment="Center">
+            <Interaction.Behaviors><behaviors:LostFocusUpdateBindingBehavior Text="{Binding StartTimeString}"/></Interaction.Behaviors>
+        </TextBox>
+        <controls:RangeSlider Minimum="0" Maximum="1" Grid.Column="1" Margin="10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TickFrequency="0.01" LowerSelectedValue="{Binding StartValue, Mode=TwoWay}" UpperSelectedValue="{Binding EndValue, Mode=TwoWay}" IsEnabled="{Binding IsEditable}"/>
+        <TextBox Grid.Column="2" KeyDown="TextBox_OnKeyDown" IsEnabled="{Binding IsEditable}" TextAlignment="Center" VerticalAlignment="Center">
+            <Interaction.Behaviors><behaviors:LostFocusUpdateBindingBehavior Text="{Binding EndTimeString}"/></Interaction.Behaviors>
+        </TextBox>
+    </Grid>
+</UserControl>

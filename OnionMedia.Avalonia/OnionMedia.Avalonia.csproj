@@ -34,12 +34,14 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0-preview4" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview4" />
     <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0-preview4" />
+    <PackageReference Include="Avalonia.Xaml.Interactivity" Version="11.0.0-preview4" />
     <PackageReference Include="FluentAvaloniaUI" Version="2.0.0-preview4" />
     <PackageReference Include="Jab" Version="0.8.4" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Avalonia.RangeSlider-avalonia11\RangeSlider.Avalonia\RangeSlider.Avalonia.csproj" />
     <ProjectReference Include="..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
     <ProjectReference Include="..\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
   </ItemGroup>
