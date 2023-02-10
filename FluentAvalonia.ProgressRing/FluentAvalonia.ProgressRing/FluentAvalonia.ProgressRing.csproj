@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
+    <Nullable>disable</Nullable>
+    <RepositoryUrl>https://github.com/ymg2006/FluentAvalonia.ProgressRing</RepositoryUrl>
+    <PackageId>FluentAvalonia.ProgressRing</PackageId>
+    <Description>Templated Control library which adds new customizable WinUI progress ring for FluentAvalonia Package</Description>
+    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;fluent;fluent-design</PackageTags>
+
+    <MicroComGeneratorRuntimeNamespace>MicroCom.Runtime</MicroComGeneratorRuntimeNamespace>
+
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.69.1</Version>
+    <AssemblyVersion>1.69.1.0</AssemblyVersion>
+    <Authors>https://github.com/ymg2006</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Remove="Styling\Controls\ProgressRing.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Styling\Controls\ProgressRing.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAvaloniaUI" Version="2.0.0-preview4" />
+  </ItemGroup>
+
+</Project>

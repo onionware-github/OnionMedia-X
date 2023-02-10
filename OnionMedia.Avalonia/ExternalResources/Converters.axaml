@@ -4,4 +4,9 @@
     <!-- Add Resources Here -->
     <c:EnumDisplayNameConverter x:Key="EnumDisplayNameConverter"/>
     <c:ResourceNameToTextConverter x:Key="ResourceNameToTextConverter"/>
+    <c:BitToKilobitConverter x:Key="BitToKilobitConverter"/>
+    <c:SampleRateComboBoxConverter x:Key="SampleRateComboBoxConverter"/>
+    <c:FileSizeConverter x:Key="FileSizeConverter"/>
+    <c:EqualityConverter x:Key="EqualityConverter"/>
+    <c:InequalityConverter x:Key="InequalityConverter"/>
 </ResourceDictionary>

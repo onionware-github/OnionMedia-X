@@ -42,43 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Avalonia.RangeSlider-avalonia11\RangeSlider.Avalonia\RangeSlider.Avalonia.csproj" />
+    <ProjectReference Include="..\FluentAvalonia.ProgressRing\FluentAvalonia.ProgressRing\FluentAvalonia.ProgressRing.csproj" />
     <ProjectReference Include="..\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
     <ProjectReference Include="..\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="Strings\de-de\Dialogs\ConversionPresetDialog.resw" />
-    <PRIResource Include="Strings\de-de\Dialogs\DeletePresetDialog.resw" />
-    <PRIResource Include="Strings\de-de\Dialogs\DialogResources.resw" />
-    <PRIResource Include="Strings\de-de\Dialogs\EditTagsDialog.resw" />
-    <PRIResource Include="Strings\de-de\Dialogs\LicenseDialogs.resw" />
-    <PRIResource Include="Strings\de-de\Dialogs\PlaylistSelectorDialog.resw" />
-    <PRIResource Include="Strings\de-de\DownloaderPage.resw" />
-    <PRIResource Include="Strings\de-de\MediaPage.resw" />
-    <PRIResource Include="Strings\de-de\ProgressStates.resw" />
-    <PRIResource Include="Strings\de-de\Resources.resw" />
-    <PRIResource Include="Strings\de-de\SettingsPage.resw" />
-    <PRIResource Include="Strings\en-us\Dialogs\ConversionPresetDialog.resw" />
-    <PRIResource Include="Strings\en-us\Dialogs\DeletePresetDialog.resw" />
-    <PRIResource Include="Strings\en-us\Dialogs\DialogResources.resw" />
-    <PRIResource Include="Strings\en-us\Dialogs\EditTagsDialog.resw" />
-    <PRIResource Include="Strings\en-us\Dialogs\LicenseDialogs.resw" />
-    <PRIResource Include="Strings\en-us\Dialogs\PlaylistSelectorDialog.resw" />
-    <PRIResource Include="Strings\en-us\DownloaderPage.resw" />
-    <PRIResource Include="Strings\en-us\MediaPage.resw" />
-    <PRIResource Include="Strings\en-us\ProgressStates.resw" />
-    <PRIResource Include="Strings\en-us\Resources.resw" />
-    <PRIResource Include="Strings\en-us\SettingsPage.resw" />
-    <PRIResource Include="Strings\es\Dialogs\ConversionPresetDialog.resw" />
-    <PRIResource Include="Strings\es\Dialogs\DeletePresetDialog.resw" />
-    <PRIResource Include="Strings\es\Dialogs\DialogResources.resw" />
-    <PRIResource Include="Strings\es\Dialogs\EditTagsDialog.resw" />
-    <PRIResource Include="Strings\es\Dialogs\LicenseDialogs.resw" />
-    <PRIResource Include="Strings\es\Dialogs\PlaylistSelectorDialog.resw" />
-    <PRIResource Include="Strings\es\DownloaderPage.resw" />
-    <PRIResource Include="Strings\es\MediaPage.resw" />
-    <PRIResource Include="Strings\es\ProgressStates.resw" />
-    <PRIResource Include="Strings\es\Resources.resw" />
-    <PRIResource Include="Strings\es\SettingsPage.resw" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\de-de\Dialogs\ConversionPresetDialog.json" />
@@ -253,12 +219,12 @@
     <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="Platforms\Windows\Data\ConversionPresets.json" />
-    <Content Include="Platforms\Windows\Data\ConversionPresets.json">
+    <None Remove="Data\codecs.json" />
+    <Content Include="Data\codecs.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="Platforms\Windows\Data\codecs.json" />
-    <Content Include="Platforms\Windows\Data\codecs.json">
+    <None Remove="Data\ConversionPresets.json" />
+    <Content Include="Data\ConversionPresets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
