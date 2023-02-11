@@ -1,0 +1,2 @@
+Binaries can be placeholders, because GitHub has a maximum file size limit at 100MB. 
+If there are, you can find the used version in FFMPEG+FFPROBE_VERSION.txt, download them and replace the placeholder files.

@@ -13,7 +13,10 @@
     <DefineConstants Condition="'$(TargetFramework)' == 'netstandard2.0'">WEB</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Platforms\Mac\ExternalBinaries" />
+    <Folder Include="Platforms\Linux\Output" />
+    <Folder Include="Platforms\Mac\Output\Data" />
+    <Folder Include="Platforms\Mac\Output\ExternalBinaries" />
+    <Folder Include="Platforms\Windows\Output" />
     <Folder Include="Services\" />
     <AvaloniaResource Include="Assets\**" />
     <Folder Include="Views\Dialogs\LicenseDialogPages" />
@@ -179,34 +182,26 @@
     <Content Include="Resources\es\SettingsPage.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="Data\codecs.json" />
-    <Content Include="Data\codecs.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Data\ConversionPresets.json" />
-    <Content Include="Data\ConversionPresets.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup Condition="$(DefineConstants.Contains('WINDOWS'))">
-    <None Remove="Platforms\Windows\ExternalBinaries\**\*" />
-    <Content Include="Platforms\Windows\ExternalBinaries\**\*">
+    <None Remove="Platforms\Windows\Output\**\*" />
+    <Content Include="Platforms\Windows\Output\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>ExternalBinaries\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+      <Link>%(RecursiveDir)\%(FileName)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <ItemGroup Condition="$(DefineConstants.Contains('MAC'))">
-    <None Remove="Platforms\Mac\ExternalBinaries\**\*" />
-    <Content Include="Platforms\Mac\ExternalBinaries\**\*">
+    <None Remove="Platforms\Mac\Output\**\*" />
+    <Content Include="Platforms\Mac\Output\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>ExternalBinaries\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+      <Link>%(RecursiveDir)\%(FileName)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <ItemGroup Condition="$(DefineConstants.Contains('LINUX'))">
-    <None Remove="Platforms\Linux\ExternalBinaries\**\*" />
-    <Content Include="Platforms\Linux\ExternalBinaries\**\*">
+    <None Remove="Platforms\Linux\Output\**\*" />
+    <Content Include="Platforms\Linux\Output\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>ExternalBinaries\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+      <Link>%(RecursiveDir)\%(FileName)%(Extension)</Link>
     </Content>
   </ItemGroup>
 </Project>
