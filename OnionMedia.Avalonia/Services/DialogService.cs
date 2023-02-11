@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
+using Avalonia.Platform.Storage;
+using Avalonia.Platform.Storage.FileIO;
 using FluentAvalonia.UI.Controls;
 using OnionMedia.Avalonia;
 
@@ -35,25 +37,21 @@ namespace OnionMedia.Services
 
         public async Task<string> ShowSingleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
         {
-            OpenFileDialog dlg = new();
-            dlg.Directory = DirectoryLocationToPathString(location);
-            List<FileDialogFilter> types = new();
-            types.Add(new() { Name="", Extensions = new() { "*" } });
-            dlg.Filters = types;
-            dlg.AllowMultiple = false;
-            var result = await dlg.ShowAsync(App.MainWindow);
-            return result?.Any() is true ? result[0] : null;
+            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = false, SuggestedStartLocation = new BclStorageFolder(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("") {Patterns = new List<string> {"*.*"}}}});
+            if (result?.Any() is false) return null;
+            result[0].TryGetUri(out Uri uri);
+            return uri.LocalPath;
         }
 
         public async Task<string[]> ShowMultipleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
         {
-            OpenFileDialog dlg = new();
-            dlg.Directory = DirectoryLocationToPathString(location);
-            List<FileDialogFilter> types = new();
-            types.Add(new() { Name="", Extensions = new() { "*" } });
-            dlg.Filters = types;
-            dlg.AllowMultiple = true;
-            return await dlg.ShowAsync(App.MainWindow);
+            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = true, SuggestedStartLocation = new BclStorageFolder(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("") {Patterns = new List<string> {"*.*"}}}});
+            return result?.Any() is true ? result.Select(r =>
+            {
+                r.TryGetUri(out Uri uri);
+                string path = uri.LocalPath;
+                return path;
+            }).ToArray() : null;
         }
 
         public async Task<bool?> ShowDialogAsync(DialogTextOptions dialogTextOptions)

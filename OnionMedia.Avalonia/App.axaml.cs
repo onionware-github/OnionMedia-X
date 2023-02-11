@@ -18,13 +18,9 @@ namespace OnionMedia.Avalonia
 		public static readonly SoftwareVersion Version = new(2, 0, 0, 0);
 		internal static readonly ServiceProvider DefaultServiceProvider = new();
 		
-		public override async void Initialize()
+		public override void Initialize()
 		{
-			Ioc.Default.ConfigureServices(DefaultServiceProvider);
-			IoC.Default.InitializeServices(DefaultServiceProvider);
-			GlobalFFOptions.Configure(options => options.BinaryFolder = IoC.Default.GetService<IPathProvider>().ExternalBinariesDir);
-			await DefaultServiceProvider.GetService<IFFmpegStartup>().InitializeFormatsAndCodecsAsync();
-			//AvaloniaXamlLoader.Load(this);
+			AvaloniaXamlLoader.Load(this);
 		}
 
 		public override void OnFrameworkInitializationCompleted()

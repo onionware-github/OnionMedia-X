@@ -13,7 +13,7 @@
     <DefineConstants Condition="'$(TargetFramework)' == 'netstandard2.0'">WEB</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Platforms\Mac" />
+    <Folder Include="Platforms\Mac\ExternalBinaries" />
     <Folder Include="Services\" />
     <AvaloniaResource Include="Assets\**" />
     <Folder Include="Views\Dialogs\LicenseDialogPages" />
@@ -179,46 +179,6 @@
     <Content Include="Resources\es\SettingsPage.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-360p.ffpreset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p.ffpreset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-720p50_60.ffpreset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p.ffpreset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\presets\libvpx-1080p50_60.ffpreset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\FFmpeg_LICENSE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\README.txt" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\README.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\yt-dlp.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffprobe.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Remove="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe" />
-    <Content Include="Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\ffmpeg.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Remove="Data\codecs.json" />
     <Content Include="Data\codecs.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -226,6 +186,27 @@
     <None Remove="Data\ConversionPresets.json" />
     <Content Include="Data\ConversionPresets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="$(DefineConstants.Contains('WINDOWS'))">
+    <None Remove="Platforms\Windows\ExternalBinaries\**\*" />
+    <Content Include="Platforms\Windows\ExternalBinaries\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>ExternalBinaries\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="$(DefineConstants.Contains('MAC'))">
+    <None Remove="Platforms\Mac\ExternalBinaries\**\*" />
+    <Content Include="Platforms\Mac\ExternalBinaries\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>ExternalBinaries\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="$(DefineConstants.Contains('LINUX'))">
+    <None Remove="Platforms\Linux\ExternalBinaries\**\*" />
+    <Content Include="Platforms\Linux\ExternalBinaries\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>ExternalBinaries\%(RecursiveDir)\%(FileName)%(Extension)</Link>
     </Content>
   </ItemGroup>
 </Project>

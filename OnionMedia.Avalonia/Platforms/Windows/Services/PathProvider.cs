@@ -23,7 +23,7 @@ sealed class PathProvider : IPathProvider
     public string Tempdir => Path.GetTempPath() + @"\Onionmedia";
     public string ConverterTempdir => Tempdir + @"\Converter";
     public string DownloaderTempdir => Tempdir + @"\Downloader";
-    public string ExternalBinariesDir => InstallPath + @"\Platforms\Windows\ExternalBinaries\ffmpeg+yt-dlp\binaries\";
+    public string ExternalBinariesDir => InstallPath + @"\ExternalBinaries\ffmpeg+yt-dlp\binaries\";
     public string FFmpegPath => ExternalBinariesDir + "ffmpeg.exe";
     public string YtDlPath => ExternalBinariesDir + "yt-dlp.exe";
     public string LicensesDir => InstallPath + @"\licenses\";
