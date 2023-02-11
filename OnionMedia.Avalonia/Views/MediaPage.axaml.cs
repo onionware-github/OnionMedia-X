@@ -8,7 +8,6 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.ViewModels;
-using ReactiveUI;
 
 namespace OnionMedia.Avalonia.Views;
 
@@ -47,9 +46,9 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
         var parent = element.Parent;
         while (parent is not null)
         {
-            if (parent is Flyout flyout)
+            if (parent is Popup flyout)
             {
-                flyout.Hide();
+                flyout.IsOpen = false;
                 return;
             }
             parent = parent.Parent;
