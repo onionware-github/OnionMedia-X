@@ -246,7 +246,7 @@
                                                   SelectedItem="{Binding ConversionPresets[0].Format, Mode=TwoWay}">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="m:FFmpegContainerFormat">
-                                                    <TextBlock Text="{Binding Name, Mode=OneTime}" />
+                                                    <TextBlock Text="{Binding Name}" />
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
@@ -264,7 +264,7 @@
                                             IsVisible="{Binding #useVideo.IsChecked}" Margin="5">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="m:FFmpegCodec">
-                                                    <TextBlock Text="{Binding Name, Mode=OneTime}" />
+                                                    <TextBlock Text="{Binding Name}" />
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
@@ -285,7 +285,7 @@
                                             IsVisible="{Binding #useAudio.IsChecked}" Margin="5">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="m:FFmpegCodec">
-                                                    <TextBlock Text="{Binding Name, Mode=OneTime}" />
+                                                    <TextBlock Text="{Binding Name}" />
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
