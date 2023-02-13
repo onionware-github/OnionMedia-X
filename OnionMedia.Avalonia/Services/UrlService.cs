@@ -21,7 +21,11 @@ namespace OnionMedia.Services
         public async Task OpenUrlAsync(string url)
         {
             if (url == null) throw new ArgumentNullException(nameof(url));
-            await Task.Run(() => Process.Start(url));
+            await Task.Run(() => Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            }));
         }
     }
 }
