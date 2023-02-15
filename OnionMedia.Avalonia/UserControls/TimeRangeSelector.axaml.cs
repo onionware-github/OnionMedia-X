@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -15,18 +16,35 @@ using OnionMedia.Core.Models;
 
 namespace OnionMedia.Avalonia.UserControls;
 
-public sealed partial class TimeRangeSelector : UserControl
+public partial class TimeRangeSelector : UserControl
 {
+    private TimeRangeSelectorViewModel ViewModel { get; } = new() {TimeSpanGroup = new(TimeSpan.Zero)};
     public TimeRangeSelector()
     {
         InitializeComponent();
-        DataContext = new TimeRangeSelectorViewModel();
+        DataContext = ViewModel;
     }
 
-    private void InitializeComponent()
+    public void UpdateTimeSpanGroup(TimeSpanGroup times)
+    {
+	    ((TimeRangeSelectorViewModel)DataContext).TimeSpanGroup = times;
+    }
+
+    public void UpdateIsReadOnly(bool isReadOnly)
+    {
+	    ((TimeRangeSelectorViewModel)DataContext).IsReadOnly = isReadOnly;
+    }
+
+	private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
     }
+    
+    public static readonly StyledProperty<TimeSpanGroup> TimeSpanGroupProperty =
+        AvaloniaProperty.Register<TimeRangeSelector, TimeSpanGroup>(nameof(TimeSpanGroup));
+    
+    public static readonly StyledProperty<bool> IsReadOnlyProperty =
+        AvaloniaProperty.Register<TimeRangeSelector, bool>(nameof(IsReadOnly));
 
     public TimeSpanGroup TimeSpanGroup
     {

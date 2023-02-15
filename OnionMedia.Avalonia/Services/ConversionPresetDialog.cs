@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAvalonia.UI.Controls;
+using OnionMedia.Core.Extensions;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.Services;
 
@@ -22,16 +23,34 @@ namespace OnionMedia.Services
     {
         public async Task<ConversionPreset?> ShowCustomPresetDialogAsync(IEnumerable<string> forbiddenNames = null)
         {
-            return null;
-            //Views.Dialogs.ConversionPresetDialog dlg = new(forbiddenNames) { XamlRoot = UIResources.XamlRoot };
-            //return (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.ConversionPreset : null;
+            OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog content = new();
+            content.InitializeDialog(forbiddenNames);
+            ContentDialog dlg = new()
+            {
+	            Title = content.title,
+	            Content = content,
+	            PrimaryButtonText = content.primaryButtonText,
+	            SecondaryButtonText = "conversionDialog.SecondaryButtonText".GetLocalized("ConversionPresetDialog")
+            };
+
+            var result = (await dlg.ShowAsync() is ContentDialogResult.Primary) ? content.ConversionPreset : null;
+            return result;
         }
 
         public async Task<ConversionPreset?> ShowCustomPresetDialogAsync(ConversionPreset preset, IEnumerable<string> forbiddenNames = null)
         {
-            return null;
-            //Views.Dialogs.ConversionPresetDialog dlg = new(preset, forbiddenNames) { XamlRoot = UIResources.XamlRoot };
-            //return (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.ConversionPreset : null;
+            OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog content = new();
+            content.InitializeDialog(preset, forbiddenNames);
+            ContentDialog dlg = new()
+            {
+                Title = content.title,
+                Content = content,
+                PrimaryButtonText = content.primaryButtonText,
+                SecondaryButtonText = "conversionDialog.SecondaryButtonText".GetLocalized("ConversionPresetDialog")
+            };
+
+            var result = (await dlg.ShowAsync() is ContentDialogResult.Primary) ? content.ConversionPreset : null;
+            return result;
         }
     }
 }

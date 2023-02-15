@@ -7,7 +7,7 @@ namespace OnionMedia.Avalonia.Markup;
 
 sealed class ResourceExtension : MarkupExtension
 {
-    private readonly IStringResourceService resLoader = new ServiceProvider().JsonStringResourceService;
+    private readonly IStringResourceService resLoader = App.DefaultServiceProvider.JsonStringResourceService;
     
     public ResourceExtension(string key)
     {

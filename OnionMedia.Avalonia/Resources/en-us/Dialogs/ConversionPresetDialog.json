@@ -3,12 +3,17 @@
   "outputFormat.Header": "Output format",
   "primarybuttonapply": "Apply",
   "primarybuttoncreate": "Create",
-  "specificOptions.PrimaryButtonText": "Übernehmen",
-  "specificOptions.SecondaryButtonText": "Abbrechen",
+  "specificOptions.PrimaryButtonText": "Apply",
+  "specificOptions.SecondaryButtonText": "Cancel",
   "specificOptions.Title": "Specific convertoptions",
   "titleEditPreset": "Edit preset",
   "titleNewPreset": "Create new preset",
   "useAudio.Content": "Audio",
   "useSpecificOptions.Content": "Use custom convert options for this file",
-  "useVideo.Content": "Video"
+  "useVideo.Content": "Video",
+  "presetName.Header": "Name",
+  "videoCodec.Header": "Video codec",
+  "videoEncoder.Header": "Video encoder",
+  "audioCodec.Header": "Audio codec",
+  "audioEncoder.Header": "Audio encoder"
 }

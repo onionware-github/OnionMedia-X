@@ -4,7 +4,7 @@ using OnionMedia.Avalonia;
 using OnionMedia.Core.Enums;
 using OnionMedia.Core.Services;
 
-namespace OnionMedia.Services;
+namespace OnionMedia.Avalonia.Windows.Services;
 
 sealed class TaskbarProgressService : ITaskbarProgressService
 {

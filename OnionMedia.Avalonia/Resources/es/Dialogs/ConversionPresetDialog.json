@@ -10,5 +10,10 @@
   "titleNewPreset": "Crear un nuevo preajuste de conversión",
   "useAudio.Content": "Audio",
   "useSpecificOptions.Content": "Utilice las opciones de conversión personalizadas para este archivo",
-  "useVideo.Content": "Vídeo"
+  "useVideo.Content": "Vídeo",
+  "presetName.Header": "Nombre",
+  "videoCodec.Header": "Códec de vídeo",
+  "videoEncoder.Header": "Codificador de vídeo",
+  "audioCodec.Header": "Códec de audio",
+  "audioEncoder.Header": "Codificador de audio"
 }

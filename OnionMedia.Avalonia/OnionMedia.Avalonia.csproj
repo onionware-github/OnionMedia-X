@@ -6,7 +6,7 @@
     <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
     <TrimMode>copyused</TrimMode>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-    <LangVersion>11</LangVersion>   
+    <LangVersion>11</LangVersion>
     <DefineConstants Condition="'$(OS)' == 'Windows_NT'">WINDOWS</DefineConstants>
     <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' == 'osx-x64'">MAC</DefineConstants>
     <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' != 'osx-x64'">LINUX</DefineConstants>
@@ -14,6 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Platforms\Linux\Output" />
+    <Folder Include="Platforms\Linux\Services" />
     <Folder Include="Platforms\Mac\Output\Data" />
     <Folder Include="Platforms\Mac\Output\ExternalBinaries" />
     <Folder Include="Platforms\Windows\Output" />
@@ -183,7 +184,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Platforms\**\*.cs" />
+  </ItemGroup>
   <ItemGroup Condition="$(DefineConstants.Contains('WINDOWS'))">
+    <Compile Include="Platforms\Windows\**\*.cs" />
+
     <None Remove="Platforms\Windows\Output\**\*" />
     <Content Include="Platforms\Windows\Output\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -191,6 +198,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition="$(DefineConstants.Contains('MAC'))">
+    <Compile Include="Platforms\Mac\**\*.cs" />
+    
     <None Remove="Platforms\Mac\Output\**\*" />
     <Content Include="Platforms\Mac\Output\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -198,6 +207,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition="$(DefineConstants.Contains('LINUX'))">
+    <Compile Include="Platforms\Linux\**\*.cs" />
+    
     <None Remove="Platforms\Linux\Output\**\*" />
     <Content Include="Platforms\Linux\Output\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -12,29 +12,30 @@ using OnionMedia.Core.Services;
 
 namespace OnionMedia.Avalonia
 {
-	public sealed partial class App : Application
-	{
-		public static MainWindow MainWindow { get; private set; }
-		public static readonly SoftwareVersion Version = new(2, 0, 0, 0);
-		internal static readonly ServiceProvider DefaultServiceProvider = new();
-		
-		public override void Initialize()
-		{
-			AvaloniaXamlLoader.Load(this);
-		}
+    public sealed partial class App : Application
+    {
+        public static MainWindow MainWindow { get; private set; }
+        public static readonly SoftwareVersion Version = new(2, 0, 0, 0);
 
-		public override void OnFrameworkInitializationCompleted()
-		{
-			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-			{
-				desktop.MainWindow = new MainWindow
-				{
-					DataContext = new MainWindowViewModel(),
-				};
-				MainWindow = (MainWindow)desktop.MainWindow;
-			}
+        internal static readonly ServiceProvider DefaultServiceProvider = new();
 
-			base.OnFrameworkInitializationCompleted();
-		}
-	}
+        public override void Initialize()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
+
+        public override void OnFrameworkInitializationCompleted()
+        {
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel(),
+                };
+                MainWindow = (MainWindow)desktop.MainWindow;
+            }
+
+            base.OnFrameworkInitializationCompleted();
+        }
+    }
 }

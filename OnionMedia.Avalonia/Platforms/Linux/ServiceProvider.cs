@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using Jab;
-using OnionMedia.Avalonia.Windows.Services;
+using OnionMedia.Avalonia.Linux.Services;
 using OnionMedia.Core.Services;
 using OnionMedia.Core.ViewModels;
 using OnionMedia.Services;

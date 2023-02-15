@@ -10,5 +10,10 @@
   "titleNewPreset": "Neue Vorlage erstellen",
   "useAudio.Content": "Audio",
   "useSpecificOptions.Content": "Andere Konvertierungsoptionen für diese Datei verwenden",
-  "useVideo.Content": "Video"
+  "useVideo.Content": "Video",
+  "presetName.Header": "Name",
+  "videoCodec.Header": "Videocodec",
+  "videoEncoder.Header": "Videoencoder",
+  "audioCodec.Header": "Audiocodec",
+  "audioEncoder.Header": "Audioencoder"
 }

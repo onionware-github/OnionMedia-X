@@ -12,19 +12,21 @@
 using System;
 using OnionMedia.Core.Services;
 using System.IO;
+using System.Reflection;
 
-namespace OnionMedia.Services;
+namespace OnionMedia.Avalonia.Windows.Services;
 
 sealed class PathProvider : IPathProvider
 {
-    public string InstallPath => Environment.CurrentDirectory;
-    public string LocalPath => Environment.CurrentDirectory + @"\LocalState";
-    public string LocalCache => Environment.CurrentDirectory + @"\LocalCache";
-    public string Tempdir => Path.GetTempPath() + @"\Onionmedia";
-    public string ConverterTempdir => Tempdir + @"\Converter";
-    public string DownloaderTempdir => Tempdir + @"\Downloader";
-    public string ExternalBinariesDir => InstallPath + @"\ExternalBinaries\ffmpeg+yt-dlp\binaries\";
-    public string FFmpegPath => ExternalBinariesDir + "ffmpeg.exe";
-    public string YtDlPath => ExternalBinariesDir + "yt-dlp.exe";
-    public string LicensesDir => InstallPath + @"\licenses\";
+	string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+	public string InstallPath => currentDirectory;
+	public string LocalPath => currentDirectory + @"\LocalState";
+	public string LocalCache => currentDirectory + @"\LocalCache";
+	public string Tempdir => Path.GetTempPath() + @"\Onionmedia";
+	public string ConverterTempdir => Tempdir + @"\Converter";
+	public string DownloaderTempdir => Tempdir + @"\Downloader";
+	public string ExternalBinariesDir => InstallPath + @"\ExternalBinaries\ffmpeg+yt-dlp\binaries\";
+	public string FFmpegPath => ExternalBinariesDir + "ffmpeg.exe";
+	public string YtDlPath => ExternalBinariesDir + "yt-dlp.exe";
+	public string LicensesDir => InstallPath + @"\licenses\";
 }

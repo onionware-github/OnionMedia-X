@@ -406,12 +406,13 @@
                             <!-- SHORT VIDEO -->
                             <TextBlock Text="{res:Resource MediaPage/shortFile.Text}" FontSize="20"
                                        Classes="XSmallTopMargin" IsVisible="{Binding ItemSelected}" />
-                            <!-- TODO: Implement
-                            <userControls:TimeRangeSelector TimeSpanGroup="{Binding SelectedItem.VideoTimes}"
-                                                            IsEnabled="{Binding ItemSelectedAndIdle}"
-                                                            HorizontalAlignment="Stretch"
-                                                            Classes="SmallTopBottomMargin"
-                                                            IsVisible="{Binding ItemSelected}" /> -->
+
+							<ContentControl IsVisible="{Binding ItemSelected}">
+                                <userControls:TimeRangeSelector x:Name="TimeSelector"
+                                                                IsReadOnly="True"
+                                                                HorizontalAlignment="Stretch"
+                                                                Classes="SmallTopBottomMargin"/>
+                            </ContentControl>
 
                             <!-- BITRATES -->
                             <TextBlock Text="{res:Resource MediaPage/useCustomBitrates.Text}" TextWrapping="Wrap"

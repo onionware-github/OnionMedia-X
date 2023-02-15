@@ -6,6 +6,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using OnionMedia.Avalonia.UserControls;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.ViewModels;
 
@@ -14,10 +15,25 @@ namespace OnionMedia.Avalonia.Views;
 public partial class MediaPage : UserControl, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
+
     public MediaPage()
     {
         InitializeComponent();
         DataContext = App.DefaultServiceProvider.GetService<MediaViewModel>();
+        ((MediaViewModel)DataContext).PropertyChanged += (o, e) =>
+        {
+	        if (e.PropertyName == nameof(MediaViewModel.SelectedItem) && ((MediaViewModel)DataContext).SelectedItem is not null)
+			{
+				var control = this.FindControl<TimeRangeSelector>("TimeSelector");
+				control?.UpdateTimeSpanGroup(((MediaViewModel)DataContext).SelectedItem.VideoTimes);
+			}
+
+	        if (e.PropertyName == nameof(MediaViewModel.ItemSelectedAndIdle))
+	        {
+				var control = this.FindControl<TimeRangeSelector>("TimeSelector");
+				control?.UpdateIsReadOnly(!((MediaViewModel)DataContext).ItemSelectedAndIdle);
+			}
+        };
     }
 
     protected override void OnLoaded()
