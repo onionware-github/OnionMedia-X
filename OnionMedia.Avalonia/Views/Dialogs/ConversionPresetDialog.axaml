@@ -46,9 +46,9 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Spacing="3">
+                <StackPanel Spacing="3" IsVisible="{Binding ConversionPreset.VideoCodec.MultipleEncoders, Mode=OneWay}">
                     <TextBlock Text="{markup:Resource /ConversionPresetDialog/videoEncoder.Header}"/>
-                    <ComboBox Items="{Binding ConversionPreset.VideoCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.VideoEncoder, Mode=TwoWay}" IsVisible="{Binding ConversionPreset.VideoCodec.MultipleEncoders, Mode=OneWay}"/>
+                    <ComboBox Items="{Binding ConversionPreset.VideoCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.VideoEncoder, Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -64,9 +64,9 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Spacing="3">
+                <StackPanel Spacing="3" IsVisible="{Binding ConversionPreset.AudioCodec.MultipleEncoders, Mode=OneWay}">
                     <TextBlock Text="{markup:Resource /ConversionPresetDialog/audioEncoder.Header}"/>
-                    <ComboBox Items="{Binding ConversionPreset.AudioCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.AudioEncoder, Mode=TwoWay}" IsVisible="{Binding ConversionPreset.AudioCodec.MultipleEncoders, Mode=OneWay}"/>
+                    <ComboBox Items="{Binding ConversionPreset.AudioCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.AudioEncoder, Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
