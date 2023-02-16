@@ -46,5 +46,6 @@
   "askForPlaylistDownloadContent": "You've entered an URL to a playlist. Do you want to add the video only or the entire playlist?",
   "askForPlaylistDownloadTitle": "Download the playlist?",
   "playlist": "Playlist",
-  "video": "Video"
+  "video": "Video",
+  "mediaFiles": "Media files"
 }

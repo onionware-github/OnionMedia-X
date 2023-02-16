@@ -21,20 +21,18 @@ namespace OnionMedia.Services
     {
         public async Task<(bool, ConversionPreset)?> ShowCustomPresetSelectorDialogAsync()
         {
-            return null;
-            //Views.Dialogs.CustomPresetSelectorDialog dlg = new() { XamlRoot = UIResources.XamlRoot };
-            //return await dlg.ShowAsync() == ContentDialogResult.Primary
-            //    ? (dlg.UseCustomOptions, dlg.ConversionPreset)
-            //    : null;
+            OnionMedia.Avalonia.Views.Dialogs.CustomPresetSelectorDialog dlg = new();
+            return await dlg.ShowAsync() == ContentDialogResult.Primary
+                ? (dlg.UseCustomOptions, dlg.ConversionPreset)
+                : null;
         }
 
         public async Task<(bool, ConversionPreset)?> ShowCustomPresetSelectorDialogAsync(ConversionPreset customOptions)
         {
-            return null;
-            //Views.Dialogs.CustomPresetSelectorDialog dlg = new(customOptions) { XamlRoot = UIResources.XamlRoot };
-            //return await dlg.ShowAsync() == ContentDialogResult.Primary
-            //    ? (dlg.UseCustomOptions, dlg.ConversionPreset)
-            //    : null;
+            OnionMedia.Avalonia.Views.Dialogs.CustomPresetSelectorDialog dlg = new(customOptions);
+            return await dlg.ShowAsync() == ContentDialogResult.Primary
+                ? (dlg.UseCustomOptions, dlg.ConversionPreset)
+                : null;
         }
     }
 }

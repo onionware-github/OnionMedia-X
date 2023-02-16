@@ -1,4 +1,2 @@
 ﻿Add Hash-Checks to executable/linkable files (ffmpeg, ffprobe, yt-dlp)!!!
-Add VisualStates
-Add Styles from Main project
-Add method to open URLs (Link + URL protocols like mailto:)
+Make "Flyout" part of SplitButton always enabled

@@ -1,0 +1,71 @@
+﻿<ui:ContentDialog xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             xmlns:dialogs="clr-namespace:OnionMedia.Avalonia.Views.Dialogs"
+             xmlns:models="clr-namespace:OnionMedia.Core.Models;assembly=OnionMedia.Core"
+             xmlns:c="clr-namespace:OnionMedia.Core;assembly=OnionMedia.Core"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OnionMedia.Avalonia.Views.Dialogs.CustomPresetSelectorDialog"
+             PrimaryButtonText="{markup:Resource ConversionPresetDialog/specificOptions.PrimaryButtonText}"
+             SecondaryButtonText="{markup:Resource ConversionPresetDialog/specificOptions.SecondaryButtonText}"
+             Title="{markup:Resource ConversionPresetDialog/specificOptions.Title}"
+             x:DataType="dialogs:CustomPresetSelectorDialog"
+             x:CompileBindings="True">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <CheckBox x:Name="useCustomOptions" Content="{markup:Resource ConversionPresetDialog/useSpecificOptions.Content}" IsChecked="{Binding UseCustomOptions, Mode=TwoWay}"/>
+            <StackPanel Margin="10" Spacing="10" IsVisible="{Binding #useCustomOptions.IsChecked, Mode=OneWay}">
+                <StackPanel Spacing="3">
+                    <TextBlock Text="{markup:Resource ConversionPresetDialog/outputFormat.Header}"/>
+                    <ComboBox Items="{Binding ContainerFormats, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.Format, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:FFmpegContainerFormat">
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <CheckBox x:Name="useVideo" Content="{markup:Resource ConversionPresetDialog/useVideo.Content}" IsChecked="{Binding ConversionPreset.VideoAvailable, Mode=TwoWay}"/>
+                <StackPanel Spacing="3" IsVisible="{Binding #useVideo.IsChecked, Mode=OneWay}">
+                    <TextBlock Text="{markup:Resource ConversionPresetDialog/videoCodec.Header}"/>
+                    <ComboBox x:Name="videoCodecCombobox" Items="{Binding Videocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.VideoCodec, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:FFmpegCodec">
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <ContentControl IsVisible="{Binding #useVideo.IsChecked, Mode=OneWay}">
+                    <StackPanel Spacing="3" IsVisible="{Binding ConversionPreset.VideoCodec.MultipleEncoders, Mode=OneWay}">
+                        <TextBlock Text="{markup:Resource ConversionPresetDialog/videoEncoder.Header}"/>
+                        <ComboBox Items="{Binding ConversionPreset.VideoCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.VideoEncoder, Mode=TwoWay}"/>
+                    </StackPanel>
+                </ContentControl>
+
+                <CheckBox x:Name="useAudio" Content="{markup:Resource ConversionPresetDialog/useAudio.Content}" IsChecked="{Binding ConversionPreset.AudioAvailable, Mode=TwoWay}"/>
+                <StackPanel Spacing="3" IsVisible="{Binding #useAudio.IsChecked, Mode=OneWay}">
+                    <TextBlock Text="{markup:Resource ConversionPresetDialog/audioCodec.Header}"/>
+                    <ComboBox x:Name="audioCodecCombobox" Items="{Binding Audiocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.AudioCodec, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:FFmpegCodec">
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <ContentControl IsVisible="{Binding #useAudio.IsChecked, Mode=OneWay}">
+                    <StackPanel Spacing="3" IsVisible="{Binding ConversionPreset.AudioCodec.MultipleEncoders, Mode=OneWay}">
+                        <TextBlock Text="{markup:Resource ConversionPresetDialog/audioEncoder.Header}"/>
+                        <ComboBox Items="{Binding ConversionPreset.AudioCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.AudioEncoder, Mode=TwoWay}"/>
+                    </StackPanel>
+                </ContentControl>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</ui:ContentDialog>

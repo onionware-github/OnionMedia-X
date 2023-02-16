@@ -5,7 +5,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using FluentAvalonia.UI.Controls;
 using OnionMedia.Core;
@@ -14,15 +16,26 @@ using OnionMedia.Core.Models;
 
 namespace OnionMedia.Avalonia.Views.Dialogs;
 
-public sealed partial class ConversionPresetDialog : UserControl, INotifyPropertyChanged
+public sealed partial class ConversionPresetDialog : ContentDialog, IStyleable, INotifyPropertyChanged
 {
+    Type IStyleable.StyleKey => typeof(ContentDialog);
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
         DataContext = this;
     }
 
-    public void InitializeDialog(IEnumerable<string> forbiddenNames = null)
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        var btn = e.NameScope.Find<Button>("PrimaryButton");
+        btn?.Classes.Add("AccentButtonStyle");
+    }
+    
+    /// <summary> FOR AVALONIA XAML ONLY, DO NOT USE MANUALLY!</summary>
+    public ConversionPresetDialog() {}
+
+    public ConversionPresetDialog(IEnumerable<string> forbiddenNames = null)
     {
         ConversionPreset = new();
         title = "titleNewPreset".GetLocalized(RESOURCEPATH);
@@ -31,7 +44,7 @@ public sealed partial class ConversionPresetDialog : UserControl, INotifyPropert
         InitializeComponent();
 	}
 
-    public void InitializeDialog(ConversionPreset conversionPreset, IEnumerable<string> forbiddenNames = null)
+    public ConversionPresetDialog(ConversionPreset conversionPreset, IEnumerable<string> forbiddenNames = null)
     {
         if (conversionPreset == null)
             throw new ArgumentNullException(nameof(conversionPreset));

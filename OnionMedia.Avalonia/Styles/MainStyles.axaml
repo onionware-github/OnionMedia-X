@@ -7,6 +7,27 @@
     </Design.PreviewWith>
 
     <!-- Add Styles Here -->
+    <Style Selector="Button.AccentButtonStyle /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource AccentButtonForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentButtonBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrush}"/>
+    </Style>
+    <Style Selector="Button.AccentButtonStyle:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPointerOver}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPointerOver}"/>
+    </Style>
+    <Style Selector="Button.AccentButtonStyle:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundDisabled}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushDisabled}"/>
+    </Style>
+    <Style Selector="Button.AccentButtonStyle:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource AccentButtonForegroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPressed}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPressed}"/>
+    </Style>
+    
     <!--Common texts-->
     <Style Selector="TextBlock.PageTitleStyle">
         <Setter Property="VerticalAlignment" Value="Center" />

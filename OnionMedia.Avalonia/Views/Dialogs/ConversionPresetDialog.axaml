@@ -1,8 +1,8 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+﻿<ui:ContentDialog xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
              xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
              xmlns:c="clr-namespace:OnionMedia.Core;assembly=OnionMedia.Core"
              xmlns:models="clr-namespace:OnionMedia.Core.Models;assembly=OnionMedia.Core"
@@ -10,7 +10,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog"
              x:DataType="local:ConversionPresetDialog"
-             x:CompileBindings="True">
+             x:CompileBindings="True"
+             Title="{Binding title, Mode=OneTime}"
+             PrimaryButtonText="{Binding primaryButtonText, Mode=OneTime}"
+             SecondaryButtonText="{markup:Resource /ConversionPresetDialog/conversionDialog.SecondaryButtonText}">
     
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Spacing="10">
@@ -71,4 +74,4 @@
             </StackPanel>
         </StackPanel>
     </ScrollViewer>
-</UserControl>
+</ui:ContentDialog>

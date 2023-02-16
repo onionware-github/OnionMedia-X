@@ -23,33 +23,15 @@ namespace OnionMedia.Services
     {
         public async Task<ConversionPreset?> ShowCustomPresetDialogAsync(IEnumerable<string> forbiddenNames = null)
         {
-            OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog content = new();
-            content.InitializeDialog(forbiddenNames);
-            ContentDialog dlg = new()
-            {
-	            Title = content.title,
-	            Content = content,
-	            PrimaryButtonText = content.primaryButtonText,
-	            SecondaryButtonText = "conversionDialog.SecondaryButtonText".GetLocalized("ConversionPresetDialog")
-            };
-
-            var result = (await dlg.ShowAsync() is ContentDialogResult.Primary) ? content.ConversionPreset : null;
+            OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog dlg = new(forbiddenNames);
+            var result = (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.ConversionPreset : null;
             return result;
         }
 
         public async Task<ConversionPreset?> ShowCustomPresetDialogAsync(ConversionPreset preset, IEnumerable<string> forbiddenNames = null)
         {
-            OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog content = new();
-            content.InitializeDialog(preset, forbiddenNames);
-            ContentDialog dlg = new()
-            {
-                Title = content.title,
-                Content = content,
-                PrimaryButtonText = content.primaryButtonText,
-                SecondaryButtonText = "conversionDialog.SecondaryButtonText".GetLocalized("ConversionPresetDialog")
-            };
-
-            var result = (await dlg.ShowAsync() is ContentDialogResult.Primary) ? content.ConversionPreset : null;
+            OnionMedia.Avalonia.Views.Dialogs.ConversionPresetDialog dlg = new(preset, forbiddenNames);
+            var result = (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.ConversionPreset : null;
             return result;
         }
     }

@@ -41,5 +41,6 @@
   "videobitrate.Header": "Videobitrate",
   "videobitrate.PlaceholderText": "Videobitrate",
   "videocodec.Content": "Videocodec",
-  "videoinformation.Text": "Información en vídeo"
+  "videoinformation.Text": "Información en vídeo",
+  "mediaFiles": "Archivos multimedia"
 }

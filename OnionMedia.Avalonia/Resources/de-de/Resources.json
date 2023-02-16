@@ -46,5 +46,6 @@
   "askForPlaylistDownloadContent": "Die eingegebene URL führt auch zu einer Playlist. Möchten Sie nur das Video oder die komplette Playlist hinzufügen?",
   "askForPlaylistDownloadTitle": "Playlist herunterladen?",
   "playlist": "Playlist",
-  "video": "Video"
+  "video": "Video",
+  "mediaFiles": "Media-Dateien"
 }
