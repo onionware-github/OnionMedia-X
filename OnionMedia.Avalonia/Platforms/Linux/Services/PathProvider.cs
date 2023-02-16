@@ -12,12 +12,13 @@
 using System;
 using OnionMedia.Core.Services;
 using System.IO;
+using System.Reflection;
 
 namespace OnionMedia.Avalonia.Linux.Services;
 
 sealed class PathProvider : IPathProvider
 {
-    private string currentDirectory = Environment.CurrentDirectory;
+    private string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
     public string InstallPath => currentDirectory;
     public string LocalPath => Path.Combine(currentDirectory, "LocalState");
     public string LocalCache => Path.Combine(currentDirectory, "LocalCache");
