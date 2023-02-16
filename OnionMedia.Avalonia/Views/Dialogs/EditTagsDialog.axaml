@@ -1,0 +1,40 @@
+﻿<ui:ContentDialog xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             xmlns:dialogs="clr-namespace:OnionMedia.Avalonia.Views.Dialogs"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             PrimaryButtonText="{markup:Resource EditTagsDialog/editTagsDlg.PrimaryButtonText}"
+             SecondaryButtonText="{markup:Resource EditTagsDialog/editTagsDlg.SecondaryButtonText}"
+             Title="{markup:Resource EditTagsDialog/editTagsDlg.Title}"
+             x:Class="OnionMedia.Avalonia.Views.Dialogs.EditTagsDialog"
+             x:DataType="dialogs:EditTagsDialog"
+             x:CompileBindings="True">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="{markup:Resource EditTagsDialog/title.Header}"/>
+            <TextBox Text="{Binding FileTags.Title, Mode=TwoWay}"/>
+            <TextBlock Text="{markup:Resource EditTagsDialog/description.Header}"/>
+            <TextBox Text="{Binding FileTags.Description, Mode=TwoWay}"/>
+            <TextBlock Text="{markup:Resource EditTagsDialog/artist.Header}"/>
+            <TextBox Text="{Binding FileTags.Artist, Mode=TwoWay}"/>
+            <TextBlock Text="{markup:Resource EditTagsDialog/album.Header}"/>
+            <TextBox Text="{Binding FileTags.Album, Mode=TwoWay, Mode=TwoWay, Mode=TwoWay}"/>
+            <TextBlock Text="{markup:Resource EditTagsDialog/track.Header}"/>
+            <NumericUpDown Value="{Binding FileTags.Track, Mode=TwoWay}" Maximum="99999" AllowSpin="False" ShowButtonSpinner="False" ParsingNumberStyle="Integer"/>
+            <TextBlock Text="{markup:Resource EditTagsDialog/genre.Header}"/>
+            <TextBox Text="{Binding FileTags.Genre, Mode=TwoWay}"/>
+            <TextBlock Text="{markup:Resource EditTagsDialog/year.Header}"/>
+            <NumericUpDown Value="{Binding FileTags.Year, Mode=TwoWay}" Maximum="99999" AllowSpin="False" ShowButtonSpinner="False" ParsingNumberStyle="Integer"/>
+            <StackPanel.Styles>
+                <Style Selector="TextBox, NumericUpDown">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="0,3,0,10"></Setter>
+                    </Style.Setters>
+                </Style>
+            </StackPanel.Styles>
+        </StackPanel>
+    </ScrollViewer>
+</ui:ContentDialog>

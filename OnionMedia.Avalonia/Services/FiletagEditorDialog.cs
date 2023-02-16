@@ -21,16 +21,14 @@ namespace OnionMedia.Services
     {
         public async Task<FileTags?> ShowTagEditorDialogAsync()
         {
-            return null;
-            //Views.Dialogs.EditTagsDialog dlg = new() { XamlRoot = UIResources.XamlRoot };
-            //return (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.FileTags : null;
+            OnionMedia.Avalonia.Views.Dialogs.EditTagsDialog dlg = new();
+            return (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.FileTags : null;
         }
 
         public async Task<FileTags?> ShowTagEditorDialogAsync(FileTags fileTags)
         {
-            return null;
-            //Views.Dialogs.EditTagsDialog dlg = new(fileTags) { XamlRoot = UIResources.XamlRoot };
-            //return (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.FileTags : null;
+            OnionMedia.Avalonia.Views.Dialogs.EditTagsDialog dlg = new(fileTags);
+            return (await dlg.ShowAsync() is ContentDialogResult.Primary) ? dlg.FileTags : null;
         }
     }
 }

@@ -102,7 +102,7 @@
                                 IsEnabled="{Binding !AddingFiles}"
                                 IsVisible="{Binding !StartConversionCommand.IsRunning}">
                             <Grid>
-                                <ui:ProgressRing IsIndeterminate="{Binding AddingFiles}" HorizontalAlignment="Center"
+                                <ui:ProgressRing IsIndeterminate="True" IsVisible="{Binding AddingFiles}" HorizontalAlignment="Center"
                                                  VerticalAlignment="Center" />
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <controls:SymbolIcon Symbol="Add" />
@@ -138,14 +138,12 @@
                                    DragOver="mediaList_DragOver"
                                    CanReorderItems="True"
                                    ReorderMode="Enabled"-->
-                    <ListBox x:Name="mediaList"
+                    <Border  BorderBrush="SlateGray" BorderThickness="3" CornerRadius="9">
+                        <ListBox x:Name="mediaList"
                              DockPanel.Dock="Bottom"
                              Items="{Binding Files}"
                              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                              SelectionMode="Single"
-                             BorderBrush="SlateGray"
-                             BorderThickness="3"
-                             CornerRadius="9"
                              MinHeight="50">
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="m:MediaItemModel">
@@ -171,7 +169,8 @@
                                                           VerticalAlignment="Center"
                                                           Command="{Binding EditSpecificConversionOptionsCommand}"
                                                           IsChecked="{Binding UseCustomOptions}"
-                                                          Click="ToggleButton_Click">
+                                                          Click="ToggleButton_Click"
+                                                          IsVisible="{Binding !ConversionState, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static enums:FFmpegConversionState.Converting}}">
                                                 <controls:SymbolIcon Symbol="Setting" />
                                             </ToggleButton>
                                             <ui:ProgressRing Margin="5" Width="40" Height="40"
@@ -190,6 +189,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    </Border>
                 </DockPanel>
 
 
@@ -546,7 +546,7 @@
                             IsVisible="{Binding !StartConversionCommand.IsRunning}"
                             Margin="0,0,5,0">
                         <Grid>
-                            <ui:ProgressRing IsIndeterminate="{Binding AddingFiles}" HorizontalAlignment="Center"
+                            <ui:ProgressRing IsIndeterminate="True" IsVisible="{Binding AddingFiles}" HorizontalAlignment="Center"
                                              VerticalAlignment="Center" />
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <controls:SymbolIcon Symbol="Add" />
