@@ -76,6 +76,12 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
         HideParentFlyout(sender as IControl);
     }
     
+    private void RemoveAllFlyoutButton_Click(object? sender, RoutedEventArgs e)
+    {
+        HideParentFlyout(sender as IControl);
+        ((MediaViewModel)DataContext).RemoveAllCommand.Execute(null);
+    }
+    
     private void ToggleButton_Click(object sender, RoutedEventArgs e) => ((ToggleButton)sender).IsChecked = true;
 
     private void Framerates_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)

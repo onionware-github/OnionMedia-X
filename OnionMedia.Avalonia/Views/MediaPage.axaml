@@ -119,8 +119,7 @@
                             </StackPanel>
                             <SplitButton.Flyout>
                                 <Flyout Placement="Bottom">
-                                    <Button Margin="-10" Click="Close_Flyout"
-                                            Command="{Binding RemoveAllCommand}"
+                                    <Button Margin="-10" Click="RemoveAllFlyoutButton_Click"
                                             IsEnabled="{Binding !FilesAreEmpty}">
                                         <StackPanel Orientation="Horizontal" Spacing="5">
                                             <controls:SymbolIcon Symbol="Cancel" />
@@ -206,8 +205,7 @@
                             IsEnabled="{Binding !StartConversionCommand.IsRunning}"
                             IsVisible="{Binding ItemSelected}" Margin="0,0,0,10">
                             <WrapPanel Orientation="Horizontal">
-
-                                <StackPanel Spacing="3">
+                                <StackPanel Spacing="3" Margin="0,0,5,0">
                                     <TextBlock Text="{res:Resource MediaPage/selectPreset.Header}"/>
                                     <ComboBox x:Name="conversionPresets"
                                               Width="210"
@@ -222,16 +220,15 @@
                                     </ComboBox>
                                 </StackPanel>
                                 <WrapPanel Orientation="Horizontal"
-                                           VerticalAlignment="Bottom"
-                                           Margin="10">
-                                    <Button Command="{Binding AddConversionPresetCommand}">
+                                           VerticalAlignment="Bottom">
+                                    <Button Command="{Binding AddConversionPresetCommand}" Height="{Binding #conversionPresets.Bounds.Height}" VerticalAlignment="Bottom">
                                         <controls:SymbolIcon Symbol="Add" />
                                     </Button>
-                                    <Button Command="{Binding EditConversionPresetCommand}" Margin="5"
+                                    <Button Command="{Binding EditConversionPresetCommand}" Margin="5,0" Height="{Binding #conversionPresets.Bounds.Height}" VerticalAlignment="Bottom"
                                             CommandParameter="{Binding #conversionPresets.SelectedItem}">
                                         <controls:SymbolIcon Symbol="Edit" />
                                     </Button>
-                                    <Button Command="{Binding DeleteConversionPresetCommand}"
+                                    <Button Command="{Binding DeleteConversionPresetCommand}" Height="{Binding #conversionPresets.Bounds.Height}" VerticalAlignment="Bottom"
                                             CommandParameter="{Binding #conversionPresets.SelectedItem}">
                                         <controls:SymbolIcon Symbol="Delete" />
                                     </Button>
@@ -322,7 +319,7 @@
                                                 Value="{Binding SelectedItem.Height, Mode=TwoWay}"
                                                 IsEnabled="{Binding VideoEnabled}" MaxWidth="100" />
                                         </StackPanel>
-                                        <DropDownButton IsEnabled="{Binding VideoEnabled}" Margin="5">
+                                        <DropDownButton IsEnabled="{Binding VideoEnabled}" Margin="5,0">
                                             <DropDownButton.Content>
                                                 <controls:SymbolIcon Symbol="More" />
                                             </DropDownButton.Content>
@@ -404,7 +401,7 @@
 
                             <!-- SHORT VIDEO -->
                             <TextBlock Text="{res:Resource MediaPage/shortFile.Text}" FontSize="20"
-                                       Classes="XSmallTopMargin" IsVisible="{Binding ItemSelected}" />
+                                       Margin="0,16,0,0" IsVisible="{Binding ItemSelected}" />
 
 							<ContentControl IsVisible="{Binding ItemSelected}">
                                 <userControls:TimeRangeSelector x:Name="TimeSelector"
@@ -421,7 +418,7 @@
                                 IsEnabled="{Binding !StartConversionCommand.IsRunning}"
                                 IsVisible="{Binding ItemSelected}">
                                 <WrapPanel Orientation="Horizontal">
-                                    <StackPanel Orientation="Horizontal" Spacing="3"
+                                    <StackPanel Orientation="Horizontal" Spacing="3" Margin="0,0,10,0"
                                                 IsVisible="{Binding SelectedItem.AudioStreamAvailable}">
                                         <!-- NumberFormatter="{Binding onionmedia:BitrateFormatter.Instance, Mode=OneTime}" -->
                                         <controls:NumberBox Header="{res:Resource MediaPage/audiobitrate.Header}"
@@ -430,10 +427,10 @@
                                                             Value="{Binding SelectedItem.AudioBitrate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
                                                             IsEnabled="{Binding SelectedConversionPreset.AudioAvailable}"
                                                             Width="125" />
-                                        <TextBlock Text="kbit/s" Classes="LargeTopMargin"/>
+                                        <TextBlock Text="kbit/s" Margin="5,40,0,0"/>
                                     </StackPanel>
                                     <!-- Audiosamplerate -->
-                                    <StackPanel Orientation="Horizontal" Spacing="3" Margin="15"
+                                    <StackPanel Orientation="Horizontal" Spacing="3" Margin="0,0,10,0"
                                                 IsVisible="{Binding SelectedItem.AudioStreamAvailable}">
                                         <StackPanel Spacing="3">
                                             <TextBlock Text="Audio samplerate"></TextBlock>
@@ -442,7 +439,7 @@
                                                       SelectedItem="{Binding SelectedItem.AudioSamplerate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
                                                       IsEnabled="{Binding SelectedConversionPreset.AudioAvailable}"
                                                       Items="{x:Static vm:MediaViewModel.KHzSampleRates}"
-                                                      Width="150">
+                                                      Width="150" Margin="0,5,0,0">
                                                 <ComboBox.ItemTemplate>
                                                     <DataTemplate x:DataType="x:Double">
                                                         <ContentPresenter
@@ -451,7 +448,7 @@
                                                 </ComboBox.ItemTemplate>
                                             </ComboBox>
                                         </StackPanel>
-                                        <TextBlock Text="kHz" Classes="LargeTopMargin"/>
+                                        <TextBlock Text="kHz" Margin="5,35,0,0"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Spacing="3"
                                                 IsVisible="{Binding SelectedItem.VideoStreamAvailable}">
@@ -462,7 +459,7 @@
                                                             Value="{Binding SelectedItem.VideoBitrate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
                                                             IsEnabled="{Binding SelectedConversionPreset.VideoAvailable}"
                                                             Width="125" />
-                                        <TextBlock Text="kbit/s" Classes="LargeTopMargin"/>
+                                        <TextBlock Text="kbit/s" Margin="5,40,0,0"/>
                                     </StackPanel>
                                 </WrapPanel>
                             </ContentControl>
@@ -539,12 +536,13 @@
             </Grid>
 
             <!-- Bottom area with ProgressBar -->
-            <DockPanel Grid.Row="2" Margin="10">
+            <DockPanel Grid.Row="2" Margin="10,0,10,10">
                 <StackPanel x:Name="btnsForWideView" Orientation="Horizontal" IsVisible="{Binding !#page.SmallWindowStyle}">
                     <Button Command="{Binding AddFileCommand}"
                             IsEnabled="{Binding !AddingFiles}"
                             IsVisible="{Binding !StartConversionCommand.IsRunning}"
-                            Margin="0,0,5,0">
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Stretch">
                         <Grid>
                             <ui:ProgressRing IsIndeterminate="True" IsVisible="{Binding AddingFiles}" HorizontalAlignment="Center"
                                              VerticalAlignment="Center" />
@@ -564,7 +562,7 @@
                         </StackPanel>
                         <SplitButton.Flyout>
                             <Flyout Placement="Top">
-                                <Button Margin="-10" Click="Close_Flyout" Command="{Binding RemoveAllCommand}"
+                                <Button Margin="-10" Click="RemoveAllFlyoutButton_Click"
                                         IsEnabled="{Binding !FilesAreEmpty}">
                                     <StackPanel Orientation="Horizontal" Spacing="5">
                                         <controls:SymbolIcon Symbol="Cancel" />
@@ -576,7 +574,8 @@
                     </SplitButton>
                     <Button Command="{Binding CancelAllCommand}"
                             IsVisible="{Binding StartConversionCommand.IsRunning}"
-                            Margin="0,0,5,0">
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Stretch">
                         <StackPanel>
                             <controls:SymbolIcon Symbol="Cancel" />
                             <TextBlock Text="{res:Resource Resources/cancel.Text}" />

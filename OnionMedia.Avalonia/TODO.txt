@@ -1,2 +1,3 @@
 ﻿Add Hash-Checks to executable/linkable files (ffmpeg, ffprobe, yt-dlp)!!!
 Make "Flyout" part of SplitButton always enabled
+Add BitrateFormatter to bitrate NumberBox controls
