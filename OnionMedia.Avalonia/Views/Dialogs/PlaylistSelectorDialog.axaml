@@ -1,0 +1,37 @@
+﻿<ui:ContentDialog xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dialogs="clr-namespace:OnionMedia.Core.ViewModels.Dialogs;assembly=OnionMedia.Core"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             IsPrimaryButtonEnabled="{Binding AnySelectedVideos}"
+             PrimaryButtonText="{markup:Resource PlaylistSelectorDialog/playlistSelectorDialog.PrimaryButtonText}"
+             SecondaryButtonText="{markup:Resource PlaylistSelectorDialog/playlistSelectorDialog.SecondaryButtonText}"
+             Title="{markup:Resource PlaylistSelectorDialog/playlistSelectorDialog.Title}"
+             x:Class="OnionMedia.Avalonia.Views.Dialogs.PlaylistSelectorDialog"
+             x:DataType="dialogs:PlaylistSelectorViewModel"
+             x:CompileBindings="True">
+    
+    <Grid RowDefinitions="Auto, *, Auto">
+        <CheckBox Content="{markup:Resource PlaylistSelectorDialog/selectAll.Content}" IsChecked="{Binding SelectionState, Mode=TwoWay}"/>
+        <ListBox Grid.Row="1" Items="{Binding Videos, Mode=OneTime}" Margin="0,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="dialogs:SelectableVideo">
+                    <Border Padding="10" BorderThickness="0,0,0,1" Margin="-6,3,-4,0" BorderBrush="Gray">
+                        <Grid MaxHeight="100" ColumnDefinitions="100, *, 25">
+                            <Image Source="{Binding Thumbnail.Url, Mode=OneTime}" MaxHeight="50"/>
+                            <TextBlock Grid.Column="1" Margin="25,0" Text="{Binding Title, Mode=OneTime}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <CheckBox Grid.Column="2" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsVisible="{Binding AnySelectedVideos, Mode=OneWay}">
+            <Run Text="{Binding AmountOfSelectedVideos, Mode=OneWay}"/>
+            <Run Text="{markup:Resource PlaylistSelectorDialog/videosToBeAdded.Text}"/>
+        </TextBlock>
+    </Grid>
+</ui:ContentDialog>

@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAvalonia.UI.Controls;
+using OnionMedia.Avalonia.Views.Dialogs;
+using OnionMedia.Core.ViewModels.Dialogs;
 using YoutubeExplode.Videos;
 
 namespace OnionMedia.Services
@@ -23,10 +25,9 @@ namespace OnionMedia.Services
     {
         public async Task<IEnumerable<IVideo>> ShowPlaylistSelectorDialogAsync(IEnumerable<IVideo> videosFromPlaylist)
         {
-            return null;
-            //PlaylistSelectorDialog dlg = new(videosFromPlaylist) { XamlRoot = UIResources.XamlRoot };
-            //if (await dlg.ShowAsync() != ContentDialogResult.Primary) return Array.Empty<IVideo>();
-            //return dlg.ViewModel.Videos.Where(v => v.IsSelected);
+            PlaylistSelectorDialog dlg = new(videosFromPlaylist);
+            if (await dlg.ShowAsync() != ContentDialogResult.Primary) return Array.Empty<IVideo>();
+            return ((PlaylistSelectorViewModel)dlg.DataContext).Videos.Where(v => v.IsSelected);
         }
     }
 }
