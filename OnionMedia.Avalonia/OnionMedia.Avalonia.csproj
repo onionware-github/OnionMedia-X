@@ -20,9 +20,20 @@
     <Folder Include="Platforms\Windows\Output" />
     <Folder Include="Services\" />
     <AvaloniaResource Include="Assets\**" />
-    <Folder Include="Views\Dialogs\LicenseDialogPages" />
     <Folder Include="XamlDicts" />
     <None Remove=".gitignore" />
+    <None Remove="licenses\communitytoolkit.txt" />
+    <None Remove="licenses\ffmpeg.txt" />
+    <None Remove="licenses\FFMpegCore.txt" />
+    <None Remove="licenses\microsoft_mit_license.txt" />
+    <None Remove="licenses\newtonsoft_json.txt" />
+    <None Remove="licenses\onionmedia.txt" />
+    <None Remove="licenses\pinvoke_user32.txt" />
+    <None Remove="licenses\TagLibSharp.txt" />
+    <None Remove="licenses\xFFmpeg.NET.txt" />
+    <None Remove="licenses\YoutubeDLSharp.txt" />
+    <None Remove="licenses\YoutubeExplode.txt" />
+    <None Remove="licenses\yt-dlp.txt" />
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.
@@ -52,6 +63,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\de-de\Dialogs\ConversionPresetDialog.json" />
+    <Content Include="licenses\communitytoolkit.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\ffmpeg.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\FFMpegCore.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\microsoft_mit_license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\newtonsoft_json.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\onionmedia.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\pinvoke_user32.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\TagLibSharp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\xFFmpeg.NET.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\YoutubeDLSharp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\YoutubeExplode.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="licenses\yt-dlp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\de-de\Dialogs\ConversionPresetDialog.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

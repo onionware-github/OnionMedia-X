@@ -15,11 +15,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OnionMedia.Avalonia.Views.Dialogs;
 
 namespace OnionMedia.Services
 {
     sealed class ThirdPartyLicenseDialog : IThirdPartyLicenseDialog
     {
-        public async Task ShowThirdPartyLicensesDialogAsync() => await Task.Yield(); // await new LicensesDialog() { XamlRoot = UIResources.XamlRoot }.ShowAsync();
+        public async Task ShowThirdPartyLicensesDialogAsync() => await new LicensesDialog().ShowAsync();
     }
 }

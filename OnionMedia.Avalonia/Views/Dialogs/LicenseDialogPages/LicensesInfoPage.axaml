@@ -1,0 +1,34 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:OnionMedia.Core.Models;assembly=OnionMedia.Core"
+             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OnionMedia.Avalonia.Views.Dialogs.LicenseDialogPages.LicensesInfoPage"
+             x:DataType="models:LibraryInfo"
+             x:CompileBindings="True"
+             x:Name="Control">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="15">
+            <TextBlock FontWeight="SemiBold" TextWrapping="Wrap">
+                <Run Text="{markup:Resource LicenseDialogs/name.Text}"/>
+                <Run Text="{Binding Libraryname}"/>
+            </TextBlock>
+            <TextBlock FontWeight="SemiBold" TextWrapping="Wrap">
+                <Run Text="{markup:Resource LicenseDialogs/author.Text}"/>
+                <Run Text="{Binding Author}"/>
+            </TextBlock>
+            <TextBlock FontWeight="SemiBold" TextWrapping="Wrap">
+                <Run Text="{markup:Resource LicenseDialogs/licensetype.Text}"/>
+                <Run Text="{Binding LicenseType}"/>
+            </TextBlock>
+            <controls:HyperlinkButton HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" NavigateUri="{Binding ProjectUrl}">
+                <TextBlock Text="{markup:Resource LicenseDialogs/viewSource.Text}" FontWeight="SemiBold"/>
+            </controls:HyperlinkButton>
+            <TextBlock Text="{Binding #Control.LicenseText}" TextWrapping="Wrap"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,21 @@
+﻿<ui:ContentDialog xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OnionMedia.Avalonia.Views.Dialogs.LicensesDialog"
+             CloseButtonText="OK">
+    
+    <ui:ContentDialog.Title>
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button x:Name="backButton" Click="backButton_Click" CornerRadius="5">
+                <ui:SymbolIcon Symbol="Back"/>
+            </Button>
+            <TextBlock Text="{markup:Resource LicenseDialogs/title.Text}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        </StackPanel>
+    </ui:ContentDialog.Title>
+    
+    <ui:Frame x:Name="licenseNavFrame" Navigated="licenseNavFrame_Navigated"/>
+</ui:ContentDialog>

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Jab;
+using OnionMedia.Avalonia.States;
 using OnionMedia.Avalonia.Linux.Services;
 using OnionMedia.Core.Services;
 using OnionMedia.Core.ViewModels;
@@ -30,6 +31,8 @@ namespace OnionMedia.Avalonia;
 [Singleton(typeof(MediaViewModel))]
 [Singleton(typeof(YouTubeDownloaderViewModel))]
 [Transient(typeof(SettingsViewModel))]
+//States
+[Singleton(typeof(LicenseDialogState))]
 sealed partial class ServiceProvider
 {
     public ServiceProvider()
