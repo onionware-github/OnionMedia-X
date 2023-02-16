@@ -9,4 +9,5 @@
     <c:FileSizeConverter x:Key="FileSizeConverter"/>
     <c:EqualityConverter x:Key="EqualityConverter"/>
     <c:InequalityConverter x:Key="InequalityConverter"/>
+    <c:RemoveFilenameExtensionConverter x:Key="RemoveFilenameExtensionConverter"/>
 </ResourceDictionary>

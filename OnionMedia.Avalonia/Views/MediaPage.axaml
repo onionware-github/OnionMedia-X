@@ -484,7 +484,7 @@
                             <TextBlock Text="{res:Resource MediaPage/fileInfo.Text}" FontWeight="SemiBold" />
                             <TextBlock TextTrimming="CharacterEllipsis" MaxLines="3">
                                 <Run Text="{res:Resource MediaPage/fileName.Text}" />
-                              <!-- TODO:  <Run Text="{Binding io:Path.GetFileNameWithoutExtension(ViewModel.SelectedItem.MediaFile.FileInfo.Name)}" />  -->
+                                <Run Text="{Binding SelectedItem.MediaFile.FileInfo.Name, Converter={StaticResource RemoveFilenameExtensionConverter}}" />
                             </TextBlock>
                             <TextBlock>
                                 <Run Text="{res:Resource MediaPage/fileType.Text}" />
