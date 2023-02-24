@@ -9,6 +9,7 @@ using OnionMedia.Avalonia.Views;
 using OnionMedia.Core;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.Services;
+using OnionMedia.Services;
 
 namespace OnionMedia.Avalonia
 {
@@ -33,6 +34,8 @@ namespace OnionMedia.Avalonia
                     DataContext = new MainWindowViewModel(),
                 };
                 MainWindow = (MainWindow)desktop.MainWindow;
+                if (DefaultServiceProvider.GetService<IWindowClosingService>() is WindowClosingService closingService)
+                    closingService.RegisterWindow(MainWindow);
             }
 
             base.OnFrameworkInitializationCompleted();

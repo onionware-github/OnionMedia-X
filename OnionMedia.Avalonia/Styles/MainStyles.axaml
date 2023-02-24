@@ -29,6 +29,12 @@
     </Style>
     
     <!--Common texts-->
+    <Style Selector="TextBlock.MetaInfoTextStyle">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="5,10"/>
+    </Style>
+    
     <Style Selector="TextBlock.PageTitleStyle">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="SemiLight" />

@@ -14,6 +14,6 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <views:MediaPage HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    <views:DownloaderPage HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
 </Window>

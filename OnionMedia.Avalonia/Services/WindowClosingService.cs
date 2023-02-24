@@ -10,6 +10,7 @@
  */
 
 using System;
+using Avalonia.Controls;
 using OnionMedia.Avalonia;
 using OnionMedia.Core.Services;
 
@@ -17,16 +18,16 @@ namespace OnionMedia.Services
 {
     sealed class WindowClosingService : IWindowClosingService
     {
-        public WindowClosingService()
-        {
-            App.MainWindow.Closed += (o, e) => Closed?.Invoke(this, EventArgs.Empty);
-        }
-
         public event EventHandler Closed;
 
         public void Close()
         {
             App.MainWindow.Close();
+        }
+
+        public void RegisterWindow(Window window)
+        {
+            window.Closed += (o, e) => Closed?.Invoke(this, EventArgs.Empty);
         }
     }
 }
