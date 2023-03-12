@@ -14,17 +14,35 @@
              x:CompileBindings="True"
              x:Name="page">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
-        <Grid x:Name="ContentArea" Margin="24,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid x:Name="ContentArea" Margin="24,0" ColumnDefinitions="*, *" RowDefinitions="Auto, *">
+            <Grid.Styles>
+                <Style Selector="Grid#infoGrid.normalUnwrapped">
+                    <Style.Setters>
+                        <Setter Property="Grid.Column" Value="1"/>
+                        <Setter Property="Grid.Row" Value="0"/>
+                        <Setter Property="Grid.ColumnSpan" Value="1"/>
+                    </Style.Setters>
+                </Style>
+                <Style Selector="StackPanel#editGrid.normalUnwrapped">
+                    <Style.Setters>
+                        <Setter Property="Grid.ColumnSpan" Value="1"/>
+                    </Style.Setters>
+                </Style>
+                
+                <Style Selector="Grid#infoGrid.smallWrapped">
+                    <Style.Setters>
+                        <Setter Property="Grid.Column" Value="0"/>
+                        <Setter Property="Grid.Row" Value="1"/>
+                        <Setter Property="Grid.ColumnSpan" Value="2"/>
+                    </Style.Setters>
+                </Style>
+                <Style Selector="StackPanel#editGrid.smallWrapped">
+                    <Style.Setters>
+                        <Setter Property="Grid.ColumnSpan" Value="2"/>
+                    </Style.Setters>
+                </Style>
+            </Grid.Styles>
 
             <Grid x:Name="connectionErrorGrid" Grid.RowSpan="2" Grid.ColumnSpan="2"
                   IsVisible="{Binding !NetworkAvailable}">
@@ -39,7 +57,7 @@
             </Grid>
 
             <StackPanel x:Name="editGrid" Margin="10,20" Spacing="10"
-                        IsVisible="{Binding NetworkAvailable}">
+                        IsVisible="{Binding NetworkAvailable}" Classes.normalUnwrapped="{Binding !#page.SmallWindowStyle}" Classes.smallWrapped="{Binding #page.SmallWindowStyle}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -121,7 +139,7 @@
                            IsVisible="{Binding !QueueIsEmpty}" />
             </StackPanel>
 
-            <Grid Grid.Column="1" x:Name="infoGrid" IsVisible="{Binding NetworkAvailable}">
+            <Grid x:Name="infoGrid" Classes.normalUnwrapped="{Binding !#page.SmallWindowStyle}" Classes.smallWrapped="{Binding #page.SmallWindowStyle}" IsVisible="{Binding NetworkAvailable}">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
@@ -247,6 +265,8 @@
                                                     <Run Text="{Binding Video.Uploader}" />
                                                     <Run Text="|" />
                                                     <Run Text="{Binding Duration}" />
+                                                    <Run Text="|" />
+                                                    <Run Text="{Binding Video.UploadDate.Value.Date, Converter={StaticResource DateToShortStringConverter}}" />
                                                 </TextBlock>
                                             </Grid>
                                         </Border>

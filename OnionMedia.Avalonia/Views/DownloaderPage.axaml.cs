@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -29,7 +30,56 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
                 PropertyChanged?.Invoke(this, new(nameof(IsItemSelected)));
         };
     }
+    
+    protected override void OnLoaded()
+    {
+        base.OnLoaded();
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow.SizeChanged += UpdateSizeStyle;
+    }
 
+    public bool SmallWindowStyle { get; set; }
+    
+    private void UpdateSizeStyle(object? sender, SizeChangedEventArgs e)
+    {
+        SmallWindowStyle = e.NewSize.Width < 850;
+        PropertyChanged?.Invoke(this, new(nameof(SmallWindowStyle)));
+        UpdateProgressBarPanelPosition(e.NewSize.Width);
+    }
+
+    void UpdateProgressBarPanelPosition(double newWidth)
+    {
+        var progressBarPanel = this.FindControl<StackPanel>("progressBarPanel");
+        if (progressBarPanel is null) return;
+        
+        switch (newWidth)
+        {
+            case >= 1120:
+                Grid.SetRow(progressBarPanel, 0);
+                Grid.SetColumn(progressBarPanel, 1);
+                Grid.SetColumnSpan(progressBarPanel, 1);
+                break;
+            
+            case >= 849:
+                Grid.SetRow(progressBarPanel, 1);
+                Grid.SetColumn(progressBarPanel, 0);
+                Grid.SetColumnSpan(progressBarPanel, 2);
+                break;
+            
+            case >= 575:
+                Grid.SetRow(progressBarPanel, 0);
+                Grid.SetColumn(progressBarPanel, 1);
+                Grid.SetColumnSpan(progressBarPanel, 1);
+                break;
+            
+            default:
+                Grid.SetRow(progressBarPanel, 1);
+                Grid.SetColumn(progressBarPanel, 0);
+                Grid.SetColumnSpan(progressBarPanel, 2);
+                break;
+        }
+    }
+    
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);

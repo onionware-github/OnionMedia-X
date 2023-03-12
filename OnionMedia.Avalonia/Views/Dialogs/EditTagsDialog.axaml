@@ -17,7 +17,7 @@
             <TextBlock Text="{markup:Resource EditTagsDialog/title.Header}"/>
             <TextBox Text="{Binding FileTags.Title, Mode=TwoWay}"/>
             <TextBlock Text="{markup:Resource EditTagsDialog/description.Header}"/>
-            <TextBox Text="{Binding FileTags.Description, Mode=TwoWay}"/>
+            <TextBox Text="{Binding FileTags.Description, Mode=TwoWay}" AcceptsReturn="True"/>
             <TextBlock Text="{markup:Resource EditTagsDialog/artist.Header}"/>
             <TextBox Text="{Binding FileTags.Artist, Mode=TwoWay}"/>
             <TextBlock Text="{markup:Resource EditTagsDialog/album.Header}"/>
@@ -32,6 +32,11 @@
                 <Style Selector="TextBox, NumericUpDown">
                     <Style.Setters>
                         <Setter Property="Margin" Value="0,3,0,10"></Setter>
+                    </Style.Setters>
+                </Style>
+                <Style Selector="TextBox">
+                    <Style.Setters>
+                        <Setter Property="AcceptsReturn" Value="False"/>
                     </Style.Setters>
                 </Style>
             </StackPanel.Styles>

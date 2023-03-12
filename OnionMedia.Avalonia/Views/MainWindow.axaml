@@ -8,12 +8,20 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="OnionMedia.Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="OnionMedia.Avalonia">
+        Title="OnionMedia.Avalonia"
+        x:Name="window">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <views:DownloaderPage HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    <Grid RowDefinitions="Auto, *">
+        <TextBlock HorizontalAlignment="Right" IsVisible="{Binding #window.Debug}">
+            <Run Text="{Binding #window.Width}"></Run>
+            <Run>x</Run>
+            <Run Text="{Binding #window.Height}"></Run>
+        </TextBlock>
+        <views:DownloaderPage Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Grid>
 
 </Window>

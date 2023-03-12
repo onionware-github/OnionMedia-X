@@ -16,8 +16,7 @@
              x:DataType="vm:MediaViewModel"
              x:CompileBindings="True"
              x:Name="page">
-    <ScrollViewer x:Name="mainScrollViewer" VerticalScrollBarVisibility="Disabled"
-                  HorizontalScrollBarVisibility="Disabled">
+    <ScrollViewer x:Name="mainScrollViewer" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
         <Grid x:Name="ContentArea">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />

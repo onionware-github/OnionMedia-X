@@ -10,4 +10,5 @@
     <c:EqualityConverter x:Key="EqualityConverter"/>
     <c:InequalityConverter x:Key="InequalityConverter"/>
     <c:RemoveFilenameExtensionConverter x:Key="RemoveFilenameExtensionConverter"/>
+    <c:DateToShortStringConverter x:Key="DateToShortStringConverter"/>
 </ResourceDictionary>
