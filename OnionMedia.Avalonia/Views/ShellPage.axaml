@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             xmlns:views="clr-namespace:OnionMedia.Avalonia.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OnionMedia.Avalonia.Views.ShellPage"
+             x:Name="shell"
+             x:DataType="views:ShellPage"
+             x:CompileBindings="True">
+    <Grid>
+        <controls:NavigationView
+        x:Name="navigationView"
+        IsBackButtonVisible="False"
+        IsPaneOpen="False"
+        IsBackEnabled="{Binding #shellFrame.CanGoBack}"
+        IsSettingsVisible="True"
+        ExpandedModeThresholdWidth="1280"
+        SelectionChanged="NavigationView_OnSelectionChanged"
+        Header="{ReflectionBinding #navigationView.SelectedItem.Content}">
+                <controls:NavigationView.MenuItems>
+                    <!--
+            TODO WTS: Change the symbols for each item as appropriate for your app
+            More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
+            Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/projectTypes/navigationpane.md
+            Edit String/en-US/Resources.resw: Add a menu item title for each page
+            -->
+                    <controls:NavigationViewItem x:Name="MediaPageItem" Content="{markup:Resource Resources/Shell_Media.Content}" Icon="Play"/>
+                    <controls:NavigationViewItem x:Name="DownloaderPageItem" Content="{markup:Resource Resources/Shell_YouTubeDownloader.Content}" Icon="Download"/>
+                    <!-- <NavigationViewItem Content="{Resource Resources/Shell_Playlists.Content}" Icon="List" helpers:NavHelper.NavigateTo="OnionMedia.Core.ViewModels.PlaylistsViewModel" /> -->
+                </controls:NavigationView.MenuItems>
+                <controls:NavigationView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30">
+                            <TextBlock Text="{ReflectionBinding #navigationView.SelectedItem.Content}" Classes="TitleTextBlockStyle"/>
+                        </Grid>
+                    </DataTemplate>
+                </controls:NavigationView.HeaderTemplate>
+                    <controls:Frame x:Name="shellFrame" />
+            </controls:NavigationView>
+    </Grid>
+</UserControl>

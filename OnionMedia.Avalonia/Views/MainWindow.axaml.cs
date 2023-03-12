@@ -11,9 +11,9 @@ namespace OnionMedia.Avalonia.Views
         }
         
 #if DEBUG
-        bool Debug => true;
+        public bool Debug => true;
 #else
-        bool Debug => false;
+        public bool Debug => false;
 #endif
     }
 }

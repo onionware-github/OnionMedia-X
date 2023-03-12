@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using OnionMedia.Avalonia.ViewModels;
 using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace OnionMedia.Avalonia
 {
@@ -24,7 +25,7 @@ namespace OnionMedia.Avalonia
 
 		public bool Match(object data)
 		{
-			return data is ViewModelBase;
+			return data is ObservableObject;
 		}
 	}
 }

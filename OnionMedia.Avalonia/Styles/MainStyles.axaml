@@ -29,6 +29,13 @@
     </Style>
     
     <!--Common texts-->
+    <Style Selector="TextBlock.TitleTextBlockStyle">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style.Setters>
+    </Style>
+    
     <Style Selector="TextBlock.MetaInfoTextStyle">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="TextWrapping" Value="Wrap"/>

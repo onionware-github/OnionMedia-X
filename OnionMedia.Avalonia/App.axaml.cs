@@ -31,7 +31,7 @@ namespace OnionMedia.Avalonia
             {
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(),
+                    
                 };
                 MainWindow = (MainWindow)desktop.MainWindow;
                 if (DefaultServiceProvider.GetService<IWindowClosingService>() is WindowClosingService closingService)

@@ -6,22 +6,21 @@
         xmlns:views="clr-namespace:OnionMedia.Avalonia.Views"
         xmlns:userControls="clr-namespace:OnionMedia.Avalonia.UserControls"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        MinWidth="350" MinHeight="500"
         x:Class="OnionMedia.Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="OnionMedia.Avalonia"
+        x:DataType="views:MainWindow"
+        x:CompileBindings="True"
         x:Name="window">
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="20, *">
         <TextBlock HorizontalAlignment="Right" IsVisible="{Binding #window.Debug}">
             <Run Text="{Binding #window.Width}"></Run>
             <Run>x</Run>
             <Run Text="{Binding #window.Height}"></Run>
         </TextBlock>
-        <views:DownloaderPage Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <views:ShellPage Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 
 </Window>
