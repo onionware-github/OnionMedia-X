@@ -18,7 +18,7 @@ namespace OnionMedia.Avalonia.Linux.Services;
 
 sealed class PathProvider : IPathProvider
 {
-    private string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+    private string currentDirectory = AppContext.BaseDirectory;
     public string InstallPath => currentDirectory;
     public string LocalPath => Path.Combine(currentDirectory, "LocalState");
     public string LocalCache => Path.Combine(currentDirectory, "LocalCache");

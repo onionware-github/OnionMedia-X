@@ -8,6 +8,7 @@
              xmlns:vm="using:OnionMedia.Core.ViewModels"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia.ProgressRing"
              xmlns:userControls="clr-namespace:OnionMedia.Avalonia.UserControls"
+             xmlns:async="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="OnionMedia.Avalonia.Views.DownloaderPage"
              x:DataType="vm:YouTubeDownloaderViewModel"
@@ -84,7 +85,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate x:DataType="m:SearchItemModel">
                                     <Grid ColumnDefinitions="80,*">
-                                        <Image Source="{Binding ThumbnailUrl, Mode=OneTime}" />
+                                        <Image async:ImageLoader.Source="{Binding ThumbnailUrl}" />
                                         <Grid Column="1" RowDefinitions="3*,2*">
                                             <TextBlock Text="{Binding Title, Mode=OneTime}" Classes="MetaInfoTextStyle" />
                                             <TextBlock Text="{Binding Author, Mode=OneTime}" Grid.Row="1" Margin="5,0" />
@@ -137,6 +138,8 @@
                 <TextBlock Text="{res:Resource DownloaderPage/shortVideo.Text}" Margin="0,5,0,0"
                            HorizontalAlignment="Left" FontWeight="SemiBold" FontSize="16"
                            IsVisible="{Binding !QueueIsEmpty}" />
+                <userControls:TimeRangeSelector
+                    x:Name="timeRangeSelector" TimeSpanGroup="{Binding #page.ViewModel.SelectedVideo.TimeSpanGroup}"/>
             </StackPanel>
 
             <Grid x:Name="infoGrid" Classes.normalUnwrapped="{Binding !#page.SmallWindowStyle}" Classes.smallWrapped="{Binding #page.SmallWindowStyle}" IsVisible="{Binding NetworkAvailable}">
@@ -180,7 +183,9 @@
                             <ListBox Name="videoQueue" Grid.Column="1" Grid.Row="1"
                                      Items="{Binding Videos}" CornerRadius="10"
                                      Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
-                                     SelectedItem="{Binding SelectedVideo, Mode=TwoWay}" MaxHeight="300">
+                                     SelectedItem="{Binding SelectedVideo, Mode=TwoWay}"
+                                     SelectionChanged="VideoQueue_OnSelectionChanged"
+                                     MinHeight="50" MaxHeight="300">
 
                                 <ListBox.ItemTemplate>
                                     <DataTemplate x:DataType="m:StreamItemModel">
@@ -210,7 +215,7 @@
 
                                                 <controls:Frame x:Name="frame" MaxHeight="75" CornerRadius="3"
                                                                 VerticalAlignment="Center" Grid.RowSpan="2">
-                                                    <Image Source="{Binding Video.Thumbnail, Mode=OneTime}"
+                                                    <Image async:ImageLoader.Source="{Binding Video.Thumbnail}"
                                                            Stretch="Uniform" />
                                                 </controls:Frame>
 

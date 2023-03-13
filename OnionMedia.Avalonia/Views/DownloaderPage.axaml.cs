@@ -10,16 +10,17 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using OnionMedia.Avalonia.UserControls;
 using OnionMedia.Core;
-using OnionMedia.Core.Services;
 using OnionMedia.Core.ViewModels;
-using ReactiveUI;
 
 namespace OnionMedia.Avalonia.Views;
 
 public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
+    public YouTubeDownloaderViewModel? ViewModel => DataContext as YouTubeDownloaderViewModel;
+
     public DownloaderPage()
     {
         InitializeComponent();
@@ -27,10 +28,17 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
         ((YouTubeDownloaderViewModel)DataContext).PropertyChanged += (o, e) =>
         {
             if (e.PropertyName == nameof(YouTubeDownloaderViewModel.SelectedVideo))
-                PropertyChanged?.Invoke(this, new(nameof(IsItemSelected)));
+            {
+                var control = this.FindControl<TimeRangeSelector>("timeRangeSelector");
+                if (control is null || DataContext is not YouTubeDownloaderViewModel vm) return;
+                IsItemSelected = vm.SelectedVideo is not null;
+                control.UpdateIsReadOnly(!vm.QueueIsNotEmpty || !IsItemSelected);
+                if (vm.SelectedVideo is not null)
+                    control.UpdateTimeSpanGroup(vm.SelectedVideo.TimeSpanGroup);
+            }
         };
     }
-    
+
     protected override void OnLoaded()
     {
         base.OnLoaded();
@@ -39,7 +47,7 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
     }
 
     public bool SmallWindowStyle { get; set; }
-    
+
     private void UpdateSizeStyle(object? sender, SizeChangedEventArgs e)
     {
         SmallWindowStyle = e.NewSize.Width < 850;
@@ -51,7 +59,7 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
     {
         var progressBarPanel = this.FindControl<StackPanel>("progressBarPanel");
         if (progressBarPanel is null) return;
-        
+
         switch (newWidth)
         {
             case >= 1120:
@@ -59,19 +67,19 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
                 Grid.SetColumn(progressBarPanel, 1);
                 Grid.SetColumnSpan(progressBarPanel, 1);
                 break;
-            
+
             case >= 849:
                 Grid.SetRow(progressBarPanel, 1);
                 Grid.SetColumn(progressBarPanel, 0);
                 Grid.SetColumnSpan(progressBarPanel, 2);
                 break;
-            
+
             case >= 575:
                 Grid.SetRow(progressBarPanel, 0);
                 Grid.SetColumn(progressBarPanel, 1);
                 Grid.SetColumnSpan(progressBarPanel, 1);
                 break;
-            
+
             default:
                 Grid.SetRow(progressBarPanel, 1);
                 Grid.SetColumn(progressBarPanel, 0);
@@ -79,7 +87,7 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
                 break;
         }
     }
-    
+
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
@@ -88,7 +96,8 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
     private void VideoSearchList_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         if (e?.AddedItems?.Count == 0) return;
-		Dispatcher.UIThread.Post(() => ((YouTubeDownloaderViewModel)DataContext).AddSearchedVideo.Execute(e.AddedItems[0]));
+        Dispatcher.UIThread.Post(() =>
+            ((YouTubeDownloaderViewModel)DataContext).AddSearchedVideo.Execute(e.AddedItems[0]));
     }
 
     private void Videolink_OnTextChanged(object? sender, TextChangedEventArgs e)
@@ -108,12 +117,22 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
         ((YouTubeDownloaderViewModel)DataContext).RemoveAllCommand.Execute(null);
         HideParentFlyout(sender as IControl);
     }
-    
-    public bool IsItemSelected => (DataContext as YouTubeDownloaderViewModel)?.SelectedVideo is not null;
+
+    public bool IsItemSelected
+    {
+        get => isItemSelected;
+        set
+        {
+            if (isItemSelected == value) return;
+            isItemSelected = value;
+            PropertyChanged?.Invoke(this, new(nameof(IsItemSelected)));
+        }
+    }
+    private bool isItemSelected;
 
     [GeneratedRegex(GlobalResources.URLREGEX)]
     private partial Regex UrlRegex();
-    
+
     private void HideParentFlyout(IControl element)
     {
         if (element is null) return;
@@ -125,7 +144,15 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
                 flyout.IsOpen = false;
                 return;
             }
+
             parent = parent.Parent;
         }
+    }
+
+    private void VideoQueue_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        IsItemSelected = e.AddedItems?.Count > 0;
+        if (DataContext is not YouTubeDownloaderViewModel vm) return;
+        this.FindControl<TimeRangeSelector>("timeRangeSelector")?.UpdateIsReadOnly(!vm.QueueIsNotEmpty || !IsItemSelected);
     }
 }
