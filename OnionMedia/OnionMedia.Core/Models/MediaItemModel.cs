@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (C) 2022 Jaden Phil Nebel (Onionware)
  *
  * This file is part of OnionMedia.
@@ -144,7 +144,7 @@ namespace OnionMedia.Core.Models
 
             //Create a new temp directory
             string fileTempDir;
-            do fileTempDir = pathProvider.ConverterTempdir + $@"\{Path.GetRandomFileName()}";
+            do fileTempDir = Path.Combine(pathProvider.ConverterTempdir, Path.GetRandomFileName());
             while (Directory.Exists(fileTempDir));
             Directory.CreateDirectory(fileTempDir);
 
