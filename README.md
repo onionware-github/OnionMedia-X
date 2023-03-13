@@ -4,7 +4,7 @@ OnionMedia X is the planned cross-platform port of the OnionMedia project with p
 *Currently in development*
 
 Build:
-1. Download ffmpeg+ffprobe (GPL version recommended) for your target system and paste the files in the correct folder to replace the placeholder files:
+1. Download ffmpeg+ffprobe (GPL version with libx264) for your target system and paste the files in the correct folder to replace the placeholder files:
 (Windows: OnionMedia.Avalonia/Platforms/Windows/Output/ExternalBinaries/binaries/ffmpeg+yt-dlp/)
 (Linux: OnionMedia.Avalonia/Platforms/Linux/Output/ExternalBinaries/binaries/ffmpeg+yt-dlp/)
 
