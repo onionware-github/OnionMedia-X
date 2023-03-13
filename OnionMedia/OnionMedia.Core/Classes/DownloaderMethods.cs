@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (C) 2022 Jaden Phil Nebel (Onionware)
  *
  * This file is part of OnionMedia.
@@ -86,7 +86,7 @@ namespace OnionMedia.Core.Classes
 			try
 			{
 				Debug.WriteLine($"Current State of Progress: {stream.ProgressInfo.Progress}");
-				ytOptions.Output = $@"{videotempdir}\%(id)s.%(ext)s";
+				ytOptions.Output = Path.Combine(videotempdir, "%(id)s.%(ext)s");
 
 				if (stream.CustomTimes)
 				{
@@ -220,7 +220,7 @@ namespace OnionMedia.Core.Classes
 		private static string CreateVideoTempDir()
 		{
 			string videotempdir;
-			do videotempdir = pathProvider.DownloaderTempdir + $@"\{Path.GetRandomFileName()}";
+			do videotempdir = Path.Combine(pathProvider.DownloaderTempdir, Path.GetRandomFileName());
 			while (Directory.Exists(videotempdir));
 			Directory.CreateDirectory(videotempdir);
 			return videotempdir;
@@ -562,7 +562,7 @@ namespace OnionMedia.Core.Classes
 
 			Directory.CreateDirectory(savefilepath);
 			int maxFilenameLength = 250 - (savefilepath.Length + extension.Length);
-			string filename = @$"{savefilepath}\{videoname.TrimToFilename(maxFilenameLength)}{extension}";
+			string filename = Path.Combine(savefilepath, $"{videoname.TrimToFilename(maxFilenameLength)}{extension}");
 
 			if (!File.Exists(filename))
 				await Task.Run(async () => await GlobalResources.MoveFileAsync(tempfile, filename, cancellationToken));
@@ -574,7 +574,7 @@ namespace OnionMedia.Core.Classes
 
 				//Increases the number until a possible file name is found
 				for (int i = 2; File.Exists(filename); i++)
-					filename = $@"{dir}\{name}_{i}{extension}";
+					filename = Path.Combine(dir, $"{name}_{i}{extension}");
 
 				await Task.Run(async () => await GlobalResources.MoveFileAsync(tempfile, filename, cancellationToken));
 			}
