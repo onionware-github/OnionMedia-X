@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -27,14 +27,20 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
         DataContext = App.DefaultServiceProvider.GetService<YouTubeDownloaderViewModel>();
         ((YouTubeDownloaderViewModel)DataContext).PropertyChanged += (o, e) =>
         {
+            if (DataContext is not YouTubeDownloaderViewModel vm) return;
             if (e.PropertyName == nameof(YouTubeDownloaderViewModel.SelectedVideo))
             {
                 var control = this.FindControl<TimeRangeSelector>("timeRangeSelector");
-                if (control is null || DataContext is not YouTubeDownloaderViewModel vm) return;
+                if (control is null) return;
                 IsItemSelected = vm.SelectedVideo is not null;
                 control.UpdateIsReadOnly(!vm.QueueIsNotEmpty || !IsItemSelected);
                 if (vm.SelectedVideo is not null)
                     control.UpdateTimeSpanGroup(vm.SelectedVideo.TimeSpanGroup);
+            }
+            if (e.PropertyName == nameof(YouTubeDownloaderViewModel.QueueIsEmpty))
+            {
+            	if (vm.QueueIsEmpty) IsItemSelected = false;
+            	this.FindControl<TimeRangeSelector>("timeRangeSelector")?.UpdateIsReadOnly(!vm.QueueIsNotEmpty || !IsItemSelected);
             }
         };
     }
