@@ -344,7 +344,7 @@
                     <!-- HorizontalSpacing="40" VerticalSpacing="30" -->
                     <WrapPanel Orientation="Horizontal" MaxHeight="350"
                                Classes="SmallTopMargin">
-                        <Image Source="../Assets/OnionMedia_Icon_New.png" Height="200" VerticalAlignment="Top"  Margin="0,0,40,30"/>
+                        <Image Source="{SvgImage ../Assets/icon.svg}" Height="200" VerticalAlignment="Top"  Margin="0,0,40,30"/>
                         <Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                                VerticalAlignment="Top" Margin="0,30,0,0" />
                     </WrapPanel>
@@ -384,7 +384,7 @@
                 <!-- HorizontalSpacing="40" VerticalSpacing="30"--> 
                 <WrapPanel Orientation="Horizontal" MaxHeight="350"
                            Classes="SmallTopMargin">
-                    <Image Source="../Assets/OnionMedia_Icon_New.png" Height="200" VerticalAlignment="Top" Margin="0,0,40,30"/>
+                    <Image Source="{SvgImage ../Assets/icon.svg}" Height="200" VerticalAlignment="Top" Margin="0,0,40,30"/>
                     <Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                            VerticalAlignment="Top" Margin="0,30,0,0" />
                 </WrapPanel>
