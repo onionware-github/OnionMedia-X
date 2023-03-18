@@ -15,12 +15,13 @@ namespace OnionMedia.Avalonia.Views;
 public partial class MediaPage : UserControl, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
+    public MediaViewModel? ViewModel => DataContext as MediaViewModel;
 
     public MediaPage()
     {
         InitializeComponent();
         DataContext = App.DefaultServiceProvider.GetService<MediaViewModel>();
-        ((MediaViewModel)DataContext).PropertyChanged += (o, e) =>
+        ViewModel.PropertyChanged += (o, e) =>
         {
 	        if (e.PropertyName == nameof(MediaViewModel.SelectedItem) && ((MediaViewModel)DataContext).SelectedItem is not null)
 			{
@@ -34,6 +35,14 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
 				control?.UpdateIsReadOnly(!((MediaViewModel)DataContext).ItemSelectedAndIdle);
 			}
         };
+        ViewModel.Files.CollectionChanged +=
+            (o, e) =>
+            {
+                var control = this.FindControl<ListBox>("mediaList");
+                if (control is null) return;
+                control.Items = null;
+                control.Items = ViewModel.Files;
+            };
     }
 
     protected override void OnLoaded()

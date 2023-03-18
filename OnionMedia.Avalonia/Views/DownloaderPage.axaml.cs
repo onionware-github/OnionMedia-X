@@ -25,7 +25,7 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
     {
         InitializeComponent();
         DataContext = App.DefaultServiceProvider.GetService<YouTubeDownloaderViewModel>();
-        ((YouTubeDownloaderViewModel)DataContext).PropertyChanged += (o, e) =>
+        ViewModel.PropertyChanged += (o, e) =>
         {
             if (DataContext is not YouTubeDownloaderViewModel vm) return;
             if (e.PropertyName == nameof(YouTubeDownloaderViewModel.SelectedVideo))
@@ -43,6 +43,14 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
             	this.FindControl<TimeRangeSelector>("timeRangeSelector")?.UpdateIsReadOnly(!vm.QueueIsNotEmpty || !IsItemSelected);
             }
         };
+        ViewModel.Videos.CollectionChanged +=
+            (o, e) =>
+            {
+                var control = this.FindControl<ListBox>("videoQueue");
+                if (control is null) return;
+                control.Items = null;
+                control.Items = ViewModel.Videos;
+            };
     }
 
     protected override void OnLoaded()

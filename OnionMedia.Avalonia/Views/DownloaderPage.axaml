@@ -100,7 +100,7 @@
                             Command="{Binding AddVideoCommand}"
                             CommandParameter="{Binding #videolink.Text}"
                             IsEnabled="{Binding !DownloadFileCommand.IsRunning}"
-                            Grid.Column="1" VerticalAlignment="Top" Width="45">
+                            Grid.Column="1" VerticalAlignment="Top" Width="45" Height="{Binding #videolink.Bounds.Height}">
                         <Grid>
                             <controls:SymbolIcon Symbol="Add" IsVisible="{Binding ValidUrl}" />
                             <controls:SymbolIcon Symbol="Find" IsVisible="{Binding !ValidUrl}" />

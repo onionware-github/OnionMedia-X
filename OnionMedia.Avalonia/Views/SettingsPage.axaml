@@ -66,6 +66,7 @@
                                     <Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
+                                            Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.ConvertedVideofiles}">
                                         <controls:SymbolIcon Symbol="OpenLocal" />
@@ -74,13 +75,14 @@
                                         <TextBlock Text="{me:Resource SettingsPage/convertedVideos.Header}" />
                                         <TextBox
                                             Text="{Binding ConvertedVideoSavePath, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}"
-                                            IsReadOnly="True" />
+                                            IsReadOnly="True" x:Name="convertedVideoPathBox"/>
                                     </StackPanel>
                                 </DockPanel>
                                 <DockPanel>
                                     <Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
+                                            Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.ConvertedAudiofiles}">
                                         <controls:SymbolIcon Symbol="OpenLocal" />
@@ -96,6 +98,7 @@
                                     <Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
+                                            Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.DownloadedVideofiles}">
                                         <controls:SymbolIcon Symbol="OpenLocal" />
@@ -111,6 +114,7 @@
                                     <Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
+                                            Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.DownloadedAudiofiles}">
                                         <controls:SymbolIcon Symbol="OpenLocal" />
