@@ -1,0 +1,18 @@
+{
+  "conversionFilesCantBeSaved": "{0} bestanden konden niet worden opgeslagen op de geselecteerde locatie. Het pad is niet gevonden, er zijn geen schrijfrechten of onvoldoende opslagruimte beschikbaar.",
+  "conversionFilesCantBeSavedTitle": "Fout tijdens het opslaan van bestanden.",
+  "conversionFilesNoWriteAccess": "{0} bestand(en) kunnen niet worden opgeslagen op de geselecteerde locatie omdat het pad niet beschrijfbaar is.",
+  "conversionFilesNoWriteAccessTitle": "Geen schrijftoegang tot het geselecteerde opslagpad.",
+  "conversionFilesPathNotFound": "{0} bestand(en) kunnen niet worden opgeslagen omdat het pad niet is gevonden.",
+  "conversionFilesPathNotFoundTitle": "Folder niet gevonden.",
+  "fileNotSupported": "Bestand wordt niet ondersteund.",
+  "fileNotSupportedText": "Delen van het bestand worden niet ondersteund.",
+  "filesNotSupported": "Bestanden worden niet ondersteund.",
+  "filesNotSupportedText": "Delen van de bestanden worden niet ondersteund.",
+  "nameAlreadyInUse.Text": "Deze naam is al in gebruik.",
+  "nameIsEmpty.Text": "Voer een naam in voor de preset.",
+  "notEnoughSpace": "{0} bestand(en) konden niet worden opgeslagen omdat er onvoldoende schijfruimte is.",
+  "notEnoughSpaceTitle": "Niet genoeg opslagruimte beschikbaar.",
+  "specificFilesNotSupported": "Bestand(en) worden niet ondersteund.",
+  "specificFilesNotSupportedText": "Delen van {0} bestand(en) worden niet ondersteund."
+}
