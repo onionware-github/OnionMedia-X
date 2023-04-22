@@ -1,0 +1,12 @@
+{
+  "album.Header": "Album:",
+  "artist.Header": "Artiest:",
+  "description.Header": "Beschrijving:",
+  "editTagsDlg.PrimaryButtonText": "Toepassen",
+  "editTagsDlg.SecondaryButtonText": "Annuleren",
+  "editTagsDlg.Title": "Bewerk bestandstags",
+  "genre.Header": "Genre:",
+  "title.Header": "Titel:",
+  "track.Header": "Track:",
+  "year.Header": "Jaar:"
+}

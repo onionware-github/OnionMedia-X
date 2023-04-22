@@ -1,0 +1,19 @@
+{
+  "conversionDialog.SecondaryButtonText": "Annuleren",
+  "outputFormat.Header": "Uitvoer formaat",
+  "primarybuttonapply": "Toepassen",
+  "primarybuttoncreate": "Creëren",
+  "specificOptions.PrimaryButtonText": "Toepassen",
+  "specificOptions.SecondaryButtonText": "Annuleren",
+  "specificOptions.Title": "Specifieke conversieopties",
+  "titleEditPreset": "Bewerk preset",
+  "titleNewPreset": "Nieuwe preset maken",
+  "useAudio.Content": "Audio",
+  "useSpecificOptions.Content": "Gebruik aangepaste conversieopties voor dit bestand",
+  "useVideo.Content": "Video",
+  "presetName.Header": "Naam",
+  "videoCodec.Header": "Video codec",
+  "videoEncoder.Header": "Video encoder",
+  "audioCodec.Header": "Audio codec",
+  "audioEncoder.Header": "Audio encoder"
+}
