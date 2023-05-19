@@ -139,7 +139,7 @@
                     <Border  BorderBrush="SlateGray" BorderThickness="3" CornerRadius="9">
                         <ListBox x:Name="mediaList"
                              DockPanel.Dock="Bottom"
-                             Items="{Binding Files}"
+                             ItemsSource="{Binding Files}"
                              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                              SelectionMode="Single"
                              MinHeight="50">
@@ -208,7 +208,7 @@
                                     <TextBlock Text="{res:Resource MediaPage/selectPreset.Header}"/>
                                     <ComboBox x:Name="conversionPresets"
                                               Width="210"
-                                              Items="{Binding ConversionPresets}"
+                                              ItemsSource="{Binding ConversionPresets}"
                                               SelectedItem="{Binding SelectedConversionPreset, Mode=TwoWay}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate x:DataType="m:ConversionPreset">
@@ -237,7 +237,7 @@
                                     <StackPanel Spacing="3">
                                         <TextBlock Text="{res:Resource MediaPage/outputFormat.Header}"/>
                                         <ComboBox VerticalAlignment="Center" SelectedIndex="94"
-                                                  Items="{Binding ContainerFormats, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}"
+                                                  ItemsSource="{Binding ContainerFormats, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}"
                                                   SelectedItem="{Binding ConversionPresets[0].Format, Mode=TwoWay}">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="m:FFmpegContainerFormat">
@@ -254,7 +254,7 @@
                                                   Content="{res:Resource MediaPage/videocodec.Content}"
                                                   IsChecked="{Binding ConversionPresets[0].VideoAvailable, Mode=TwoWay}" />
                                         <ComboBox
-                                            Items="{Binding Videocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}"
+                                            ItemsSource="{Binding Videocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}"
                                             SelectedItem="{Binding ConversionPresets[0].VideoCodec, Mode=TwoWay}"
                                             IsVisible="{Binding #useVideo.IsChecked}" Margin="5">
                                             <ComboBox.ItemTemplate>
@@ -264,7 +264,7 @@
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
                                         <ContentControl IsVisible="{Binding #useVideo.IsChecked}">
-                                            <ComboBox Items="{Binding ConversionPresets[0].VideoCodec.Encoders}"
+                                            <ComboBox ItemsSource="{Binding ConversionPresets[0].VideoCodec.Encoders}"
                                                       SelectedItem="{Binding ConversionPresets[0].VideoEncoder, Mode=TwoWay}"
                                                       IsVisible="{Binding ConversionPresets[0].VideoCodec.MultipleEncoders}" />
                                         </ContentControl>
@@ -275,7 +275,7 @@
                                                   Content="{res:Resource MediaPage/audiocodec.Content}"
                                                   IsChecked="{Binding ConversionPresets[0].AudioAvailable, Mode=TwoWay}" />
                                         <ComboBox
-                                            Items="{Binding Audiocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}"
+                                            ItemsSource="{Binding Audiocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}"
                                             SelectedItem="{Binding ConversionPresets[0].AudioCodec, Mode=TwoWay}"
                                             IsVisible="{Binding #useAudio.IsChecked}" Margin="5">
                                             <ComboBox.ItemTemplate>
@@ -285,7 +285,7 @@
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
                                         <ContentControl IsVisible="{Binding #useAudio.IsChecked}">
-                                            <ComboBox Items="{Binding ConversionPresets[0].AudioCodec.Encoders}"
+                                            <ComboBox ItemsSource="{Binding ConversionPresets[0].AudioCodec.Encoders}"
                                                       SelectedItem="{Binding ConversionPresets[0].AudioEncoder, Mode=TwoWay}"
                                                       IsVisible="{Binding ConversionPresets[0].AudioCodec.MultipleEncoders}" />
                                         </ContentControl>
@@ -327,7 +327,7 @@
                                                     <ListBox Margin="-10"
                                                              SelectionMode="Single"
                                                              SelectionChanged="Resolutions_OnSelectionChanged"
-                                                             Items="{Binding Resolutions}">
+                                                             ItemsSource="{Binding Resolutions}">
                                                         <ListBox.ItemTemplate>
                                                             <DataTemplate x:DataType="m:Resolution">
                                                                 <TextBlock Text="{Binding FullName, Mode=OneTime}" />
@@ -437,7 +437,7 @@
                                                       SelectedIndex="0"
                                                       SelectedItem="{Binding SelectedItem.AudioSamplerate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
                                                       IsEnabled="{Binding SelectedConversionPreset.AudioAvailable}"
-                                                      Items="{x:Static vm:MediaViewModel.KHzSampleRates}"
+                                                      ItemsSource="{x:Static vm:MediaViewModel.KHzSampleRates}"
                                                       Width="150" Margin="0,5,0,0">
                                                 <ComboBox.ItemTemplate>
                                                     <DataTemplate x:DataType="x:Double">

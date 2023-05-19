@@ -38,21 +38,15 @@ namespace OnionMedia.Services
 
         public async Task<string> ShowSingleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
         {
-            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = false, SuggestedStartLocation = new BclStorageFolder(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
+            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = false, SuggestedStartLocation = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
             if (result?.Any() is false) return null;
-            result[0].TryGetUri(out Uri uri);
-            return uri.LocalPath;
+            return result[0].Path.LocalPath;
         }
 
         public async Task<string[]> ShowMultipleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
         {
-            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = true, SuggestedStartLocation = new BclStorageFolder(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
-            return result?.Any() is true ? result.Select(r =>
-            {
-                r.TryGetUri(out Uri uri);
-                string path = uri.LocalPath;
-                return path;
-            }).ToArray() : null;
+            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = true, SuggestedStartLocation = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
+            return result?.Any() is true ? result.Select(r => r.Path.LocalPath).ToArray() : null;
         }
 
         public async Task<bool?> ShowDialogAsync(DialogTextOptions dialogTextOptions)

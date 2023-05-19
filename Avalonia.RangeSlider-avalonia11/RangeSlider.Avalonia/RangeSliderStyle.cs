@@ -70,6 +70,22 @@ public class RangeSliderStyle : AvaloniaObject, IStyle, IResourceProvider
 	public IResourceHost? Owner =>
 		(Loaded as IResourceProvider)?.Owner;
 
+	public bool TryGetResource(object key, ThemeVariant? theme, out object? value)
+	{
+		if (!_isLoading && Loaded is IResourceProvider p)
+		{
+			return p.TryGetResource(key, theme, out value);
+		}
+
+		value = null;
+		return false;
+	}
+
+	public void NotClientImplementable()
+	{
+		return;
+	}
+
 	bool IResourceNode.HasResources =>
 		(Loaded as IResourceProvider)?.HasResources ?? false;
 
@@ -91,27 +107,11 @@ public class RangeSliderStyle : AvaloniaObject, IStyle, IResourceProvider
 		}
 	}
 
-	public bool TryGetResource(object key, out object? value)
-	{
-		if (!_isLoading && Loaded is IResourceProvider p)
-		{
-			return p.TryGetResource(key, out value);
-		}
-
-		value = null;
-		return false;
-	}
-
 	void IResourceProvider.AddOwner(IResourceHost owner) =>
 		(Loaded as IResourceProvider)?.AddOwner(owner);
 
 	void IResourceProvider.RemoveOwner(IResourceHost owner) =>
 		(Loaded as IResourceProvider)?.RemoveOwner(owner);
-
-	SelectorMatchResult IStyle.TryAttach(IStyleable target, object? host)
-	{
-		return Loaded.TryAttach(target, host);
-	}
 
 	IReadOnlyList<IStyle> IStyle.Children =>
 		_loaded?.Children ?? Array.Empty<IStyle>();

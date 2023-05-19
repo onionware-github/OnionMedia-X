@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -48,7 +48,7 @@ sealed class JsonResourceLoader : IStringResourceService
         throw new DirectoryNotFoundException(outputPath);
     }
     
-    public string GetLocalized(string resourceName, string sectionName = null)
+    public string GetLocalized(string resourceName, string? sectionName = null)
     {
         if (resourceName == null) throw new ArgumentNullException(nameof(resourceName));
         string resourceFileName = sectionName ?? defaultResourceFileName;

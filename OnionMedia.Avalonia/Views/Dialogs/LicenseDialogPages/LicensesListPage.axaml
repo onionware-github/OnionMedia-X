@@ -9,7 +9,7 @@
              x:DataType="states:LicenseDialogState"
              x:CompileBindings="True"
              Background="Transparent">
-    <ListBox Items="{Binding Libraries, Mode=OneTime}" SelectionChanged="SelectingItemsControl_OnSelectionChanged">
+    <ListBox ItemsSource="{Binding Libraries, Mode=OneTime}" SelectionChanged="SelectingItemsControl_OnSelectionChanged">
         <ListBox.ItemTemplate>
             <DataTemplate x:DataType="models:LibraryInfo">
                 <TextBlock Foreground="{DynamicResource SystemAccentColor}" Text="{Binding Libraryname, Mode=OneTime}"/>

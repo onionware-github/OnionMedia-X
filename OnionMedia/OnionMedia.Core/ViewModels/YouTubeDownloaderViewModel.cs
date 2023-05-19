@@ -108,7 +108,7 @@ namespace OnionMedia.Core.ViewModels
                 VideoNotFound = false;
             }
         }
-        private string searchTerm;
+        private string searchTerm = string.Empty;
         public ObservableCollection<SearchItemModel> SearchResults { get; } = new();
 
         public ObservableCollection<StreamItemModel> Videos { get; set; } = new();
@@ -165,7 +165,7 @@ namespace OnionMedia.Core.ViewModels
                 return;
             }
 
-            string urlClone = (string)videolink.Clone();
+            string urlClone = (string)(videolink?.Clone() ?? string.Empty);
 
             //Cancel searching and clear results
             if (searchProcesses > 0 && !DownloaderMethods.VideoSearchCancelSource.IsCancellationRequested)

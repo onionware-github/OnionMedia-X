@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -35,14 +36,6 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
 				control?.UpdateIsReadOnly(!((MediaViewModel)DataContext).ItemSelectedAndIdle);
 			}
         };
-        ViewModel.Files.CollectionChanged +=
-            (o, e) =>
-            {
-                var control = this.FindControl<ListBox>("mediaList");
-                if (control is null) return;
-                control.Items = null;
-                control.Items = ViewModel.Files;
-            };
     }
 
     protected override void OnLoaded()
@@ -65,7 +58,7 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new(nameof(SmallWindowStyle)));
     }
     
-    private void HideParentFlyout(IControl element)
+    private void HideParentFlyout(Control element)
     {
         if (element is null) return;
         var parent = element.Parent;
@@ -82,12 +75,12 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
     
     private void Close_Flyout(object? sender, RoutedEventArgs e)
     {
-        HideParentFlyout(sender as IControl);
+        HideParentFlyout(sender as Control);
     }
     
     private void RemoveAllFlyoutButton_Click(object? sender, RoutedEventArgs e)
     {
-        HideParentFlyout(sender as IControl);
+        HideParentFlyout(sender as Control);
         ((MediaViewModel)DataContext).RemoveAllCommand.Execute(null);
     }
     
@@ -97,13 +90,13 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
     {
         if (e?.AddedItems?.Count is 0 || e.AddedItems[0] is not double) return;
         ((MediaViewModel)DataContext).SetFramerateCommand.Execute((double)e.AddedItems[0]);
-        HideParentFlyout(sender as IControl);
+        HideParentFlyout(sender as Control);
     }
 
     private void Resolutions_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         if (e?.AddedItems?.Count is 0 || e.AddedItems[0] is not Resolution) return;
         ((MediaViewModel)DataContext).SetResolutionCommand.Execute((Resolution)e.AddedItems[0]);
-        HideParentFlyout(sender as IControl);
+        HideParentFlyout(sender as Control);
     }
 }

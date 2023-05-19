@@ -599,7 +599,8 @@ public class RangeSlider : RangeBase
 
     private void ApplyThumbFlyoutPlacement(ThumbFlyoutPlacement placement)
     {
-        if (placement == ThumbFlyoutPlacement.None)
+    /*TODO: find another way for that
+    if (placement == ThumbFlyoutPlacement.None)
             return;
 
         var placementMode = FlyoutPlacementMode.Auto;
@@ -620,6 +621,7 @@ public class RangeSlider : RangeBase
         var upperFlyout = FlyoutBase.GetAttachedFlyout(_upperThumb);
         if (upperFlyout != null)
             upperFlyout.Placement = placementMode;
+            */
     }
 
     private void ThumbFlyoutPlacementChanged(AvaloniaPropertyChangedEventArgs e)

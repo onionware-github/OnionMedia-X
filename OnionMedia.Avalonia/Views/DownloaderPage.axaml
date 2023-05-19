@@ -48,8 +48,7 @@
             <Grid x:Name="connectionErrorGrid" Grid.RowSpan="2" Grid.ColumnSpan="2"
                   IsVisible="{Binding !NetworkAvailable}">
                 <StackPanel Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <controls:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEB5E;"
-                                       FontSize="40" HorizontalAlignment="Center" />
+                    <controls:SymbolIcon Symbol="WifiWarning" FontSize="40" HorizontalAlignment="Center" />
                     <TextBlock Text="{res:Resource DownloaderPage/noInternetConnection.Text}" FontSize="20"
                                HorizontalAlignment="Center" />
                     <TextBlock Text="{res:Resource DownloaderPage/noInternetConnectionDescription.Text}"
@@ -71,11 +70,11 @@
                                      Watermark="{res:Resource DownloaderPage/videolink.PlaceholderText}"
                                      Text="{Binding SearchTerm, Mode=TwoWay}"
                                      TextChanged="Videolink_OnTextChanged" KeyDown="Videolink_OnKeyDown" />
-                            <ui:ProgressRing IsIndeterminate="True" IsVisible="{Binding AddingVideo}" Margin="0,0,30,0"
-                                             Width="20" Height="20" HorizontalAlignment="Right" />
+                            <ui:ProgressRing IsIndeterminate="True" IsVisible="{Binding AddingVideo}" Margin="0,0,20,0"
+                                             MinWidth="20" MinHeight="20" Width="20" Height="20" BorderThickness="3" HorizontalAlignment="Right" />
                         </Grid>
 
-                        <ListBox Items="{Binding SearchResults}"
+                        <ListBox ItemsSource="{Binding SearchResults}"
                                  IsVisible="{Binding AnyResults}"
                                  BorderBrush="{DynamicResource ListBoxItemDisabledForegroundThemeBrush}"
                                  BorderThickness="3,0,3,3" CornerRadius="0,0,5,5"
@@ -129,7 +128,7 @@
                                IsVisible="{Binding MultipleVideos}" />
                     <ComboBox Name="qualitySelection"
                               Margin="0,2"
-                              Items="{Binding Resolutions}"
+                              ItemsSource="{Binding Resolutions}"
                               SelectedItem="{Binding SelectedQuality, Mode=TwoWay}"
                               IsEnabled="{Binding QueueIsNotEmpty}" />
                 </StackPanel>
@@ -181,7 +180,7 @@
                                        FontWeight="SemiBold" Foreground="Black" Margin="3" Grid.Column="1" />
 
                             <ListBox Name="videoQueue" Grid.Column="1" Grid.Row="1"
-                                     Items="{Binding Videos}" CornerRadius="10"
+                                     ItemsSource="{Binding Videos}" CornerRadius="10"
                                      Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
                                      SelectedItem="{Binding SelectedVideo, Mode=TwoWay}"
                                      SelectionChanged="VideoQueue_OnSelectionChanged"
@@ -270,8 +269,6 @@
                                                     <Run Text="{Binding Video.Uploader}" />
                                                     <Run Text="|" />
                                                     <Run Text="{Binding Duration}" />
-                                                    <Run Text="|" />
-                                                    <Run Text="{Binding Video.UploadDate.Value.Date, Converter={StaticResource DateToShortStringConverter}}" />
                                                 </TextBlock>
                                             </Grid>
                                         </Border>

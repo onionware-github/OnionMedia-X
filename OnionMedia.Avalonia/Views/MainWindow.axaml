@@ -7,7 +7,7 @@
         MinWidth="350" MinHeight="500"
         x:Class="OnionMedia.Avalonia.Views.MainWindow"
         Icon="/Assets/OnionMedia.ico"
-        Title="OnionMedia.Avalonia"
+        Title="OnionMedia X"
         x:DataType="views:MainWindow"
         x:CompileBindings="True"
         x:Name="window">

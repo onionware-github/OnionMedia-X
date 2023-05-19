@@ -4,12 +4,9 @@
              xmlns:style="using:FluentAvalonia.Styling"
              xmlns:avalonia="clr-namespace:RangeSlider.Avalonia;assembly=RangeSlider.Avalonia"
              x:Class="OnionMedia.Avalonia.App">
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
 
     <Application.Styles>
-        <style:FluentAvaloniaTheme/>
+        <style:FluentAvaloniaTheme PreferUserAccentColor="True"/>
         <avalonia:RangeSliderStyle/>
         <StyleInclude Source="/Styles/MainStyles.axaml"/>
         <StyleInclude Source="avares://FluentAvalonia.ProgressRing/Styling/Controls/ProgressRing.axaml" />

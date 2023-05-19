@@ -41,14 +41,8 @@ namespace OnionMedia.Core.ViewModels
         private readonly IPathProvider pathProvider;
         private readonly IVersionService versionService;
 
+        [ObservableProperty]
         private string _versionDescription;
-
-        public string VersionDescription
-        {
-            get { return _versionDescription; }
-
-            set { SetProperty(ref _versionDescription, value); }
-        }
 
         [ICommand]
         private async Task ChangePathAsync(PathType pathType)

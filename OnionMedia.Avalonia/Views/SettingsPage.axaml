@@ -198,7 +198,7 @@
                                 <StackPanel Spacing="3">
                                     <TextBlock Text="{me:Resource SettingsPage/hardwareEncoder.Header}"/>
                                     <ComboBox Margin="15,0"
-                                              Items="{x:Static c:GlobalResources.HardwareEncoders}"
+                                              ItemsSource="{x:Static c:GlobalResources.HardwareEncoders}"
                                               SelectedItem="{Binding HardwareEncoder, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                               IsVisible="{Binding #useHwAccelerated.IsChecked, Mode=OneWay}">
                                         <ComboBox.ItemTemplate>
@@ -211,13 +211,13 @@
                             </StackPanel>
                             <StackPanel>
                                 <TextBlock Text="{me:Resource SettingsPage/audioDownloadFormat.Header}"/>
-                                <ComboBox Items="{x:Static c:GlobalResources.AudioConversionFormats}"
+                                <ComboBox ItemsSource="{x:Static c:GlobalResources.AudioConversionFormats}"
                                           SelectedItem="{Binding DownloadsAudioFormat, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
                             </StackPanel>
 
                             <StackPanel Spacing="3">
                                 <TextBlock Text="{me:Resource SettingsPage/videoOrPlaylist.Header}"/>
-                                <ComboBox Items="{x:Static m:AppSettings.VideoAddModes}"
+                                <ComboBox ItemsSource="{x:Static m:AppSettings.VideoAddModes}"
                                           SelectedItem="{Binding VideoAddMode, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="enums:VideoAddMode">
@@ -280,8 +280,16 @@
                     <Expander.Content>
                         <StackPanel Spacing="10">
                             <StackPanel Spacing="3">
+                                <TextBlock Text="App theme:"/>
+                                <ComboBox SelectedIndex="0" ItemsSource="{x:Static m:AppSettings.ThemeTypes}"/>
+                            </StackPanel>
+                            <StackPanel Spacing="10" Orientation="Horizontal">
+                                <TextBlock Text="Accent color:" VerticalAlignment="Center"/>
+                                <ColorPicker IsAlphaVisible="False"/>
+                            </StackPanel>
+                            <StackPanel Spacing="3">
                                 <TextBlock Text="{me:Resource SettingsPage/startPageBox.Header}"/>
-                                <ComboBox Items="{x:Static m:AppSettings.StartPageTypes}"
+                                <ComboBox ItemsSource="{x:Static m:AppSettings.StartPageTypes}"
                                           SelectedItem="{Binding StartPageType, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate x:DataType="models:StartPageType">

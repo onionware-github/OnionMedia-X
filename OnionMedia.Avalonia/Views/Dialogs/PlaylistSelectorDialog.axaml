@@ -16,7 +16,7 @@
     
     <Grid RowDefinitions="Auto, *, Auto">
         <CheckBox Content="{markup:Resource PlaylistSelectorDialog/selectAll.Content}" IsChecked="{Binding SelectionState, Mode=TwoWay}"/>
-        <ListBox Grid.Row="1" Items="{Binding Videos, Mode=OneTime}" Margin="0,10">
+        <ListBox Grid.Row="1" ItemsSource="{Binding Videos, Mode=OneTime}" Margin="0,10">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="dialogs:SelectableVideo">
                     <Border Padding="10" BorderThickness="0,0,0,1" Margin="-6,3,-4,0" BorderBrush="Gray">

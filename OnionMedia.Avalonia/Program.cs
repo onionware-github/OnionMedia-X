@@ -30,6 +30,10 @@ namespace OnionMedia.Avalonia
 			=> AppBuilder.Configure<App>()
 				.UsePlatformDetect()
 				.LogToTrace()
+				.With(new Win32PlatformOptions
+				{
+					UseWindowsUIComposition = true
+				})
 				.UseReactiveUI();
 	}
 }

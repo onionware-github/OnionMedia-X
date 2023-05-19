@@ -1,3 +1,4 @@
 ﻿Add Hash-Checks on downloads from executable/linkable files (ffmpeg, ffprobe, yt-dlp)!!!
 Make "Flyout" part of SplitButton always enabled
 Add BitrateFormatter to bitrate NumberBox controls
+Implement no-internet indicator

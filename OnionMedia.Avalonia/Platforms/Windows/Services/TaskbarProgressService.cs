@@ -47,14 +47,12 @@ sealed class TaskbarProgressService : ITaskbarProgressService
 
     private static void SetTaskbarProgress(ulong progress)
     {
-        var hwnd = App.MainWindow.PlatformImpl.Handle.Handle;
-        taskbar.SetProgressValue(hwnd, progress, 100);
+
     }
 
     private static void SetTaskbarState(TBPFLAG state)
     {
-        var hwnd = App.MainWindow.PlatformImpl.Handle.Handle;
-        taskbar.SetProgressState(hwnd, state);
+
     }
 
     private static ITaskbarList3 taskbar = (ITaskbarList3)new TaskbarInstance();

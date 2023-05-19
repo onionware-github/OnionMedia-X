@@ -82,6 +82,7 @@ namespace OnionMedia.Core.Models
         public static AppSettings Instance { get; } = new AppSettings();
         public static VideoAddMode[] VideoAddModes { get; } = Enum.GetValues<VideoAddMode>().ToArray();
         public static StartPageType[] StartPageTypes { get; } = Enum.GetValues<StartPageType>().ToArray();
+        public static ThemeType[] ThemeTypes { get; } = Enum.GetValues<ThemeType>().ToArray();
 
         //Settings
         public int SimultaneousOperationCount
@@ -321,5 +322,12 @@ namespace OnionMedia.Core.Models
         LastOpened,
         ConverterPage,
         DownloaderPage
+    }
+
+    public enum ThemeType
+    {
+        AdaptToSystem,
+        Light,
+        Dark
     }
 }

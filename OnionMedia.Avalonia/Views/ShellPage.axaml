@@ -27,8 +27,8 @@
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
-                    <controls:NavigationViewItem x:Name="MediaPageItem" Content="{markup:Resource Resources/Shell_Media.Content}" Icon="Play"/>
-                    <controls:NavigationViewItem x:Name="DownloaderPageItem" Content="{markup:Resource Resources/Shell_YouTubeDownloader.Content}" Icon="Download"/>
+                    <controls:NavigationViewItem x:Name="MediaPageItem" Content="{markup:Resource Resources/Shell_Media.Content}" IconSource="Play"/>
+                    <controls:NavigationViewItem x:Name="DownloaderPageItem" Content="{markup:Resource Resources/Shell_YouTubeDownloader.Content}" IconSource="Download"/>
                     <!-- <NavigationViewItem Content="{Resource Resources/Shell_Playlists.Content}" Icon="List" helpers:NavHelper.NavigateTo="OnionMedia.Core.ViewModels.PlaylistsViewModel" /> -->
                 </controls:NavigationView.MenuItems>
                 <controls:NavigationView.HeaderTemplate>

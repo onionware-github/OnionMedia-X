@@ -28,7 +28,7 @@
 
             <StackPanel Spacing="3">
                 <TextBlock Text="{markup:Resource /ConversionPresetDialog/outputFormat.Header}"/>
-                <ComboBox SelectedIndex="94" Items="{Binding ContainerFormats, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.Format, Mode=TwoWay}">
+                <ComboBox SelectedIndex="94" ItemsSource="{Binding ContainerFormats, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.Format, Mode=TwoWay}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate x:DataType="models:FFmpegContainerFormat">
                             <TextBlock Text="{Binding Name}"/>
@@ -41,7 +41,7 @@
             <StackPanel Spacing="10" IsVisible="{Binding #useVideo.IsChecked, Mode=OneWay}">
                 <StackPanel Spacing="3">
                     <TextBlock Text="{markup:Resource /ConversionPresetDialog/videoCodec.Header}"/>
-                    <ComboBox Items="{Binding Videocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.VideoCodec, Mode=TwoWay}">
+                    <ComboBox ItemsSource="{Binding Videocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.VideoCodec, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="models:FFmpegCodec">
                                 <TextBlock Text="{Binding Name}"/>
@@ -51,7 +51,7 @@
                 </StackPanel>
                 <StackPanel Spacing="3" IsVisible="{Binding ConversionPreset.VideoCodec.MultipleEncoders, Mode=OneWay}">
                     <TextBlock Text="{markup:Resource /ConversionPresetDialog/videoEncoder.Header}"/>
-                    <ComboBox Items="{Binding ConversionPreset.VideoCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.VideoEncoder, Mode=TwoWay}"/>
+                    <ComboBox ItemsSource="{Binding ConversionPreset.VideoCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.VideoEncoder, Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -59,7 +59,7 @@
             <StackPanel Spacing="10" IsVisible="{Binding #useAudio.IsChecked, Mode=OneWay}">
                 <StackPanel Spacing="3">
                     <TextBlock Text="{markup:Resource /ConversionPresetDialog/audioCodec.Header}"/>
-                    <ComboBox Items="{Binding Audiocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.AudioCodec, Mode=TwoWay}">
+                    <ComboBox ItemsSource="{Binding Audiocodecs, Mode=OneTime, Source={x:Static c:GlobalResources.FFmpegCodecs}}" SelectedItem="{Binding ConversionPreset.AudioCodec, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="models:FFmpegCodec">
                                 <TextBlock Text="{Binding Name}"/>
@@ -69,7 +69,7 @@
                 </StackPanel>
                 <StackPanel Spacing="3" IsVisible="{Binding ConversionPreset.AudioCodec.MultipleEncoders, Mode=OneWay}">
                     <TextBlock Text="{markup:Resource /ConversionPresetDialog/audioEncoder.Header}"/>
-                    <ComboBox Items="{Binding ConversionPreset.AudioCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.AudioEncoder, Mode=TwoWay}"/>
+                    <ComboBox ItemsSource="{Binding ConversionPreset.AudioCodec.Encoders, Mode=OneWay}" SelectedItem="{Binding ConversionPreset.AudioEncoder, Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
