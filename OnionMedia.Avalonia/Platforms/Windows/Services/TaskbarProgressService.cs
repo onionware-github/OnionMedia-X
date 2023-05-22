@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using OnionMedia.Avalonia;
 using OnionMedia.Core.Enums;
@@ -47,12 +47,14 @@ sealed class TaskbarProgressService : ITaskbarProgressService
 
     private static void SetTaskbarProgress(ulong progress)
     {
-
+        var hwnd = App.MainWindow.TryGetPlatformHandle().Handle;
+        taskbar.SetProgressValue(hwnd, progress, 100);
     }
 
     private static void SetTaskbarState(TBPFLAG state)
     {
-
+        var hwnd = App.MainWindow.TryGetPlatformHandle().Handle;
+        taskbar.SetProgressState(hwnd, state);
     }
 
     private static ITaskbarList3 taskbar = (ITaskbarList3)new TaskbarInstance();
