@@ -1,4 +1,4 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -74,25 +74,27 @@
                                              MinWidth="20" MinHeight="20" Width="20" Height="20" BorderThickness="3" HorizontalAlignment="Right" />
                         </Grid>
 
-                        <ListBox ItemsSource="{Binding SearchResults}"
-                                 IsVisible="{Binding AnyResults}"
-                                 BorderBrush="{DynamicResource ListBoxItemDisabledForegroundThemeBrush}"
-                                 BorderThickness="3,0,3,3" CornerRadius="0,0,5,5"
-                                 MaxHeight="400" Margin="0,0,3,0"
-                                 SelectionChanged="VideoSearchList_OnSelectionChanged">
+                        <Border IsVisible="{Binding AnyResults}"
+                                BorderBrush="SlateGray"
+                                BorderThickness="3,0,3,3" CornerRadius="0,0,5,5"
+                                MaxHeight="400" Margin="0,0,3,0">
+                            <ListBox ItemsSource="{Binding SearchResults}"
+                                     SelectionChanged="VideoSearchList_OnSelectionChanged">
 
-                            <ListBox.ItemTemplate>
-                                <DataTemplate x:DataType="m:SearchItemModel">
-                                    <Grid ColumnDefinitions="80,*">
-                                        <Image async:ImageLoader.Source="{Binding ThumbnailUrl}" />
-                                        <Grid Column="1" RowDefinitions="3*,2*">
-                                            <TextBlock Text="{Binding Title, Mode=OneTime}" Classes="MetaInfoTextStyle" />
-                                            <TextBlock Text="{Binding Author, Mode=OneTime}" Grid.Row="1" Margin="5,0" />
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate x:DataType="m:SearchItemModel">
+                                        <Grid ColumnDefinitions="80,*">
+                                            <Image async:ImageLoader.Source="{Binding ThumbnailUrl}" />
+                                            <Grid Column="1" RowDefinitions="3*,2*">
+                                                <TextBlock Text="{Binding Title, Mode=OneTime}" Classes="MetaInfoTextStyle" />
+                                                <TextBlock Text="{Binding Author, Mode=OneTime}" Grid.Row="1" Margin="5,0" />
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+
                     </StackPanel>
 
                     <Button x:Name="searchButton"
