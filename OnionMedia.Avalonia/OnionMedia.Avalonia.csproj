@@ -17,11 +17,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Platforms\Linux\Output" />
-    <Folder Include="Platforms\Linux\Services" />
+    <Folder Include="Platforms\Linux\Services\" />
     <Folder Include="Platforms\Mac\Output\Data" />
     <Folder Include="Platforms\Mac\Output\ExternalBinaries" />
     <Folder Include="Platforms\Windows\Output" />
-    <Folder Include="Services\" />
     <AvaloniaResource Include="Assets\**" />
     <Folder Include="XamlDicts" />
     <None Remove=".gitignore" />

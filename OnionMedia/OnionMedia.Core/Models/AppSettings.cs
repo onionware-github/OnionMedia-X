@@ -15,6 +15,7 @@ using OnionMedia.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -58,6 +59,9 @@ namespace OnionMedia.Core.Models
             countOfDownloadRetries = settingsService.GetSetting("countOfDownloadRetries") as int? ?? 3;
             ValidateSettingOrSetToDefault(ref countOfDownloadRetries, val => val is >= 0 and <= 5, 3);
 
+            customAccentColorHex = settingsService.GetSetting("customAccentColorHex") as string;
+            useCustomAccentColor = settingsService.GetSetting("useCustomAccentColor") as bool? ?? false;
+            
             var downloadsAudioFormat = settingsService.GetSetting("downloadsAudioFormat");
             if (downloadsAudioFormat == null)
                 this.downloadsAudioFormat = AudioConversionFormat.Mp3;
@@ -248,6 +252,20 @@ namespace OnionMedia.Core.Models
         }
         private string convertedFilenameSuffix;
 
+        public bool UseCustomAccentColor
+        {
+            get => useCustomAccentColor;
+            set => SetSetting(ref useCustomAccentColor, value, "useCustomAccentColor");
+        }
+        private bool useCustomAccentColor;
+        
+        public string? CustomAccentColorHex
+        {
+            get => customAccentColorHex;
+            set => SetSetting(ref customAccentColorHex, value, "customAccentColorHex");
+        }
+        private string? customAccentColorHex;
+
         //Last opened page
         public bool DownloaderPageIsOpen
         {
@@ -326,7 +344,7 @@ namespace OnionMedia.Core.Models
 
     public enum ThemeType
     {
-        AdaptToSystem,
+        Default,
         Light,
         Dark
     }

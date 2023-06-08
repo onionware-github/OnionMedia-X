@@ -16,392 +16,437 @@
              x:CompileBindings="True"
              x:Name="control">
 
-    <Grid x:Name="contentArea">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
+	<Grid x:Name="contentArea">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition Width="auto" />
+		</Grid.ColumnDefinitions>
 
-        <Grid.Styles>
-            <Style Selector="Grid#ContentArea.smallWrapped">
-                <Style.Setters>
-                    <Setter Property="Grid.ColumnSpan" Value="2"/>
-                </Style.Setters>
-            </Style>
-            <Style Selector="Grid#ContentArea.defaultSize">
-                <Style.Setters>
-                    <Setter Property="Grid.ColumnSpan" Value="1"/>
-                </Style.Setters>
-            </Style>
-        </Grid.Styles>
-        
-        <ScrollViewer x:Name="ContentArea" Classes="XSmallTopMargin" VerticalScrollBarVisibility="Auto"
+		<Grid.Styles>
+			<Style Selector="Grid#ContentArea.smallWrapped">
+				<Style.Setters>
+					<Setter Property="Grid.ColumnSpan" Value="2"/>
+				</Style.Setters>
+			</Style>
+			<Style Selector="Grid#ContentArea.defaultSize">
+				<Style.Setters>
+					<Setter Property="Grid.ColumnSpan" Value="1"/>
+				</Style.Setters>
+			</Style>
+			<Style Selector="controls|HyperlinkButton.urlBtnborderStyle">
+				<Style.Setters>
+					<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}"/>
+					<Setter Property="BorderThickness" Value="1"/>
+				</Style.Setters>
+			</Style>
+			<Style Selector="controls|HyperlinkButton.urlBtnborderStyle:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+				<Style.Setters>
+					<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}"/>
+					<Setter Property="BorderThickness" Value="1"/>
+				</Style.Setters>
+			</Style>
+			<Style Selector="controls|HyperlinkButton.urlBtnborderStyle:focus /template/ ContentPresenter#PART_ContentPresenter">
+				<Style.Setters>
+					<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}"/>
+					<Setter Property="BorderThickness" Value="1"/>
+				</Style.Setters>
+			</Style>
+		</Grid.Styles>
+
+		<ScrollViewer x:Name="ContentArea" Classes="XSmallTopMargin" VerticalScrollBarVisibility="Auto"
                       Padding="14,7" Classes.defaultSize="{Binding !#control.SmallWindowStyle, Mode=OneWay}" Classes.smallWrapped="{Binding #control.SmallWindowStyle, Mode=OneWay}">
-            <StackPanel Spacing="15">
-                <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                    <Expander.Header>
-                        <Grid Height="60">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+			<StackPanel Spacing="15">
+				<Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+					<Expander.Header>
+						<Grid Height="60">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
 
-                            <controls:SymbolIcon Symbol="MoveToFolder" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                            <TextBlock Text="{me:Resource SettingsPage/storagePaths.Text}" Grid.Column="1"
+							<controls:SymbolIcon Symbol="MoveToFolder" VerticalAlignment="Center" Margin="0,0,10,0"/>
+							<TextBlock Text="{me:Resource SettingsPage/storagePaths.Text}" Grid.Column="1"
                                        VerticalAlignment="Center" Margin="0,0,0,2" TextTrimming="CharacterEllipsis"
                                        FontSize="20" />
-                        </Grid>
-                    </Expander.Header>
-                    <Expander.Content>
-                        <StackPanel Spacing="10" MaxWidth="550">
-                            <RadioButton GroupName="fixedPaths"
+						</Grid>
+					</Expander.Header>
+					<Expander.Content>
+						<StackPanel Spacing="10" MaxWidth="550">
+							<RadioButton GroupName="fixedPaths"
                                          Content="{me:Resource SettingsPage/askForStoragePath.Content}"
                                          IsChecked="{Binding !UseFixedStoragePaths, Mode=OneTime, Source={x:Static m:AppSettings.Instance}}" />
-                            <RadioButton GroupName="fixedPaths"
+							<RadioButton GroupName="fixedPaths"
                                          Content="{me:Resource SettingsPage/setStoragePaths.Content}"
                                          IsChecked="{Binding UseFixedStoragePaths, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            <StackPanel Spacing="10"
+							<StackPanel Spacing="10"
                                         IsVisible="{Binding UseFixedStoragePaths, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}">
-                                <DockPanel>
-                                    <Button VerticalAlignment="Bottom"
+								<DockPanel>
+									<Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
                                             Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.ConvertedVideofiles}">
-                                        <controls:SymbolIcon Symbol="OpenLocal" />
-                                    </Button>
-                                    <StackPanel Spacing="3">
-                                        <TextBlock Text="{me:Resource SettingsPage/convertedVideos.Header}" />
-                                        <TextBox
+										<controls:SymbolIcon Symbol="OpenLocal" />
+									</Button>
+									<StackPanel Spacing="3">
+										<TextBlock Text="{me:Resource SettingsPage/convertedVideos.Header}" />
+										<TextBox
                                             Text="{Binding ConvertedVideoSavePath, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}"
                                             IsReadOnly="True" x:Name="convertedVideoPathBox"/>
-                                    </StackPanel>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Button VerticalAlignment="Bottom"
+									</StackPanel>
+								</DockPanel>
+								<DockPanel>
+									<Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
                                             Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.ConvertedAudiofiles}">
-                                        <controls:SymbolIcon Symbol="OpenLocal" />
-                                    </Button>
-                                    <StackPanel Spacing="3">
-                                        <TextBlock Text="{me:Resource SettingsPage/convertedAudios.Header}" />
-                                        <TextBox
+										<controls:SymbolIcon Symbol="OpenLocal" />
+									</Button>
+									<StackPanel Spacing="3">
+										<TextBlock Text="{me:Resource SettingsPage/convertedAudios.Header}" />
+										<TextBox
                                             Text="{Binding ConvertedAudioSavePath, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}"
                                             IsReadOnly="True" />
-                                    </StackPanel>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Button VerticalAlignment="Bottom"
+									</StackPanel>
+								</DockPanel>
+								<DockPanel>
+									<Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
                                             Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.DownloadedVideofiles}">
-                                        <controls:SymbolIcon Symbol="OpenLocal" />
-                                    </Button>
-                                    <StackPanel Spacing="3">
-                                        <TextBlock Text="{me:Resource SettingsPage/downloadedVideos.Header}" />
-                                        <TextBox
+										<controls:SymbolIcon Symbol="OpenLocal" />
+									</Button>
+									<StackPanel Spacing="3">
+										<TextBlock Text="{me:Resource SettingsPage/downloadedVideos.Header}" />
+										<TextBox
                                             Text="{Binding DownloadsVideoSavePath, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}"
                                             IsReadOnly="True" />
-                                    </StackPanel>
-                                </DockPanel>
-                                <DockPanel>
-                                    <Button VerticalAlignment="Bottom"
+									</StackPanel>
+								</DockPanel>
+								<DockPanel>
+									<Button VerticalAlignment="Bottom"
                                             DockPanel.Dock="Right"
                                             Margin="5,0"
                                             Height="{Binding #convertedVideoPathBox.Bounds.Height}"
                                             Command="{Binding ChangePathCommand, Mode=OneTime}"
                                             CommandParameter="{x:Static m:PathType.DownloadedAudiofiles}">
-                                        <controls:SymbolIcon Symbol="OpenLocal" />
-                                    </Button>
-                                    <StackPanel Spacing="3">
-                                        <TextBlock Text="{me:Resource SettingsPage/downloadedAudios.Header}" />
-                                        <TextBox
+										<controls:SymbolIcon Symbol="OpenLocal" />
+									</Button>
+									<StackPanel Spacing="3">
+										<TextBlock Text="{me:Resource SettingsPage/downloadedAudios.Header}" />
+										<TextBox
                                             Text="{Binding DownloadsAudioSavePath, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}"
                                             IsReadOnly="True" />
-                                    </StackPanel>
-                                </DockPanel>
-                                <StackPanel Spacing="3">
-                                    <TextBlock Text="{me:Resource SettingsPage/filenameSuffix.Header}" />
-                                    <TextBox x:Name="filenameSuffix"
+									</StackPanel>
+								</DockPanel>
+								<StackPanel Spacing="3">
+									<TextBlock Text="{me:Resource SettingsPage/filenameSuffix.Header}" />
+									<TextBox x:Name="filenameSuffix"
                                              Text="{Binding ConvertedFilenameSuffix, Mode=OneWay,  Source={x:Static m:AppSettings.Instance}}"
                                              TextChanged="FilenameSuffix_OnTextChanged" LostFocus="FilenameSuffix_OnLostFocus" KeyDown="FilenameSuffix_OnKeyDown"/>
-                                </StackPanel>
-                                <controls:TeachingTip Subtitle="{me:Resource SettingsPage/forbiddenChars.Subtitle}"
+								</StackPanel>
+								<controls:TeachingTip Subtitle="{me:Resource SettingsPage/forbiddenChars.Subtitle}"
                                                       Title="{me:Resource SettingsPage/forbiddenChars.Title}"
                                                       Target="{Binding #filenameSuffix, Mode=OneTime}"
                                                       IsOpen="{Binding InvalidFilename, Mode=OneWay}">
-                                    <controls:TeachingTip.IconSource>
-                                        <controls:SymbolIconSource Symbol="Cancel" />
-                                    </controls:TeachingTip.IconSource>
-                                </controls:TeachingTip>
-                            </StackPanel>
-                        </StackPanel>
-                    </Expander.Content>
-                </Expander>
+									<controls:TeachingTip.IconSource>
+										<controls:SymbolIconSource Symbol="Cancel" />
+									</controls:TeachingTip.IconSource>
+								</controls:TeachingTip>
+							</StackPanel>
+						</StackPanel>
+					</Expander.Content>
+				</Expander>
 
-                <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                    <Expander.Header>
-                        <Grid Height="60">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+				<Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+					<Expander.Header>
+						<Grid Height="60">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
 
-                            <controls:SymbolIcon Symbol="Sync" VerticalAlignment="Center" />
-                            <TextBlock Text="{me:Resource SettingsPage/convertAndDownloadSettings.Text}"
+							<controls:SymbolIcon Symbol="Sync" VerticalAlignment="Center" />
+							<TextBlock Text="{me:Resource SettingsPage/convertAndDownloadSettings.Text}"
                                        Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,2"
                                        TextTrimming="CharacterEllipsis" FontSize="20" />
-                        </Grid>
-                    </Expander.Header>
-                    <Expander.Content>
-                        <StackPanel Spacing="10">
-                            <StackPanel Spacing="3">
-                                <TextBlock Text="{me:Resource SettingsPage/amountOfSimultaneousOperations.Header}"/>
-                                <ComboBox SelectedItem="{Binding SimultaneousOperationCount, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
-                                    <x:Int32>1</x:Int32>
-                                    <x:Int32>2</x:Int32>
-                                    <x:Int32>3</x:Int32>
-                                    <x:Int32>4</x:Int32>
-                                    <x:Int32>5</x:Int32>
-                                </ComboBox>
-                            </StackPanel>
+						</Grid>
+					</Expander.Header>
+					<Expander.Content>
+						<StackPanel Spacing="10">
+							<StackPanel Spacing="3">
+								<TextBlock Text="{me:Resource SettingsPage/amountOfSimultaneousOperations.Header}"/>
+								<ComboBox SelectedItem="{Binding SimultaneousOperationCount, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
+									<x:Int32>1</x:Int32>
+									<x:Int32>2</x:Int32>
+									<x:Int32>3</x:Int32>
+									<x:Int32>4</x:Int32>
+									<x:Int32>5</x:Int32>
+								</ComboBox>
+							</StackPanel>
 
-                            <CheckBox x:Name="limitDownloadSpeed"
+							<CheckBox x:Name="limitDownloadSpeed"
                                       Content="{me:Resource SettingsPage/limitDownloadSpeed.Content}"
                                       Classes="XSmallTopMargin"
                                       IsChecked="{Binding LimitDownloadSpeed, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            <StackPanel Orientation="Horizontal" Spacing="5"
+							<StackPanel Orientation="Horizontal" Spacing="5"
                                         IsVisible="{Binding #limitDownloadSpeed.IsChecked, Mode=OneWay}">
-                                <controls:NumberBox Header="{me:Resource SettingsPage/maxDownloadSpeedPerFile.Header}"
+								<controls:NumberBox Header="{me:Resource SettingsPage/maxDownloadSpeedPerFile.Header}"
                                                     Value="{Binding MaxDownloadSpeed, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                                     Minimum="0.1" />
-                                <TextBlock Text="MBit/s" VerticalAlignment="Bottom" Margin="3,5" />
-                            </StackPanel>
+								<TextBlock Text="MBit/s" VerticalAlignment="Bottom" Margin="3,5" />
+							</StackPanel>
 
-                            <CheckBox Content="{me:Resource SettingsPage/clearListsAfterOperation.Content}"
+							<CheckBox Content="{me:Resource SettingsPage/clearListsAfterOperation.Content}"
                                       IsChecked="{Binding ClearListsAfterOperation, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            <CheckBox Content="{me:Resource SettingsPage/fallbackToSoftwareEncoding.Content}"
+							<CheckBox Content="{me:Resource SettingsPage/fallbackToSoftwareEncoding.Content}"
                                       IsChecked="{Binding FallBackToSoftwareEncoding, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            <CheckBox x:Name="convertToH264"
+							<CheckBox x:Name="convertToH264"
                                       Content="{me:Resource SettingsPage/autoConvertToH264.Content}"
                                       IsChecked="{Binding AutoConvertToH264AfterDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            <StackPanel IsVisible="{Binding #convertToH264.IsChecked, Mode=OneWay}">
-                                <CheckBox x:Name="useHwAccelerated"
+							<StackPanel IsVisible="{Binding #convertToH264.IsChecked, Mode=OneWay}">
+								<CheckBox x:Name="useHwAccelerated"
                                           Content="{me:Resource SettingsPage/useHwAccelerated.Content}" Margin="15,0"
                                           IsChecked="{Binding UseHardwareAcceleratedEncoding, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                                <StackPanel Spacing="3">
-                                    <TextBlock Text="{me:Resource SettingsPage/hardwareEncoder.Header}"/>
-                                    <ComboBox Margin="15,0"
+								<StackPanel Spacing="3">
+									<TextBlock Text="{me:Resource SettingsPage/hardwareEncoder.Header}"/>
+									<ComboBox Margin="15,0"
                                               ItemsSource="{x:Static c:GlobalResources.HardwareEncoders}"
                                               SelectedItem="{Binding HardwareEncoder, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                               IsVisible="{Binding #useHwAccelerated.IsChecked, Mode=OneWay}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate x:DataType="models:HardwareEncoder">
-                                                <TextBlock Text="{Binding Converter={StaticResource EnumDisplayNameConverter}}" />
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="{me:Resource SettingsPage/audioDownloadFormat.Header}"/>
-                                <ComboBox ItemsSource="{x:Static c:GlobalResources.AudioConversionFormats}"
+										<ComboBox.ItemTemplate>
+											<DataTemplate x:DataType="models:HardwareEncoder">
+												<TextBlock Text="{Binding Converter={StaticResource EnumDisplayNameConverter}}" />
+											</DataTemplate>
+										</ComboBox.ItemTemplate>
+									</ComboBox>
+								</StackPanel>
+							</StackPanel>
+							<StackPanel>
+								<TextBlock Text="{me:Resource SettingsPage/audioDownloadFormat.Header}"/>
+								<ComboBox ItemsSource="{x:Static c:GlobalResources.AudioConversionFormats}"
                                           SelectedItem="{Binding DownloadsAudioFormat, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            </StackPanel>
+							</StackPanel>
 
-                            <StackPanel Spacing="3">
-                                <TextBlock Text="{me:Resource SettingsPage/videoOrPlaylist.Header}"/>
-                                <ComboBox ItemsSource="{x:Static m:AppSettings.VideoAddModes}"
+							<StackPanel Spacing="3">
+								<TextBlock Text="{me:Resource SettingsPage/videoOrPlaylist.Header}"/>
+								<ComboBox ItemsSource="{x:Static m:AppSettings.VideoAddModes}"
                                           SelectedItem="{Binding VideoAddMode, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate x:DataType="enums:VideoAddMode">
-                                            <TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
+									<ComboBox.ItemTemplate>
+										<DataTemplate x:DataType="enums:VideoAddMode">
+											<TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
+										</DataTemplate>
+									</ComboBox.ItemTemplate>
+								</ComboBox>
+							</StackPanel>
 
-                            <CheckBox Content="{me:Resource SettingsPage/tryAgainAfterFail.Content}"
+							<CheckBox Content="{me:Resource SettingsPage/tryAgainAfterFail.Content}"
                                       IsChecked="{Binding AutoRetryDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                       Classes="SmallTopMargin" />
-                            <!-- TODO: Use NumberFormatter-->
-                            <!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
-                            <controls:NumberBox Header="{me:Resource SettingsPage/amountOfRetries.Header}"
+							<!-- TODO: Use NumberFormatter-->
+							<!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
+							<controls:NumberBox Header="{me:Resource SettingsPage/amountOfRetries.Header}"
                                                 Value="{Binding CountOfDownloadRetries, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                                 Minimum="1"
                                                 Maximum="5"
                                                 SpinButtonPlacementMode="Inline"
-                                                MaxWidth="155" HorizontalAlignment="Left"
+                                                HorizontalAlignment="Left"
                                                 IsVisible="{Binding AutoRetryDownload, Mode=OneWay, Source={x:Static m:AppSettings.Instance}}" />
 
-                            <TextBlock Text="{me:Resource SettingsPage/threadsForConversion.Text}"
+							<TextBlock Text="{me:Resource SettingsPage/threadsForConversion.Text}"
                                        TextWrapping="Wrap" />
-                            <CheckBox x:Name="autoSelectThreadCount"
+							<CheckBox x:Name="autoSelectThreadCount"
                                       Content="{me:Resource SettingsPage/autoSelectThreadCount.Content}"
                                       IsChecked="{Binding AutoSelectThreadsForConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            <StackPanel Orientation="Horizontal" Spacing="15"
+							<StackPanel Orientation="Horizontal" Spacing="15"
                                         IsVisible="{Binding !#autoSelectThreadCount.IsChecked, Mode=OneWay}">
-                                <!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
-                                <!-- TODO: Use NumberFormatter and bind the correct thread count to "Maximum" and the TextBlock below the NumberBox -->
-                                <controls:NumberBox
+								<!-- NumberFormatter="{Binding RoundingFormatter, Mode=OneTime}" -->
+								<!-- TODO: Use NumberFormatter and bind the correct thread count to "Maximum" and the TextBlock below the NumberBox -->
+								<controls:NumberBox
                                     Value="{Binding MaxThreadCountForConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                     Minimum="1"
                                     Maximum="30"/>
-                                <TextBlock VerticalAlignment="Center">
-                                    <Run Text="/  " />
-                                    <Run Text="30" />
-                                </TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                    </Expander.Content>
-                </Expander>
+								<TextBlock VerticalAlignment="Center">
+									<Run Text="/  " />
+									<Run Text="30" />
+								</TextBlock>
+							</StackPanel>
+						</StackPanel>
+					</Expander.Content>
+				</Expander>
 
-                <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                    <Expander.Header>
-                        <Grid Height="60">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+				<Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+					<Expander.Header>
+						<Grid Height="60">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
 
-                            <controls:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"
+							<controls:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"
                                                VerticalAlignment="Center" />
-                            <TextBlock Text="{me:Resource SettingsPage/personalization.Text}" Grid.Column="1"
+							<TextBlock Text="{me:Resource SettingsPage/personalization.Text}" Grid.Column="1"
                                        VerticalAlignment="Center" Margin="10,0,0,2" TextTrimming="CharacterEllipsis"
                                        FontSize="20" />
-                        </Grid>
-                    </Expander.Header>
-                    <Expander.Content>
-                        <StackPanel Spacing="10">
-                            <StackPanel Spacing="3">
-                                <TextBlock Text="App theme:"/>
-                                <ComboBox SelectedIndex="0" ItemsSource="{x:Static m:AppSettings.ThemeTypes}"/>
-                            </StackPanel>
-                            <StackPanel Spacing="10" Orientation="Horizontal">
-                                <TextBlock Text="Accent color:" VerticalAlignment="Center"/>
-                                <ColorPicker IsAlphaVisible="False"/>
-                            </StackPanel>
-                            <StackPanel Spacing="3">
-                                <TextBlock Text="{me:Resource SettingsPage/startPageBox.Header}"/>
-                                <ComboBox ItemsSource="{x:Static m:AppSettings.StartPageTypes}"
+						</Grid>
+					</Expander.Header>
+					<Expander.Content>
+						<StackPanel Spacing="10">
+							<StackPanel Spacing="3">
+								<TextBlock Text="App theme:"/>
+								<ComboBox SelectedIndex="0" ItemsSource="{x:Static m:AppSettings.ThemeTypes}"/>
+							</StackPanel>
+							<ToggleSwitch x:Name="useCustomAccent" Content="Use custom accent color" IsChecked="{Binding UseCustomAccentColor, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"></ToggleSwitch>
+							<StackPanel Spacing="10" Orientation="Horizontal" IsVisible="{Binding #useCustomAccent.IsChecked}">
+								<TextBlock Text="Accent color:" VerticalAlignment="Center"/>
+								<ColorPicker IsAlphaVisible="False" Color="{Binding CustomAccentColorHex, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}, Converter={StaticResource ColorConverter}, TargetNullValue={StaticResource SystemAccentColor}}"/>
+							</StackPanel>
+							<StackPanel Spacing="3">
+								<TextBlock Text="{me:Resource SettingsPage/startPageBox.Header}"/>
+								<ComboBox ItemsSource="{x:Static m:AppSettings.StartPageTypes}"
                                           SelectedItem="{Binding StartPageType, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate x:DataType="models:StartPageType">
-                                            <TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
-                        </StackPanel>
-                    </Expander.Content>
-                </Expander>
+									<ComboBox.ItemTemplate>
+										<DataTemplate x:DataType="models:StartPageType">
+											<TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
+										</DataTemplate>
+									</ComboBox.ItemTemplate>
+								</ComboBox>
+							</StackPanel>
+						</StackPanel>
+					</Expander.Content>
+				</Expander>
 
-                <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                    <Expander.Header>
-                        <Grid Height="60">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+				<Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+					<Expander.Header>
+						<Grid Height="60">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
 
-                            <controls:SymbolIcon Symbol="Message" VerticalAlignment="Center" />
-                            <TextBlock Text="{me:Resource SettingsPage/notifications.Text}" Grid.Column="1"
+							<controls:SymbolIcon Symbol="Message" VerticalAlignment="Center" />
+							<TextBlock Text="{me:Resource SettingsPage/notifications.Text}" Grid.Column="1"
                                        VerticalAlignment="Center" Margin="10,0,0,2" TextTrimming="CharacterEllipsis"
                                        FontSize="20" />
-                        </Grid>
-                    </Expander.Header>
-                    <Expander.Content>
-                        <StackPanel Spacing="10">
-                            <StackPanel Spacing="3">
-                                <TextBlock Text="{me:Resource SettingsPage/notifyAfterConversion.Header}"/>
-                                <ToggleSwitch IsThreeState="False" IsChecked="{Binding SendMessageAfterConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            </StackPanel>
-                            <StackPanel Spacing="3">
-                                <TextBlock Text="{me:Resource SettingsPage/notifyAfterDownload.Header}"/>
-                                <ToggleSwitch IsThreeState="False" IsChecked="{Binding SendMessageAfterDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Expander.Content>
-                </Expander>
+						</Grid>
+					</Expander.Header>
+					<Expander.Content>
+						<StackPanel Spacing="10">
+							<StackPanel Spacing="3">
+								<TextBlock Text="{me:Resource SettingsPage/notifyAfterConversion.Header}"/>
+								<ToggleSwitch IsThreeState="False" IsChecked="{Binding SendMessageAfterConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
+							</StackPanel>
+							<StackPanel Spacing="3">
+								<TextBlock Text="{me:Resource SettingsPage/notifyAfterDownload.Header}"/>
+								<ToggleSwitch IsThreeState="False" IsChecked="{Binding SendMessageAfterDownload, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
+							</StackPanel>
+						</StackPanel>
+					</Expander.Content>
+				</Expander>
 
-                <StackPanel x:Name="integratedInfoArea" IsVisible="{Binding #control.SmallWindowStyle, Mode=OneWay}">
-                    <TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
+				<StackPanel x:Name="integratedInfoArea" IsVisible="{Binding #control.SmallWindowStyle, Mode=OneWay}">
+					<TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
                                Classes="SmallTopBottomMargin" />
 
-                    <TextBlock Text="{Binding VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
+					<TextBlock Text="{Binding VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
 
-                    <TextBlock
+					<TextBlock
                         Text="{me:Resource Resources/Settings_AboutDescription.Text}"
                         Classes="XSmallTopMargin BodyTextBlockStyle"/>
 
-                    <!-- HorizontalSpacing="10" VerticalSpacing="10" -->
-                    <WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
-                        <controls:HyperlinkButton Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md" />
-                        <controls:HyperlinkButton Content="Special Thanks" Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="10"/>
-                        <controls:HyperlinkButton Content="{me:Resource SettingsPage/licenseBtn.Content}" Command="{Binding ShowLicenseCommand, Mode=OneTime}" Margin="10"/>
-                        <controls:HyperlinkButton Content="Third-Party" Command="{Binding ShowThirdPartyLicensesCommand, Mode=OneTime}" Margin="10"/>
-                        <controls:HyperlinkButton Content="{me:Resource SettingsPage/contactBtn.Content}" Command="{Binding OpenContactMailCommand, Mode=OneTime}" Margin="10"/>
-                        <controls:HyperlinkButton Content="GitHub" NavigateUri="https://github.com/onionware-github/OnionMedia"/>
-                    </WrapPanel>
-                    <controls:HyperlinkButton Content="{me:Resource SettingsPage/donateBtn.Content}"
-                                              NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
-                                              HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" BorderBrush="SlateGray" BorderThickness="1" />
+					<!-- HorizontalSpacing="10" VerticalSpacing="10" -->
+					<WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
+						<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md">
+							<Label Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+						<controls:HyperlinkButton Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="10">
+							<Label Content="Special Thanks" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+						<controls:HyperlinkButton Command="{Binding ShowLicenseCommand, Mode=OneTime}" Margin="10">
+							<Label Content="{me:Resource SettingsPage/licenseBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+						<controls:HyperlinkButton Command="{Binding ShowThirdPartyLicensesCommand, Mode=OneTime}" Margin="10">
+							<Label Content="Third-Party" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+						<controls:HyperlinkButton Command="{Binding OpenContactMailCommand, Mode=OneTime}" Margin="10">
+							<Label Content="{me:Resource SettingsPage/contactBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+						<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia">
+							<Label Content="GitHub" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+					</WrapPanel>
+					<Border BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="1" CornerRadius="4">
+						<controls:HyperlinkButton NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
+                                                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+							<Label Content="{me:Resource SettingsPage/donateBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+						</controls:HyperlinkButton>
+					</Border>
 
-                    <!-- HorizontalSpacing="40" VerticalSpacing="30" -->
-                    <WrapPanel Orientation="Horizontal" MaxHeight="350"
+					<!-- HorizontalSpacing="40" VerticalSpacing="30" -->
+					<WrapPanel Orientation="Horizontal" MaxHeight="350"
                                Classes="SmallTopMargin">
-                        <Image Source="{SvgImage ../Assets/icon.svg}" Height="200" VerticalAlignment="Top"  Margin="0,0,40,30"/>
-                        <Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
+						<Image Source="{SvgImage ../Assets/icon.svg}" Height="200" VerticalAlignment="Top"  Margin="0,0,40,30"/>
+						<Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                                VerticalAlignment="Top" Margin="0,30,0,0" />
-                    </WrapPanel>
-                </StackPanel>
-            </StackPanel>
-        </ScrollViewer>
+					</WrapPanel>
+				</StackPanel>
+			</StackPanel>
+		</ScrollViewer>
 
-        <ScrollViewer x:Name="InfoArea" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left"
+		<ScrollViewer x:Name="InfoArea" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left"
                       Width="350" Padding="0,10,10,0" IsVisible="{Binding !#control.SmallWindowStyle, Mode=OneWay}">
-            <StackPanel>
-                <TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
+			<StackPanel>
+				<TextBlock Text="{me:Resource Resources/Settings_About.Text}" FontSize="22" FontWeight="SemiBold"
                            Classes="SmallTopBottomMargin"/>
 
-                <TextBlock Text="{Binding VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
+				<TextBlock Text="{Binding VersionDescription, Mode=OneWay}" FontSize="18" FontWeight="SemiBold" />
 
-                <TextBlock
+				<TextBlock
                     Text="{me:Resource Resources/Settings_AboutDescription.Text}"
                     Classes="XSmallTopMargin BodyTextBlockStyle"/>
 
-                <!-- HorizontalSpacing="5" VerticalSpacing="10"-->
-                <WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
-                    <controls:HyperlinkButton Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}"
-                                              NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md" />
-                    <controls:HyperlinkButton Content="Special Thanks" Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="5,10"/>
-                    <controls:HyperlinkButton Content="{me:Resource SettingsPage/licenseBtn.Content}"
-                                              Command="{Binding ShowLicenseCommand, Mode=OneTime}"  Margin="5,10"/>
-                    <controls:HyperlinkButton Content="Third-Party" Command="{Binding ShowThirdPartyLicensesCommand, Mode=OneTime}"  Margin="5,10"/>
-                    <controls:HyperlinkButton Content="{me:Resource SettingsPage/contactBtn.Content}"
-                                              Command="{Binding OpenContactMailCommand, Mode=OneTime}"  Margin="5,10"/>
-                    <controls:HyperlinkButton Content="GitHub"
-                                              NavigateUri="https://github.com/onionware-github/OnionMedia" />
-                </WrapPanel>
-                <controls:HyperlinkButton Content="{me:Resource SettingsPage/donateBtn.Content}"
-                                          NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
-                                          HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" BorderBrush="SlateGray" BorderThickness="1" />
-                
-                <!-- HorizontalSpacing="40" VerticalSpacing="30"--> 
-                <WrapPanel Orientation="Horizontal" MaxHeight="350"
+				<!-- HorizontalSpacing="5" VerticalSpacing="10"-->
+				<WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
+					<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md">
+						<Label Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+					<controls:HyperlinkButton Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="10">
+						<Label Content="Special Thanks" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+					<controls:HyperlinkButton Command="{Binding ShowLicenseCommand, Mode=OneTime}" Margin="10">
+						<Label Content="{me:Resource SettingsPage/licenseBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+					<controls:HyperlinkButton Command="{Binding ShowThirdPartyLicensesCommand, Mode=OneTime}" Margin="10">
+						<Label Content="Third-Party" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+					<controls:HyperlinkButton Command="{Binding OpenContactMailCommand, Mode=OneTime}" Margin="10">
+						<Label Content="{me:Resource SettingsPage/contactBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+					<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia">
+						<Label Content="GitHub" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+				</WrapPanel>
+				<Border BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="1" CornerRadius="4">
+					<controls:HyperlinkButton NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
+											  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+						<Label Content="{me:Resource SettingsPage/donateBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
+					</controls:HyperlinkButton>
+				</Border>
+
+				<!-- HorizontalSpacing="40" VerticalSpacing="30"-->
+				<WrapPanel Orientation="Horizontal" MaxHeight="350"
                            Classes="SmallTopMargin">
-                    <Image Source="{SvgImage ../Assets/icon.svg}" Height="200" VerticalAlignment="Top" Margin="0,0,40,30"/>
-                    <Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
+					<Image Source="{SvgImage ../Assets/icon.svg}" Height="200" VerticalAlignment="Top" Margin="0,0,40,30"/>
+					<Image Source="{SvgImage ../Assets/AGPLv3_Logo.svg}" Stretch="Uniform" MaxHeight="500" MinWidth="350"
                            VerticalAlignment="Top" Margin="0,30,0,0" />
-                </WrapPanel>
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+				</WrapPanel>
+			</StackPanel>
+		</ScrollViewer>
+	</Grid>
 
 </UserControl>
