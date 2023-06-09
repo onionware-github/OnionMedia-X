@@ -37,8 +37,10 @@ sealed partial class ServiceProvider
 {
     public ServiceProvider()
     {
-        string path = JsonResourceLoader.GetCurrentLanguagePath(Path.Combine(GetService<IPathProvider>().InstallPath, "Resources"));
-        JsonStringResourceService = new JsonResourceLoader(path);
+        var rscDir = Path.Combine(GetService<IPathProvider>().InstallPath, "Resources");
+        string path = JsonResourceLoader.GetCurrentLanguagePath(rscDir);
+        string fallback = Path.Combine(rscDir, "en-us");
+        JsonStringResourceService = new JsonResourceLoader(path, fallback);
     }
     public IStringResourceService JsonStringResourceService { get; }
 }

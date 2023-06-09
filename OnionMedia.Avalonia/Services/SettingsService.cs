@@ -27,7 +27,7 @@ namespace OnionMedia.Services
         
         public SettingsService(IPathProvider pathProvider)
         {
-            settingsFilePath = Path.Combine(pathProvider.InstallPath, "appsettings.json");
+            settingsFilePath = Path.Combine(pathProvider.LocalPath, "appsettings.json");
             DeserializeSettings();
         }
         

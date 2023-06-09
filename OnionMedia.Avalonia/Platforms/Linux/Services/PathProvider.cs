@@ -18,10 +18,11 @@ namespace OnionMedia.Avalonia.Linux.Services;
 
 sealed class PathProvider : IPathProvider
 {
+    private string dataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Onionware/OnionMedia/");
     private string currentDirectory = AppContext.BaseDirectory;
     public string InstallPath => currentDirectory;
-    public string LocalPath => Path.Combine(currentDirectory, "LocalState");
-    public string LocalCache => Path.Combine(currentDirectory, "LocalCache");
+    public string LocalPath => Path.Combine(dataDirectory, "LocalState");
+    public string LocalCache => Path.Combine(dataDirectory, "LocalCache");
     public string Tempdir => Path.Combine(Path.GetTempPath(), "Onionmedia");
     public string ConverterTempdir => Path.Combine(Tempdir, "Converter");
     public string DownloaderTempdir => Path.Combine(Tempdir, "Downloader");

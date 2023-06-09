@@ -227,7 +227,7 @@
 									</ComboBox>
 								</StackPanel>
 							</StackPanel>
-							<StackPanel>
+							<StackPanel Spacing="3">
 								<TextBlock Text="{me:Resource SettingsPage/audioDownloadFormat.Header}"/>
 								<ComboBox ItemsSource="{x:Static c:GlobalResources.AudioConversionFormats}"
                                           SelectedItem="{Binding DownloadsAudioFormat, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}" />
@@ -298,12 +298,18 @@
 					<Expander.Content>
 						<StackPanel Spacing="10">
 							<StackPanel Spacing="3">
-								<TextBlock Text="App theme:"/>
-								<ComboBox SelectedIndex="0" ItemsSource="{x:Static m:AppSettings.ThemeTypes}"/>
+								<TextBlock Text="{me:Resource SettingsPage/AppTheme}"/>
+								<ComboBox SelectedIndex="0" ItemsSource="{x:Static m:AppSettings.ThemeTypes}" SelectedItem="{Binding SelectedTheme, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
+									<ComboBox.ItemTemplate>
+										<DataTemplate x:DataType="models:ThemeType">
+											<TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
+										</DataTemplate>
+									</ComboBox.ItemTemplate>
+								</ComboBox>
 							</StackPanel>
-							<ToggleSwitch x:Name="useCustomAccent" Content="Use custom accent color" IsChecked="{Binding UseCustomAccentColor, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"></ToggleSwitch>
+							<ToggleSwitch x:Name="useCustomAccent" Content="{me:Resource SettingsPage/UseCustomAccentColor}" IsChecked="{Binding UseCustomAccentColor, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"></ToggleSwitch>
 							<StackPanel Spacing="10" Orientation="Horizontal" IsVisible="{Binding #useCustomAccent.IsChecked}">
-								<TextBlock Text="Accent color:" VerticalAlignment="Center"/>
+								<TextBlock Text="{me:Resource SettingsPage/AccentColor}" VerticalAlignment="Center"/>
 								<ColorPicker IsAlphaVisible="False" Color="{Binding CustomAccentColorHex, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}, Converter={StaticResource ColorConverter}, TargetNullValue={StaticResource SystemAccentColor}}"/>
 							</StackPanel>
 							<StackPanel Spacing="3">
@@ -315,6 +321,12 @@
 											<TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}, ConverterParameter=SettingsPage}" />
 										</DataTemplate>
 									</ComboBox.ItemTemplate>
+								</ComboBox>
+							</StackPanel>
+							<StackPanel Spacing="3" IsVisible="False">
+								<TextBlock Text="App flow direction:"/>
+								<ComboBox ItemsSource="{Binding FlowDirections, Source={x:Static m:AppSettings.Instance}}" SelectedItem="{Binding AppFlowDirection, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}">
+									
 								</ComboBox>
 							</StackPanel>
 						</StackPanel>

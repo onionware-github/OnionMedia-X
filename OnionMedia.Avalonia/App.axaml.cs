@@ -6,6 +6,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
+using Avalonia.Styling;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using FFMpegCore;
 using FluentAvalonia.Styling;
@@ -44,6 +46,8 @@ namespace OnionMedia.Avalonia
 
                 AccentColorChanged();
                 UseAccentColorChanged();
+                RequestedThemeVariant = CoreToAvaloniaTheme(AppSettings.Instance.SelectedTheme);
+                MainWindow.FlowDirection = CoreToAvaloniaFlowDirection(AppSettings.Instance.AppFlowDirection);
                 AppSettings.Instance.PropertyChanged += AppSettingsChanged;
             }
 
@@ -52,16 +56,23 @@ namespace OnionMedia.Avalonia
 
         private void AppSettingsChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(AppSettings.CustomAccentColorHex))
+            switch (e.PropertyName)
             {
-                AccentColorChanged();
-                return;
-            }
-
-            if (e.PropertyName == nameof(AppSettings.UseCustomAccentColor))
-            {
-                UseAccentColorChanged();
-                return;
+                case nameof(AppSettings.CustomAccentColorHex):
+                    AccentColorChanged();
+                    return;
+                
+                case nameof(AppSettings.UseCustomAccentColor):
+                    UseAccentColorChanged();
+                    return;
+                
+                case nameof(AppSettings.SelectedTheme):
+                    RequestedThemeVariant = CoreToAvaloniaTheme(AppSettings.Instance.SelectedTheme);
+                    return;
+                
+                case nameof(AppSettings.AppFlowDirection):
+                    MainWindow.FlowDirection = CoreToAvaloniaFlowDirection(AppSettings.Instance.AppFlowDirection);
+                    return;
             }
         }
 
@@ -97,5 +108,19 @@ namespace OnionMedia.Avalonia
                 Debug.WriteLine(exception);
             }
         }
+
+        ThemeVariant CoreToAvaloniaTheme(ThemeType theme) => theme switch
+        {
+            ThemeType.Light => ThemeVariant.Light,
+            ThemeType.Dark => ThemeVariant.Dark,
+            _=> ThemeVariant.Default
+        };
+
+        FlowDirection CoreToAvaloniaFlowDirection(AppFlowDirection direction) => direction switch
+        {
+            AppFlowDirection.LeftToRight => FlowDirection.LeftToRight,
+            AppFlowDirection.RightToLeft => FlowDirection.RightToLeft,
+            _=> FlowDirection.LeftToRight
+        };
     }
 }

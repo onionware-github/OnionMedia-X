@@ -146,7 +146,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="m:MediaItemModel">
                                 <Grid>
-                                    <Grid Margin="5">
+                                    <Grid Margin="5,15">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto" />
                                             <ColumnDefinition />

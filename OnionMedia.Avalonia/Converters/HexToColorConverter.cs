@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Globalization;
-using Avalonia;
 using Avalonia.Data.Converters;
-using Avalonia.Styling;
 using Color = Avalonia.Media.Color;
 
 namespace OnionMedia.Avalonia.Converters;
@@ -28,10 +26,8 @@ sealed class HexToColorConverter : IValueConverter
     //UI->Backend
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value is Color color)
-        {
-            return ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B));
-        }
-        return null;
+        return value is Color color
+            ? ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B))
+            : null;
     }
 }
