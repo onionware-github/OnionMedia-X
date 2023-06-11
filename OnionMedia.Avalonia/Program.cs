@@ -3,17 +3,20 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Windows.Storage;
-using Windows.System;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using DesktopNotifications;
 using DesktopNotifications.FreeDesktop;
 using FFMpegCore;
-using Microsoft.Toolkit.Uwp.Notifications;
 using OnionMedia.Core;
 using OnionMedia.Core.Services;
+
+#if WINDOWS
+using Windows.Storage;
+using Windows.System;
+using Microsoft.Toolkit.Uwp.Notifications;
+#endif
 
 namespace OnionMedia.Avalonia
 {
@@ -102,7 +105,6 @@ namespace OnionMedia.Avalonia
 #if LINUX
     public static class AppBuilderLinuxNotificationExtension
     {
-                
         public static AppBuilder SetupLinuxNotifications(this AppBuilder builder)
         {
             INotificationManager manager;
