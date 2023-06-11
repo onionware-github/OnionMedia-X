@@ -61,6 +61,8 @@ namespace OnionMedia.Core.Models
 
             customAccentColorHex = settingsService.GetSetting("customAccentColorHex") as string;
             useCustomAccentColor = settingsService.GetSetting("useCustomAccentColor") as bool? ?? false;
+            selectedTheme = ParseEnum<ThemeType>(settingsService.GetSetting("selectedTheme"));
+            appFlowDirection = ParseEnum<AppFlowDirection>(settingsService.GetSetting("appFlowDirection"));
             
             var downloadsAudioFormat = settingsService.GetSetting("downloadsAudioFormat");
             if (downloadsAudioFormat == null)
@@ -87,6 +89,7 @@ namespace OnionMedia.Core.Models
         public static VideoAddMode[] VideoAddModes { get; } = Enum.GetValues<VideoAddMode>().ToArray();
         public static StartPageType[] StartPageTypes { get; } = Enum.GetValues<StartPageType>().ToArray();
         public static ThemeType[] ThemeTypes { get; } = Enum.GetValues<ThemeType>().ToArray();
+        public static AppFlowDirection[] FlowDirections { get; } = Enum.GetValues<AppFlowDirection>().ToArray();
 
         //Settings
         public int SimultaneousOperationCount
@@ -265,6 +268,30 @@ namespace OnionMedia.Core.Models
             set => SetSetting(ref customAccentColorHex, value, "customAccentColorHex");
         }
         private string? customAccentColorHex;
+        
+        public ThemeType SelectedTheme
+        {
+            get => selectedTheme;
+            set
+            {
+                if (SetProperty(ref selectedTheme, value))
+                    settingsService.SetSetting("selectedTheme", value.ToString());
+            }
+        }
+
+        private ThemeType selectedTheme;
+        
+        public AppFlowDirection AppFlowDirection
+        {
+            get => appFlowDirection;
+            set
+            {
+                if (SetProperty(ref appFlowDirection, value))
+                    settingsService.SetSetting("appFlowDirection", value.ToString());
+            }
+        }
+
+        private AppFlowDirection appFlowDirection;
 
         //Last opened page
         public bool DownloaderPageIsOpen
@@ -347,5 +374,11 @@ namespace OnionMedia.Core.Models
         Default,
         Light,
         Dark
+    }
+
+    public enum AppFlowDirection
+    {
+        LeftToRight,
+        RightToLeft
     }
 }

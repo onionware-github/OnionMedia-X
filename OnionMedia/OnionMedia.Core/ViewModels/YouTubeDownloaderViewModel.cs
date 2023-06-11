@@ -131,27 +131,28 @@ namespace OnionMedia.Core.ViewModels
         private readonly StringBuilder sb = new();
         private string previouslySelected;
         private string selectedQuality;
+
         public string SelectedQuality
         {
             get => selectedQuality;
             set
             {
-                if (selectedQuality != value)
+                if (selectedQuality == value) return;
+
+                if (previouslySelected == null)
                 {
-                    if (previouslySelected == null)
-                    {
-                        selectedQuality = value;
-                        previouslySelected = selectedQuality;
-                    }
-                    else
-                    {
-                        sb.Append(selectedQuality);
-                        previouslySelected = sb.ToString();
-                        selectedQuality = value;
-                        sb.Clear();
-                    }
-                    OnPropertyChanged();
+                    selectedQuality = value;
+                    previouslySelected = selectedQuality;
                 }
+                else
+                {
+                    sb.Append(selectedQuality);
+                    previouslySelected = sb.ToString();
+                    selectedQuality = value;
+                    sb.Clear();
+                }
+
+                OnPropertyChanged();
             }
         }
 
@@ -245,7 +246,7 @@ namespace OnionMedia.Core.ViewModels
                 OnPropertyChanged(nameof(ResolutionsAvailable));
 
                 //TODO Filter videos without QualityLabels
-                if (previouslySelected != null)
+                if (!string.IsNullOrEmpty(previouslySelected))
                     SelectedQuality = previouslySelected;
                 else if (Resolutions.Any())
                     SelectedQuality = Resolutions[0];
