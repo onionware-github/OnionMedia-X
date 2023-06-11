@@ -51,6 +51,9 @@
 					<Setter Property="BorderThickness" Value="1"/>
 				</Style.Setters>
 			</Style>
+			<Style Selector="TextBlock">
+				<Setter Property="TextWrapping" Value="Wrap"/>
+			</Style>
 		</Grid.Styles>
 
 		<ScrollViewer x:Name="ContentArea" Classes="XSmallTopMargin" VerticalScrollBarVisibility="Auto"
@@ -65,7 +68,7 @@
 							</Grid.ColumnDefinitions>
 
 							<controls:SymbolIcon Symbol="MoveToFolder" VerticalAlignment="Center" Margin="0,0,10,0"/>
-							<TextBlock Text="{me:Resource SettingsPage/storagePaths.Text}" Grid.Column="1"
+							<TextBlock Text="{me:Resource SettingsPage/storagePaths.Text}" Grid.Column="1" MaxLines="2"
                                        VerticalAlignment="Center" Margin="0,0,0,2" TextTrimming="CharacterEllipsis"
                                        FontSize="20" />
 						</Grid>
@@ -174,7 +177,7 @@
 							<controls:SymbolIcon Symbol="Sync" VerticalAlignment="Center" />
 							<TextBlock Text="{me:Resource SettingsPage/convertAndDownloadSettings.Text}"
                                        Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,2"
-                                       TextTrimming="CharacterEllipsis" FontSize="20" />
+                                       TextTrimming="CharacterEllipsis" FontSize="20" MaxLines="2"/>
 						</Grid>
 					</Expander.Header>
 					<Expander.Content>
@@ -189,7 +192,7 @@
 									<x:Int32>5</x:Int32>
 								</ComboBox>
 							</StackPanel>
-
+							
 							<CheckBox x:Name="limitDownloadSpeed"
                                       Content="{me:Resource SettingsPage/limitDownloadSpeed.Content}"
                                       Classes="XSmallTopMargin"
@@ -292,7 +295,7 @@
                                                VerticalAlignment="Center" />
 							<TextBlock Text="{me:Resource SettingsPage/personalization.Text}" Grid.Column="1"
                                        VerticalAlignment="Center" Margin="10,0,0,2" TextTrimming="CharacterEllipsis"
-                                       FontSize="20" />
+                                       FontSize="20" MaxLines="2"/>
 						</Grid>
 					</Expander.Header>
 					<Expander.Content>
@@ -344,7 +347,7 @@
 							<controls:SymbolIcon Symbol="Message" VerticalAlignment="Center" />
 							<TextBlock Text="{me:Resource SettingsPage/notifications.Text}" Grid.Column="1"
                                        VerticalAlignment="Center" Margin="10,0,0,2" TextTrimming="CharacterEllipsis"
-                                       FontSize="20" />
+                                       FontSize="20" MaxLines="2"/>
 						</Grid>
 					</Expander.Header>
 					<Expander.Content>
