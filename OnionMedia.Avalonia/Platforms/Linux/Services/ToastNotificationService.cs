@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
+using System.IO;
 using Avalonia;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.Services;
@@ -22,19 +23,21 @@ sealed class ToastNotificationService : IToastNotificationService
         if (_notificationManager is not null)
             _notificationManager.NotificationActivated += OnNotificationActivated;
     }
-    
+
     public void SendConversionDoneNotification(MediaItemModel mediafile, string filepath, string thumbnailpath)
     {
         _notificationManager?.ShowNotification(new()
-		{
-			Title = "conversionDone".GetLocalized("Resources"),
-			Body = mediafile.Title + '\n' + mediafile.FileTags.Artist,
+        {
+            Title = "conversionDone".GetLocalized("Resources"),
+            Body = mediafile.Title + '\n' + mediafile.FileTags.Artist,
             Buttons =
             {
-                new("playFile".GetLocalized("Resources"), JsonSerializer.Serialize(new NotificationAction(new[] {filepath}, true))),
-                new("openFolder".GetLocalized("Resources"), JsonSerializer.Serialize(new NotificationAction(new[] {filepath}, false)))
+                new("playFile".GetLocalized("Resources"),
+                    JsonSerializer.Serialize(new NotificationAction(new[] { filepath }, true))),
+                new("openFolder".GetLocalized("Resources"),
+                    JsonSerializer.Serialize(new NotificationAction(new[] { filepath }, false)))
             }
-		});
+        });
     }
 
     public void SendConversionsDoneNotification(uint amount)
@@ -54,8 +57,10 @@ sealed class ToastNotificationService : IToastNotificationService
             Body = video.Title + '\n' + video.Uploader,
             Buttons =
             {
-                new("playFile".GetLocalized("Resources"), JsonSerializer.Serialize(new NotificationAction(new[] {path}, true))),
-                new("openFolder".GetLocalized("Resources"), JsonSerializer.Serialize(new NotificationAction(new[] {path}, false)))
+                new("playFile".GetLocalized("Resources"),
+                    JsonSerializer.Serialize(new NotificationAction(new[] { path }, true))),
+                new("openFolder".GetLocalized("Resources"),
+                    JsonSerializer.Serialize(new NotificationAction(new[] { path }, false)))
             }
         });
     }
@@ -70,14 +75,34 @@ sealed class ToastNotificationService : IToastNotificationService
         var files = filenames?.ToArray() ?? Array.Empty<string>();
         if (files.Any())
         {
-            notification.Buttons.Add(("openFolder".GetLocalized("Resources"), JsonSerializer.Serialize(new NotificationAction(files, false))));
+            notification.Buttons.Add(("openFolder".GetLocalized("Resources"),
+                JsonSerializer.Serialize(new NotificationAction(files, false))));
         }
+
         _notificationManager?.ShowNotification(notification);
     }
-    
+
     private void OnNotificationActivated(object? sender, NotificationActivatedEventArgs e)
     {
         Debug.WriteLine(e.ActionId);
+        try
+        {
+            var action = JsonSerializer.Deserialize<NotificationAction>(e.ActionId);
+            if (!(action.Files?.Length > 0)) return;
+
+            //Open folder
+            if (!action.OpenFileDirectly)
+            {
+                Process.Start("xdg-open", Path.GetDirectoryName(action.Files[0]));
+                return;
+            }
+
+            Process.Start("xdg-open", action.Files[0]);
+        }
+        catch
+        {
+            Debug.WriteLine("File opening aborted");
+        }
     }
 
     public record NotificationAction(string[] Files, bool OpenFileDirectly);
