@@ -308,15 +308,15 @@
                                     <TextBlock Text="{res:Resource MediaPage/resolution.Text}" />
                                     <WrapPanel Orientation="Horizontal">
                                         <StackPanel Orientation="Horizontal" Spacing="10">
-                                            <controls:NumberBox
-                                                PlaceholderText="{Binding SelectedItem.MediaInfo.PrimaryVideoStream.Width}"
+                                            <NumericUpDown
+                                                Watermark="{Binding SelectedItem.MediaInfo.PrimaryVideoStream.Width}"
                                                 Value="{Binding SelectedItem.Width, Mode=TwoWay}"
-                                                IsEnabled="{Binding VideoEnabled}" MaxWidth="100" />
+                                                IsEnabled="{Binding VideoEnabled}" MaxWidth="100" ShowButtonSpinner="False"/>
                                             <TextBlock Text="X" VerticalAlignment="Center" />
-                                            <controls:NumberBox
-                                                PlaceholderText="{Binding SelectedItem.MediaInfo.PrimaryVideoStream.Height}"
+                                            <NumericUpDown
+                                                Watermark="{Binding SelectedItem.MediaInfo.PrimaryVideoStream.Height}"
                                                 Value="{Binding SelectedItem.Height, Mode=TwoWay}"
-                                                IsEnabled="{Binding VideoEnabled}" MaxWidth="100" />
+                                                IsEnabled="{Binding VideoEnabled}" MaxWidth="100" ShowButtonSpinner="False"/>
                                         </StackPanel>
                                         <DropDownButton IsEnabled="{Binding VideoEnabled}" Margin="5,0">
                                             <DropDownButton.Content>

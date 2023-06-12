@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using OnionMedia.Avalonia.UserControls;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.ViewModels;
@@ -96,7 +98,7 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
     private void Resolutions_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         if (e?.AddedItems?.Count is 0 || e.AddedItems[0] is not Resolution) return;
-        ((MediaViewModel)DataContext).SetResolutionCommand.Execute((Resolution)e.AddedItems[0]);
-        HideParentFlyout(sender as Control);
+        ((MediaViewModel)DataContext).SetResolution((Resolution)e.AddedItems[0]);
+        Dispatcher.UIThread.Post(() => HideParentFlyout(sender as Control));
     }
 }
