@@ -136,7 +136,7 @@
                                    DragOver="mediaList_DragOver"
                                    CanReorderItems="True"
                                    ReorderMode="Enabled"-->
-                    <Border  BorderBrush="SlateGray" BorderThickness="3" CornerRadius="9">
+                    <Border BorderBrush="SlateGray" BorderThickness="3" CornerRadius="9">
                         <ListBox x:Name="mediaList"
                              DockPanel.Dock="Bottom"
                              ItemsSource="{Binding Files}"
@@ -589,7 +589,7 @@
                         <StackPanel>
                             <controls:SymbolIcon Symbol="Play"
                                                  IsVisible="{Binding !StartConversionCommand.IsRunning}" />
-                            <ui:ProgressRing x:Name="btnProgressRing"
+                            <ui:ProgressRing x:Name="btnProgressRing" IsIndeterminate="True"
                                              IsVisible="{Binding StartConversionCommand.IsRunning}" />
                             <TextBlock Text="{res:Resource MediaPage/convertBtn.Text}"
                                        IsVisible="{Binding !StartConversionCommand.IsRunning}" />

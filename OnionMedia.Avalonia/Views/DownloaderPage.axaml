@@ -315,7 +315,7 @@
                                 <StackPanel>
                                     <controls:SymbolIcon Symbol="Download"
                                                          IsVisible="{Binding !DownloadFileCommand.IsRunning}" />
-                                    <ui:ProgressRing x:Name="btnProgressRing"
+                                    <ui:ProgressRing x:Name="btnProgressRing" IsIndeterminate="True"
                                                      IsVisible="{Binding DownloadFileCommand.IsRunning}" />
                                     <TextBlock Text="{res:Resource DownloaderPage/downloadStreamBtn.Text}"
                                                IsVisible="{Binding !DownloadFileCommand.IsRunning}" />

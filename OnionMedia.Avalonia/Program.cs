@@ -42,12 +42,17 @@ namespace OnionMedia.Avalonia
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace()
+#if WINDOWS
                 .With(new Win32PlatformOptions
                 {
                     UseWindowsUIComposition = true
                 })
-#if LINUX
+#elif LINUX
                 .SetupLinuxNotifications()
+                .With(new X11PlatformOptions
+                {
+                    UseDBusFilePicker = false //disables Portal filepickers from FreeDesktop
+                })
 #endif
                 .UseReactiveUI();
 
