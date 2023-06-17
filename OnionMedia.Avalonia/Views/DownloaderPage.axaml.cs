@@ -53,6 +53,15 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
         base.OnLoaded();
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             desktop.MainWindow.SizeChanged += UpdateSizeStyle;
+        
+        this.FindControl<TextBox>(nameof(videolink))?.Focus();
+    }
+
+    protected override void OnUnloaded()
+    {
+        base.OnUnloaded();
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow.SizeChanged -= UpdateSizeStyle;
     }
 
     public bool SmallWindowStyle { get; set; }

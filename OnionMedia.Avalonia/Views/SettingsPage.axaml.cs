@@ -44,6 +44,13 @@ public sealed partial class SettingsPage : UserControl, INotifyPropertyChanged
             desktop.MainWindow.SizeChanged += UpdateSizeStyle;
     }
 
+    protected override void OnUnloaded()
+    {
+        base.OnUnloaded();
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow.SizeChanged -= UpdateSizeStyle;
+    }
+
     private void FilenameSuffix_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
         string text = (sender as TextBox)?.Text ?? string.Empty;

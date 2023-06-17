@@ -51,6 +51,13 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
         this.FindControl<NumberBox>("videoBitrateBox").NumberFormatter = NumberboxBitrateFormatter;
     }
 
+    protected override void OnUnloaded()
+    {
+        base.OnUnloaded();
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow.SizeChanged -= UpdateSizeStyle;
+    }
+
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
