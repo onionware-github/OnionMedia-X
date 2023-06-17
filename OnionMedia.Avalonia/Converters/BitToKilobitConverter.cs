@@ -17,6 +17,6 @@ sealed class BitToKilobitConverter : IValueConverter
     {
         if (double.TryParse(value?.ToString(), out double kbit))
             return (long)Math.Round(kbit * 1000, 0);
-        throw new ArgumentException("value is not a number.");
+        return (long)0;
     }
 }

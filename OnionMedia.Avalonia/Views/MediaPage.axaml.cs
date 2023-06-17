@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
@@ -9,6 +10,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using FluentAvalonia.UI.Controls;
 using OnionMedia.Avalonia.UserControls;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.ViewModels;
@@ -45,6 +47,8 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
         base.OnLoaded();
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             desktop.MainWindow.SizeChanged += UpdateSizeStyle;
+        this.FindControl<NumberBox>("audioBitrateBox").NumberFormatter = NumberboxBitrateFormatter;
+        this.FindControl<NumberBox>("videoBitrateBox").NumberFormatter = NumberboxBitrateFormatter;
     }
 
     private void InitializeComponent()
@@ -101,4 +105,6 @@ public partial class MediaPage : UserControl, INotifyPropertyChanged
         ((MediaViewModel)DataContext).SetResolution((Resolution)e.AddedItems[0]);
         Dispatcher.UIThread.Post(() => HideParentFlyout(sender as Control));
     }
+        
+    public static string NumberboxBitrateFormatter(double value) => value == 0 ? string.Empty : value.ToString(CultureInfo.InvariantCulture);
 }

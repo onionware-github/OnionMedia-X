@@ -310,12 +310,12 @@
                                         <StackPanel Orientation="Horizontal" Spacing="10">
                                             <NumericUpDown
                                                 Watermark="{Binding SelectedItem.MediaInfo.PrimaryVideoStream.Width}"
-                                                Value="{Binding SelectedItem.Width, Mode=TwoWay}"
+                                                Value="{Binding SelectedItem.Width, Mode=TwoWay, Converter={StaticResource NumericUpDownValueConverter}}"
                                                 IsEnabled="{Binding VideoEnabled}" MaxWidth="100" ShowButtonSpinner="False"/>
                                             <TextBlock Text="X" VerticalAlignment="Center" />
                                             <NumericUpDown
                                                 Watermark="{Binding SelectedItem.MediaInfo.PrimaryVideoStream.Height}"
-                                                Value="{Binding SelectedItem.Height, Mode=TwoWay}"
+                                                Value="{Binding SelectedItem.Height, Mode=TwoWay, Converter={StaticResource NumericUpDownValueConverter}}"
                                                 IsEnabled="{Binding VideoEnabled}" MaxWidth="100" ShowButtonSpinner="False"/>
                                         </StackPanel>
                                         <DropDownButton IsEnabled="{Binding VideoEnabled}" Margin="5,0">
@@ -420,12 +420,12 @@
                                     <StackPanel Orientation="Horizontal" Spacing="3" Margin="0,0,10,0"
                                                 IsVisible="{Binding SelectedItem.AudioStreamAvailable}">
                                         <!-- NumberFormatter="{Binding onionmedia:BitrateFormatter.Instance, Mode=OneTime}" -->
-                                        <controls:NumberBox Header="{res:Resource MediaPage/audiobitrate.Header}"
+                                        <controls:NumberBox x:Name="audioBitrateBox" Header="{res:Resource MediaPage/audiobitrate.Header}"
                                                             PlaceholderText="{res:Resource MediaPage/audiobitrate.PlaceholderText}"
-                                                            Minimum="0"
+                                                            Minimum="0" Maximum="{x:Static x:Double.MaxValue}"
                                                             Value="{Binding SelectedItem.AudioBitrate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
                                                             IsEnabled="{Binding SelectedConversionPreset.AudioAvailable}"
-                                                            Width="125" />
+                                                            Width="125"/>
                                         <TextBlock Text="kbit/s" Margin="5,40,0,0"/>
                                     </StackPanel>
                                     <!-- Audiosamplerate -->
@@ -441,8 +441,7 @@
                                                       Width="150" Margin="0,5,0,0">
                                                 <ComboBox.ItemTemplate>
                                                     <DataTemplate x:DataType="x:Double">
-                                                        <ContentPresenter
-                                                            Content="{Binding Converter={StaticResource SampleRateComboBoxConverter}}" />
+                                                        <TextBlock Text="{Binding Converter={StaticResource SampleRateComboBoxConverter}}" />
                                                     </DataTemplate>
                                                 </ComboBox.ItemTemplate>
                                             </ComboBox>
@@ -452,12 +451,12 @@
                                     <StackPanel Orientation="Horizontal" Spacing="3"
                                                 IsVisible="{Binding SelectedItem.VideoStreamAvailable}">
                                         <!-- NumberFormatter="{Binding onionmedia:BitrateFormatter.Instance, Mode=OneTime}" -->
-                                        <controls:NumberBox Header="{res:Resource MediaPage/videobitrate.Header}"
+                                        <controls:NumberBox x:Name="videoBitrateBox" Header="{res:Resource MediaPage/videobitrate.Header}"
                                                             PlaceholderText="{res:Resource MediaPage/videobitrate.PlaceholderText}"
-                                                            Minimum="0"
+                                                            Minimum="0" Maximum="{x:Static x:Double.MaxValue}"
                                                             Value="{Binding SelectedItem.VideoBitrate, Mode=TwoWay, Converter={StaticResource BitToKilobitConverter}}"
                                                             IsEnabled="{Binding SelectedConversionPreset.VideoAvailable}"
-                                                            Width="125" />
+                                                            Width="125"/>
                                         <TextBlock Text="kbit/s" Margin="5,40,0,0"/>
                                     </StackPanel>
                                 </WrapPanel>

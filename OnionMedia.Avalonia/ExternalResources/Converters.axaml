@@ -12,4 +12,5 @@
     <c:RemoveFilenameExtensionConverter x:Key="RemoveFilenameExtensionConverter"/>
     <c:DateToShortStringConverter x:Key="DateToShortStringConverter"/>
     <c:HexToColorConverter x:Key="ColorConverter"/>
+    <c:NumericUpDownValueConverter x:Key="NumericUpDownValueConverter"/>
 </ResourceDictionary>
