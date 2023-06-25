@@ -75,7 +75,7 @@ namespace OnionMedia.Core.ViewModels
         private async Task ShowLicenseAsync()
         {
             string title = "licenseTitle".GetLocalized();
-            string license = await File.ReadAllTextAsync(pathProvider.LicensesDir + "onionmedia.txt");
+            string license = await File.ReadAllTextAsync(Path.Combine(pathProvider.LicensesDir, "onionmedia.txt"));
             await dialogService.ShowInfoDialogAsync(title, license, "OK");
         }
 
