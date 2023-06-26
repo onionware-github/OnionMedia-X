@@ -10,6 +10,7 @@ namespace OnionMedia.Avalonia;
 
 [ServiceProvider]
 //Core Services
+[Singleton<IDataCollectionProvider<LibraryInfo>, LibraryInfoProvider>]
 [Singleton(typeof(IDialogService), typeof(DialogService))]
 [Singleton(typeof(IDownloaderDialogService), typeof(DownloaderDialogService))]
 [Singleton(typeof(IThirdPartyLicenseDialog), typeof(ThirdPartyLicenseDialog))]

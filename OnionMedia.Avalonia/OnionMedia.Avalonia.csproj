@@ -9,6 +9,7 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <LangVersion>11</LangVersion>
     <PublishAot>false</PublishAot>
+    <StripSymbols>true</StripSymbols>
     <DefineConstants Condition="'$(OS)' == 'Windows_NT'">WINDOWS</DefineConstants>
     <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' == 'osx-x64'">MAC</DefineConstants>
     <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' != 'osx-x64'">LINUX</DefineConstants>
@@ -68,31 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\de-de\Dialogs\ConversionPresetDialog.json" />
-    <Content Include="licenses\communitytoolkit.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="licenses\ffmpeg.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="licenses\FFMpegCore.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="licenses\microsoft_mit_license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="licenses\newtonsoft_json.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="licenses\onionmedia.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="licenses\pinvoke_user32.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="licenses\TagLibSharp.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="licenses\xFFmpeg.NET.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="licenses\YoutubeDLSharp.txt">
@@ -233,6 +216,10 @@
     </Content>
     <None Remove="Resources\es\SettingsPage.json" />
     <Content Include="Resources\es\SettingsPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="licenses\mit-license" />
+    <Content Include="licenses\mit-license">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

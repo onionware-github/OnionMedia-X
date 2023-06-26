@@ -2,6 +2,7 @@
 using Jab;
 using OnionMedia.Avalonia.States;
 using OnionMedia.Avalonia.Windows.Services;
+using OnionMedia.Core.Models;
 using OnionMedia.Core.Services;
 using OnionMedia.Core.ViewModels;
 using OnionMedia.Services;
@@ -10,6 +11,7 @@ namespace OnionMedia.Avalonia;
 
 [ServiceProvider]
 //Core Services
+[Singleton<IDataCollectionProvider<LibraryInfo>, LibraryInfoProvider>]
 [Singleton(typeof(IDialogService), typeof(DialogService))]
 [Singleton(typeof(IDownloaderDialogService), typeof(DownloaderDialogService))]
 [Singleton(typeof(IThirdPartyLicenseDialog), typeof(ThirdPartyLicenseDialog))]

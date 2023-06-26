@@ -21,7 +21,7 @@ public sealed partial class LicensesInfoPage : UserControl, INotifyPropertyChang
         InitializeComponent();
         DataContext = state.SelectedLibrary;
         if (!File.Exists(state.SelectedLibrary.LicensePath)) return;
-        LicenseText = File.ReadAllText(state.SelectedLibrary.LicensePath);
+        LicenseText = File.ReadAllText(state.SelectedLibrary.LicensePath)?.Replace("{year}", state.SelectedLibrary.Year > 0 ? state.SelectedLibrary.Year.ToString() : string.Empty).Replace("{author}", state.SelectedLibrary.Author ?? string.Empty);;
         PropertyChanged?.Invoke(this, new(nameof(LicenseText)));
     }
 
@@ -30,7 +30,7 @@ public sealed partial class LicensesInfoPage : UserControl, INotifyPropertyChang
         if (e.PropertyName != nameof(state.SelectedLibrary)) return;
         DataContext = state.SelectedLibrary;
         if (!File.Exists(state.SelectedLibrary.LicensePath)) return;
-        LicenseText = File.ReadAllText(state.SelectedLibrary.LicensePath);
+        LicenseText = File.ReadAllText(state.SelectedLibrary.LicensePath)?.Replace("{year}", state.SelectedLibrary.Year > 0 ? state.SelectedLibrary.Year.ToString() : string.Empty).Replace("{author}", state.SelectedLibrary.Author ?? string.Empty);
         PropertyChanged?.Invoke(this, new(nameof(LicenseText)));
     }
 
