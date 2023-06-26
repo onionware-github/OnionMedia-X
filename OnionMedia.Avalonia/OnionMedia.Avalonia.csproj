@@ -222,6 +222,50 @@
     <Content Include="licenses\mit-license">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="Resources\nl\Dialogs\ConversionPresetDialog.json" />
+    <Content Include="Resources\nl\Dialogs\ConversionPresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\Dialogs\DeletePresetDialog.json" />
+    <Content Include="Resources\nl\Dialogs\DeletePresetDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\Dialogs\DialogResources.json" />
+    <Content Include="Resources\nl\Dialogs\DialogResources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\Dialogs\EditTagsDialog.json" />
+    <Content Include="Resources\nl\Dialogs\EditTagsDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\Dialogs\LicenseDialogs.json" />
+    <Content Include="Resources\nl\Dialogs\LicenseDialogs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\Dialogs\PlaylistSelectorDialog.json" />
+    <Content Include="Resources\nl\Dialogs\PlaylistSelectorDialog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\DownloaderPage.json" />
+    <Content Include="Resources\nl\DownloaderPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\MediaPage.json" />
+    <Content Include="Resources\nl\MediaPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\ProgressStates.json" />
+    <Content Include="Resources\nl\ProgressStates.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\Resources.json" />
+    <Content Include="Resources\nl\Resources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="Resources\nl\SettingsPage.json" />
+    <Content Include="Resources\nl\SettingsPage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

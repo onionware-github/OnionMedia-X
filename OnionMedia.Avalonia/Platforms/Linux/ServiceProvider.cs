@@ -4,6 +4,7 @@ using OnionMedia.Avalonia.States;
 using OnionMedia.Avalonia.Linux.Services;
 using OnionMedia.Core.Services;
 using OnionMedia.Core.ViewModels;
+using OnionMedia.Core.Models;
 using OnionMedia.Services;
 
 namespace OnionMedia.Avalonia;

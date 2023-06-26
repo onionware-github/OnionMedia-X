@@ -2,7 +2,7 @@
 using OnionMedia.Core.Models;
 using OnionMedia.Core.Services;
 
-namespace OnionMedia.Avalonia.Platforms.Linux.Services;
+namespace OnionMedia.Avalonia.Linux.Services;
 
 public class LibraryInfoProvider : IDataCollectionProvider<LibraryInfo>
 {
