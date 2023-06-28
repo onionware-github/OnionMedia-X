@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls;
@@ -72,4 +73,6 @@ public sealed partial class SettingsPage : UserControl, INotifyPropertyChanged
         string text = (sender as TextBox)?.Text ?? string.Empty;
         AppSettings.Instance.ConvertedFilenameSuffix = text;
     }
+
+    public double SystemCoreCount => Environment.ProcessorCount;
 }

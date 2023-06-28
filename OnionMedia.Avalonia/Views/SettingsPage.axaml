@@ -273,10 +273,10 @@
 								<controls:NumberBox
                                     Value="{Binding MaxThreadCountForConversion, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"
                                     Minimum="1"
-                                    Maximum="30"/>
+                                    Maximum="{Binding #control.SystemCoreCount}"/>
 								<TextBlock VerticalAlignment="Center">
 									<Run Text="/  " />
-									<Run Text="30" />
+									<Run Text="{Binding #control.SystemCoreCount}" />
 								</TextBlock>
 							</StackPanel>
 						</StackPanel>
