@@ -19,31 +19,36 @@
     {
       "Name": "alias_pix",
       "Description": "Alias/Wavefront PIX image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "amv",
       "Description": "AMV Video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "apng",
       "Description": "APNG (Animated Portable Network Graphics) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "asv1",
       "Description": "ASUS V1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "asv2",
       "Description": "ASUS V2",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -62,7 +67,8 @@
     {
       "Name": "avrp",
       "Description": "Avid 1:1 10-bit RGB Packer",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -76,43 +82,50 @@
     {
       "Name": "avui",
       "Description": "Avid Meridien Uncompressed",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "ayuv",
       "Description": "Uncompressed packed MS 4:4:4:4",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "bitpacked",
       "Description": "Bitpacked",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "bmp",
       "Description": "BMP (Windows and OS/2 bitmap)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "cfhd",
       "Description": "GoPro CineForm HD",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "cinepak",
       "Description": "Cinepak",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "cljr",
       "Description": "Cirrus Logic AccuPak",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -126,55 +139,64 @@
     {
       "Name": "dnxhd",
       "Description": "VC3/DNxHD",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "dpx",
       "Description": "DPX (Digital Picture Exchange) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "dvvideo",
       "Description": "DV (Digital Video)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "exr",
       "Description": "OpenEXR image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "ffv1",
       "Description": "FFmpeg video codec #1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "ffvhuff",
       "Description": "Huffyuv FFmpeg variant",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "fits",
       "Description": "FITS (Flexible Image Transport System)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "flashsv",
       "Description": "Flash Screen Video v1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "flashsv2",
       "Description": "Flash Screen Video v2",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -188,13 +210,15 @@
     {
       "Name": "gif",
       "Description": "CompuServe GIF (Graphics Interchange Format)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "h261",
       "Description": "H.261",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -209,7 +233,8 @@
     {
       "Name": "h263p",
       "Description": "H.263\u002B / H.263-1998 / H.263 version 2",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -230,7 +255,8 @@
     {
       "Name": "hdr",
       "Description": "HDR (Radiance RGBE format) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -249,7 +275,8 @@
     {
       "Name": "huffyuv",
       "Description": "HuffYUV",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -264,7 +291,8 @@
     {
       "Name": "jpegls",
       "Description": "JPEG-LS",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -278,13 +306,15 @@
     {
       "Name": "ljpeg",
       "Description": "Lossless JPEG",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "magicyuv",
       "Description": "MagicYUV video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -300,7 +330,8 @@
     {
       "Name": "mpeg1video",
       "Description": "MPEG-1 video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -326,7 +357,8 @@
     {
       "Name": "msmpeg4v2",
       "Description": "MPEG-4 part 2 Microsoft variant version 2",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -340,61 +372,71 @@
     {
       "Name": "msvideo1",
       "Description": "Microsoft Video 1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pam",
       "Description": "PAM (Portable AnyMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pbm",
       "Description": "PBM (Portable BitMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcx",
       "Description": "PC Paintbrush PCX image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pfm",
       "Description": "PFM (Portable FloatMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pgm",
       "Description": "PGM (Portable GrayMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pgmyuv",
       "Description": "PGMYUV (Portable GrayMap YUV) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "phm",
       "Description": "PHM (Portable HalfFloatMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "png",
       "Description": "PNG (Portable Network Graphics) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "ppm",
       "Description": "PPM (Portable PixelMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -410,31 +452,36 @@
     {
       "Name": "qoi",
       "Description": "QOI (Quite OK Image)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "qtrle",
       "Description": "QuickTime Animation (RLE) video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "r10k",
       "Description": "AJA Kona 10-bit RGB Codec",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "r210",
       "Description": "Uncompressed RGB 10-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "rawvideo",
       "Description": "raw video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -448,61 +495,71 @@
     {
       "Name": "rpza",
       "Description": "QuickTime video (RPZA)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "rv10",
       "Description": "RealVideo 1.0",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "rv20",
       "Description": "RealVideo 2.0",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "sgi",
       "Description": "SGI image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "smc",
       "Description": "QuickTime Graphics (SMC)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "snow",
       "Description": "Snow",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "speedhq",
       "Description": "NewTek SpeedHQ",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "sunrast",
       "Description": "Sun Rasterfile image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "svq1",
       "Description": "Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "targa",
       "Description": "Truevision Targa image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -516,49 +573,57 @@
     {
       "Name": "tiff",
       "Description": "TIFF image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "utvideo",
       "Description": "Ut Video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "v210",
       "Description": "Uncompressed 4:2:2 10-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "v308",
       "Description": "Uncompressed packed 4:4:4",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "v408",
       "Description": "Uncompressed packed QT 4:4:4:4",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "v410",
       "Description": "Uncompressed 4:4:4 10-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "vbn",
       "Description": "Vizrt Binary Image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "vnull",
       "Description": "Null video codec",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -584,7 +649,8 @@
     {
       "Name": "wbmp",
       "Description": "WBMP (Wireless Application Protocol Bitmap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -599,61 +665,71 @@
     {
       "Name": "wmv1",
       "Description": "Windows Media Video 7",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "wmv2",
       "Description": "Windows Media Video 8",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "wrapped_avframe",
       "Description": "AVFrame to AVPacket passthrough",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "xbm",
       "Description": "XBM (X BitMap) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "xface",
       "Description": "X-face image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "xwd",
       "Description": "XWD (X Window Dump) image",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "y41p",
       "Description": "Uncompressed YUV 4:1:1 12-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "yuv4",
       "Description": "Uncompressed packed 4:2:0",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "zlib",
       "Description": "LCL (LossLess Codec Library) ZLIB",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "zmbv",
       "Description": "Zip Motion Blocks Video",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     }
   ],
@@ -661,7 +737,8 @@
     {
       "Name": "aac",
       "Description": "AAC (Advanced Audio Coding)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -676,13 +753,15 @@
     {
       "Name": "adpcm_adx",
       "Description": "SEGA CRI ADX ADPCM",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_argo",
       "Description": "ADPCM Argonaut Games",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -712,67 +791,78 @@
     {
       "Name": "adpcm_ima_alp",
       "Description": "ADPCM IMA High Voltage Software ALP",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ima_amv",
       "Description": "ADPCM IMA AMV",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ima_apm",
       "Description": "ADPCM IMA Ubisoft APM",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ima_qt",
       "Description": "ADPCM IMA QuickTime",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ima_ssi",
       "Description": "ADPCM IMA Simon \u0026 Schuster Interactive",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ima_wav",
       "Description": "ADPCM IMA WAV",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ima_ws",
       "Description": "ADPCM IMA Westwood",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_ms",
       "Description": "ADPCM Microsoft",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_swf",
       "Description": "ADPCM Shockwave Flash",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "adpcm_yamaha",
       "Description": "ADPCM Yamaha",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "alac",
       "Description": "ALAC (Apple Lossless Audio Codec)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -786,31 +876,36 @@
     {
       "Name": "anull",
       "Description": "Null audio codec",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "aptx",
       "Description": "aptX (Audio Processing Technology for Bluetooth)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "aptx_hd",
       "Description": "aptX HD (Audio Processing Technology for Bluetooth)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "comfortnoise",
       "Description": "RFC 3389 Comfort Noise",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "dfpwm",
       "Description": "DFPWM (Dynamic Filter Pulse Width Modulation)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -824,25 +919,29 @@
     {
       "Name": "eac3",
       "Description": "ATSC A/52B (AC-3, E-AC-3)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "flac",
       "Description": "FLAC (Free Lossless Audio Codec)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "g723_1",
       "Description": "G.723.1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "mlp",
       "Description": "MLP (Meridian Lossless Packing)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -866,7 +965,8 @@
     {
       "Name": "nellymoser",
       "Description": "Nellymoser Asao",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -881,187 +981,218 @@
     {
       "Name": "pcm_alaw",
       "Description": "PCM A-law / G.711 A-law",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_bluray",
       "Description": "PCM signed 16|20|24-bit big-endian for Blu-ray media",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_dvd",
       "Description": "PCM signed 20|24-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_f32be",
       "Description": "PCM 32-bit floating point big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_f32le",
       "Description": "PCM 32-bit floating point little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_f64be",
       "Description": "PCM 64-bit floating point big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_f64le",
       "Description": "PCM 64-bit floating point little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_mulaw",
       "Description": "PCM mu-law / G.711 mu-law",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s16be",
       "Description": "PCM signed 16-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s16be_planar",
       "Description": "PCM signed 16-bit big-endian planar",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s16le",
       "Description": "PCM signed 16-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s16le_planar",
       "Description": "PCM signed 16-bit little-endian planar",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s24be",
       "Description": "PCM signed 24-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s24daud",
       "Description": "PCM D-Cinema audio signed 24-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s24le",
       "Description": "PCM signed 24-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s24le_planar",
       "Description": "PCM signed 24-bit little-endian planar",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s32be",
       "Description": "PCM signed 32-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s32le",
       "Description": "PCM signed 32-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s32le_planar",
       "Description": "PCM signed 32-bit little-endian planar",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s64be",
       "Description": "PCM signed 64-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s64le",
       "Description": "PCM signed 64-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s8",
       "Description": "PCM signed 8-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_s8_planar",
       "Description": "PCM signed 8-bit planar",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u16be",
       "Description": "PCM unsigned 16-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u16le",
       "Description": "PCM unsigned 16-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u24be",
       "Description": "PCM unsigned 24-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u24le",
       "Description": "PCM unsigned 24-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u32be",
       "Description": "PCM unsigned 32-bit big-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u32le",
       "Description": "PCM unsigned 32-bit little-endian",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_u8",
       "Description": "PCM unsigned 8-bit",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "pcm_vidc",
       "Description": "PCM Archimedes VIDC",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -1075,43 +1206,50 @@
     {
       "Name": "roq_dpcm",
       "Description": "DPCM id RoQ",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "s302m",
       "Description": "SMPTE 302M",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "sbc",
       "Description": "SBC (low-complexity subband codec)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "sonic",
       "Description": "Sonic",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "sonicls",
       "Description": "Sonic lossless",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "truehd",
       "Description": "TrueHD",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "tta",
       "Description": "TTA (True Audio)",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
@@ -1126,19 +1264,22 @@
     {
       "Name": "wavpack",
       "Description": "WavPack",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "wmav1",
       "Description": "Windows Media Audio 1",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     },
     {
       "Name": "wmav2",
       "Description": "Windows Media Audio 2",
-      "Encoders": [],
+      "Encoders": [
+      ],
       "MultipleEncoders": false
     }
   ],
@@ -1852,5 +1993,5 @@
       "Description": "YUV4MPEG pipe"
     }
   ],
-  "FFmpegHash": "XnHjzkplZYy+y9+hinClpg=="
+  "FFmpegHash": "qKnwKZrmdRLHUYMVuDuIcg=="
 }
