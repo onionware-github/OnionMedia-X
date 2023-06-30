@@ -5,7 +5,7 @@
 
 Converts and downloads videos and music quickly and easily.
 
-[Overview](#overview) • [Features](#features) • [Download](#download-and-installing) • [Releases](https://github.com/onionware-github/OnionMedia/releases) • [Discord](https://discord.gg/3ahqCzQxs8) • [Info](#info)
+[Overview](#overview) • [Features](#features) • [Download](#download-and-installing) • [Releases](https://github.com/onionware-github/OnionMedia-X/releases/) • [Discord](https://discord.gg/3ahqCzQxs8) • [Info](#info)
 
 ## Overview
 ![Screenshot showing the Converter-Page](https://github.com/onionware-github/OnionMedia-X/blob/main/screenshots/ubuntu/converterpage_dark.png?raw=true)
