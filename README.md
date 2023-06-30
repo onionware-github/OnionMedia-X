@@ -46,7 +46,7 @@ Coming soon...
 
 
 #### Download directly from GitHub
-[Go to the Releases page and find all releases of OnionMedia to download!](https://github.com/onionware-github/OnionMedia/releases)
+[Go to the Releases page and find all releases of OnionMedia to download!](https://github.com/onionware-github/OnionMedia-X/releases)
 
 
 ## Info
