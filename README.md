@@ -42,7 +42,7 @@ OnionMedia delivers a built-in Searchbar for Youtube, functions to recode your d
 ## Download and installing
 
 #### Download from Flathub
-Coming soon...
+<a href='https://flathub.org/de/apps/io.github.onionware_github.onionmedia'><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.svg'/></a>
 
 
 #### Download directly from GitHub
