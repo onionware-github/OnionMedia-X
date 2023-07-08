@@ -12,7 +12,7 @@ Converts and downloads videos and music quickly and easily.
 You're looking for a simple solution to convert, recode, trim or even download media files and do it as easily as possible with many customizable options?
 
 Then OnionMedia is the right choice for you.
-It offers a simple and adaptive user experience and also adapts to your chosen Windows theme.
+It offers a simple and adaptive user experience and let you choose your own application theme.
 So it fits perfectly into your system as an almost native app.
 
 ![Screenshot showing the Downloader-Page](https://github.com/onionware-github/OnionMedia-X/blob/main/screenshots/ubuntu/downloaderpage_dark.png?raw=true)
