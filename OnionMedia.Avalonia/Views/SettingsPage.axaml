@@ -1,4 +1,4 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -376,7 +376,7 @@
 
 					<!-- HorizontalSpacing="10" VerticalSpacing="10" -->
 					<WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
-						<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md">
+						<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia-X/blob/main/Privacy.md">
 							<Label Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
 						</controls:HyperlinkButton>
 						<controls:HyperlinkButton Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="10">
@@ -391,7 +391,7 @@
 						<controls:HyperlinkButton Command="{Binding OpenContactMailCommand, Mode=OneTime}" Margin="10">
 							<Label Content="{me:Resource SettingsPage/contactBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
 						</controls:HyperlinkButton>
-						<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia">
+						<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia-X">
 							<Label Content="GitHub" Foreground="{DynamicResource SystemAccentColor}"/>
 						</controls:HyperlinkButton>
 					</WrapPanel>
@@ -427,7 +427,7 @@
 
 				<!-- HorizontalSpacing="5" VerticalSpacing="10"-->
 				<WrapPanel Orientation="Horizontal" Classes="SmallTopBottomMargin">
-					<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia/blob/main/Privacy.md">
+					<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia-X/blob/main/Privacy.md">
 						<Label Content="{me:Resource Resources/SettingsPage_PrivacyTermsLink.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
 					</controls:HyperlinkButton>
 					<controls:HyperlinkButton Command="{Binding ShowThanksDialogCommand, Mode=OneTime}" Margin="10">
@@ -442,7 +442,7 @@
 					<controls:HyperlinkButton Command="{Binding OpenContactMailCommand, Mode=OneTime}" Margin="10">
 						<Label Content="{me:Resource SettingsPage/contactBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
 					</controls:HyperlinkButton>
-					<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia">
+					<controls:HyperlinkButton NavigateUri="https://github.com/onionware-github/OnionMedia-X">
 						<Label Content="GitHub" Foreground="{DynamicResource SystemAccentColor}"/>
 					</controls:HyperlinkButton>
 				</WrapPanel>
