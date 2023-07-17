@@ -24,7 +24,7 @@ namespace OnionMedia.Avalonia
     public sealed partial class App : Application
     {
         public static MainWindow MainWindow { get; private set; }
-        public static readonly SoftwareVersion Version = new(2, 0, 0, 0);
+        public static readonly SoftwareVersion Version = new(2, 0, 0, 1);
 
         internal static readonly ServiceProvider DefaultServiceProvider = new();
 
