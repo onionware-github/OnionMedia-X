@@ -299,7 +299,7 @@ namespace OnionMedia.Core.Classes
 
 			string? formatString;
 			if (formatData?.FormatId != null)
-				formatString = $"{formatData.FormatId}{(stream.Video.Formats.Any(f => f.VideoBitrate is null or 0 && f.AudioBitrate > 0) ? "+bestaudio[ext=m4a]" : string.Empty)}";
+				formatString = $"{formatData.FormatId}{((formatData.AudioCodec.IsNullOrWhiteSpace() || formatData.AudioCodec == "none") && formatData.AudioBitrate is null or 0 && stream.Video.Formats.Any(f => f.VideoBitrate is null or 0 && f.AudioBitrate > 0) ? "+bestaudio[ext=m4a]" : string.Empty)}";
 			else
 				formatString = stream.QualityLabel.IsNullOrEmpty() ? "bestvideo+bestaudio/best" : stream.Format;
 
