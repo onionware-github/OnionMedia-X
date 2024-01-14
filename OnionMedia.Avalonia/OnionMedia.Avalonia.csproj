@@ -17,7 +17,7 @@
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ApplicationIcon>Assets\OnionMedia.ico</ApplicationIcon>
-    <AssemblyName>OnionMedia X</AssemblyName>
+    <AssemblyName>OnionMedia_X</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Platforms\Mac\Output\Data" />
