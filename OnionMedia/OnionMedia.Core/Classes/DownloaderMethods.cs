@@ -65,13 +65,13 @@ namespace OnionMedia.Core.Classes
 				throw new ArgumentNullException(nameof(stream));
 
 			OptionSet ytOptions = new() { RestrictFilenames = true };
+			ytOptions.AddCustomOption("--extractor-args", "youtube:player_client=android,web");
 
 			//Creates a temp directory if it does not already exist.
 			Directory.CreateDirectory(pathProvider.DownloaderTempdir);
 
 			//Creates a new temp directory for this file
 			string videotempdir = CreateVideoTempDir();
-
 
 			SetProgressToDefault(stream);
 			stream.CancelEventHandler += CancelDownload;
@@ -117,6 +117,8 @@ namespace OnionMedia.Core.Classes
 			{
 				stream.Downloading = false;
 				stream.Converting = false;
+				Console.WriteLine(ex.Message);
+				Debug.WriteLine(ex.Message);
 				switch (ex)
 				{
 					default:
@@ -173,6 +175,8 @@ namespace OnionMedia.Core.Classes
 			{
 				stream.DownloadState = Enums.DownloadState.IsFailed;
 				stream.ProgressInfo.IsCancelledOrFailed = true;
+				Console.WriteLine(ex.Message);
+				Debug.WriteLine(ex.Message);
 				switch (ex)
 				{
 					default:
