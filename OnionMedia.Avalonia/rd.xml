@@ -1,0 +1,9 @@
+﻿<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+    <Application>
+        <Assembly Name="RangeSlider.Avalonia" Dynamic="Required All" />
+        <Assembly Name="OnionMedia.Core" Dynamic="Required All" />
+        <Assembly Name="OnionMedia.Avalonia" Dynamic="Required All" />
+        <Assembly Name="YoutubeDLSharp" Dynamic="Required All" />
+        <Assembly Name="TagLibSharp" Dynamic="Required All" />
+    </Application>
+</Directives>

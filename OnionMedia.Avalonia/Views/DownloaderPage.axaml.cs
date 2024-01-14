@@ -1,7 +1,9 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -48,12 +50,27 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
         };
     }
 
+    private bool eventsHooked;
     protected override void OnLoaded()
     {
         base.OnLoaded();
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             desktop.MainWindow.SizeChanged += UpdateSizeStyle;
+
+        if (!eventsHooked)
+        {
+            App.MainWindow.SizeChanged += (_, _) => OnSizeChanged();
+            ((YouTubeDownloaderViewModel)DataContext).PropertyChanged += async (_, _) =>
+            {
+                await Task.Delay(100);
+                OnSizeChanged();
+            };
+            this.FindControl<ListBox>("searchResultsList").SizeChanged += (_, _) => OnSizeChanged();
+            this.FindControl<ListBox>("videoQueue").SizeChanged += (_, _) => OnSizeChanged();
+            eventsHooked = true;
+        }
         
+        OnSizeChanged();
         this.FindControl<TextBox>(nameof(videolink))?.Focus();
     }
 
@@ -174,5 +191,37 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
         if (DataContext is not YouTubeDownloaderViewModel vm) return;
         this.FindControl<TimeRangeSelector>("timeRangeSelector")
             ?.UpdateIsReadOnly(!vm.QueueIsNotEmpty || !IsItemSelected);
+    }
+
+    private void OpenDonationPage(object? sender, RoutedEventArgs e)
+    {
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = "https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452",
+            UseShellExecute = true
+        });
+    }
+    
+    private void OnSizeChanged()
+    {
+        var donationGrid = this.FindControl<Border>("donationGrid");
+        var scrollViewer = this.FindControl<ScrollViewer>("scrollViewer");
+        if (!AppSettings.Instance.ShowDonationBanner)
+        {
+            donationGrid.IsVisible = false;
+            return;
+        }
+
+        // Check if ScrollViewer can scroll
+        double windowHeight = this.Bounds.Height;
+        if (scrollViewer.ScrollBarMaximum.Length == 0 && windowHeight - scrollViewer.DesiredSize.Height > donationGrid.Bounds.Height)
+        {
+            // If not, show donation banner
+            donationGrid.IsVisible = true;
+            return;
+        }
+
+        // Otherwise, hide banner and don't reserve screen space for it
+        donationGrid.IsVisible = false;
     }
 }

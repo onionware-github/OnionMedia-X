@@ -3,11 +3,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using CommunityToolkit.Mvvm.DependencyInjection;
-using DesktopNotifications;
-using DesktopNotifications.FreeDesktop;
 using FFMpegCore;
 using OnionMedia.Core;
 using OnionMedia.Core.Services;
@@ -16,6 +13,11 @@ using OnionMedia.Core.Services;
 using Windows.Storage;
 using Windows.System;
 using Microsoft.Toolkit.Uwp.Notifications;
+
+#elif LINUX
+using Avalonia.Controls.ApplicationLifetimes;
+using DesktopNotifications;
+using DesktopNotifications.FreeDesktop;
 #endif
 
 namespace OnionMedia.Avalonia
@@ -119,7 +121,7 @@ namespace OnionMedia.Avalonia
             var context = FreeDesktopApplicationContext.FromCurrentProcess();
             manager = new FreeDesktopNotificationManager(context);
 
-            //TODO Any better way of doing this?
+            //Any better way of doing this?
             manager.Initialize().GetAwaiter().GetResult();
 
             builder.AfterSetup(b =>

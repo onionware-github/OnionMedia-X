@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net7.0</TargetFramework>
-    <TargetFramework Condition="'$(OS)' == 'Windows_NT'">net7.0-windows10.0.17763.0</TargetFramework>
+    <TargetFramework Condition="!($(RuntimeIdentifier.StartsWith('win')) or ($([MSBuild]::IsOSPlatform('Windows')) and '$(RuntimeIdentifier)' == ''))">net7.0</TargetFramework>
+    <TargetFramework Condition="$(RuntimeIdentifier.StartsWith('win')) or ($([MSBuild]::IsOSPlatform('Windows')) and '$(RuntimeIdentifier)' == '')">net7.0-windows10.0.17763.0</TargetFramework>
     <Nullable>enable</Nullable>
     <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
     <TrimMode>copyused</TrimMode>
@@ -10,9 +10,9 @@
     <LangVersion>11</LangVersion>
     <PublishAot>false</PublishAot>
     <StripSymbols>true</StripSymbols>
-    <DefineConstants Condition="'$(OS)' == 'Windows_NT'">WINDOWS</DefineConstants>
-    <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' == 'osx-x64'">MAC</DefineConstants>
-    <DefineConstants Condition="'$(OS)' == 'Unix' and '$(RuntimeIdentifier)' != 'osx-x64'">LINUX</DefineConstants>
+    <DefineConstants Condition="$(RuntimeIdentifier.StartsWith('win')) or ($([MSBuild]::IsOSPlatform('Windows')) and '$(RuntimeIdentifier)' == '')">WINDOWS</DefineConstants>
+    <DefineConstants Condition="$(RuntimeIdentifier.StartsWith('osx')) or ($([MSBuild]::IsOSPlatform('OSX')) and '$(RuntimeIdentifier)' == '')">MAC</DefineConstants>
+    <DefineConstants Condition="$(RuntimeIdentifier.StartsWith('linux')) or ($([MSBuild]::IsOSPlatform('Linux')) and '$(RuntimeIdentifier)' == '')">LINUX</DefineConstants>
     <DefineConstants Condition="'$(TargetFramework)' == 'netstandard2.0'">WEB</DefineConstants>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

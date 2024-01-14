@@ -13,8 +13,10 @@ using Avalonia.Dialogs;
 using OnionMedia.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -37,16 +39,42 @@ namespace OnionMedia.Services
         }
 
         public async Task<string> ShowSingleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
-        {
-            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = false, SuggestedStartLocation = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
-            if (result?.Any() is false) return null;
-            return result[0].Path.LocalPath;
+		{
+			Debug.WriteLine(App.MainWindow);
+			Console.WriteLine(App.MainWindow);
+			var dirPath = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location));
+			Debug.WriteLine(dirPath.Path);
+			Console.WriteLine(dirPath.Path);
+			try
+            {
+                var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = false, SuggestedStartLocation = dirPath, FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
+                if (result?.Any() is false) return null;
+                return result[0].Path.LocalPath;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
 
         public async Task<string[]> ShowMultipleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
         {
-            var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = true, SuggestedStartLocation = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location)), FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
-            return result?.Any() is true ? result.Select(r => r.Path.LocalPath).ToArray() : null;
+	        Debug.WriteLine(App.MainWindow);
+	        Console.WriteLine(App.MainWindow);
+			var dirPath = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location));
+            Debug.WriteLine(dirPath.Path);
+            Console.WriteLine(dirPath.Path);
+            try
+            {
+                var result = await App.MainWindow.StorageProvider.OpenFilePickerAsync(new() {AllowMultiple = true, SuggestedStartLocation = dirPath, FileTypeFilter = new List<FilePickerFileType> {new("mediaFiles".GetLocalized()) {Patterns = new List<string> {"*.*"}}}});
+                return result?.Any() is true ? result.Select(r => r.Path.LocalPath).ToArray() : null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
 
         public async Task<bool?> ShowDialogAsync(DialogTextOptions dialogTextOptions)

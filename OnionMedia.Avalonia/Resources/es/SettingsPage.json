@@ -38,6 +38,7 @@
   "notifyAfterDownload.Header": "Notificar después de la descarga",
   "personalization.Text": "Personalización",
   "setStoragePaths.Content": "Fijar las rutas de almacenamiento",
+  "showDonationBanner.Header": "Mostrar banner de donación",
   "startPageBox.Header": "Página de inicio:",
   "storagePaths.Text": "Rutas de almacenamiento",
   "threadsForConversion.Text": "Número de hilos de CPU a utilizar para la conversión:",

@@ -1,4 +1,4 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -310,7 +310,8 @@
 									</ComboBox.ItemTemplate>
 								</ComboBox>
 							</StackPanel>
-							<ToggleSwitch x:Name="useCustomAccent" Content="{me:Resource SettingsPage/UseCustomAccentColor}" IsChecked="{Binding UseCustomAccentColor, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"></ToggleSwitch>
+							<ToggleSwitch x:Name="useCustomAccent" Content="{me:Resource SettingsPage/UseCustomAccentColor}" IsChecked="{Binding UseCustomAccentColor, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"/>
+							<ToggleSwitch Content="{me:Resource SettingsPage/showDonationBanner.Header}" IsChecked="{Binding ShowDonationBanner, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}}"/>
 							<StackPanel Spacing="10" Orientation="Horizontal" IsVisible="{Binding #useCustomAccent.IsChecked}">
 								<TextBlock Text="{me:Resource SettingsPage/AccentColor}" VerticalAlignment="Center"/>
 								<ColorPicker IsAlphaVisible="False" Color="{Binding CustomAccentColorHex, Mode=TwoWay, Source={x:Static m:AppSettings.Instance}, Converter={StaticResource ColorConverter}, TargetNullValue={StaticResource SystemAccentColor}}"/>
