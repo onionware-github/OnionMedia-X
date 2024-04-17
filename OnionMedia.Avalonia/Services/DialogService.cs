@@ -40,8 +40,6 @@ namespace OnionMedia.Services
 
         public async Task<string> ShowSingleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
 		{
-			Debug.WriteLine(App.MainWindow);
-			Console.WriteLine(App.MainWindow);
 			var dirPath = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location));
 			Debug.WriteLine(dirPath.Path);
 			Console.WriteLine(dirPath.Path);
@@ -60,9 +58,7 @@ namespace OnionMedia.Services
 
         public async Task<string[]> ShowMultipleFilePickerDialogAsync(DirectoryLocation location = DirectoryLocation.Home)
         {
-	        Debug.WriteLine(App.MainWindow);
-	        Console.WriteLine(App.MainWindow);
-			var dirPath = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location));
+	        var dirPath = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location));
             Debug.WriteLine(dirPath.Path);
             Console.WriteLine(dirPath.Path);
             try
@@ -73,6 +69,29 @@ namespace OnionMedia.Services
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public async Task<string?> ShowSaveFilePickerDialogAsync(string suggestedName, IDictionary<string, IEnumerable<string>> filetypeFilters, DirectoryLocation location = DirectoryLocation.Home)
+        {
+            var dirPath = await App.MainWindow.StorageProvider.TryGetFolderFromPathAsync(DirectoryLocationToPathString(location));
+            var typefilters = filetypeFilters.Select(f => new FilePickerFileType(f.Key) { Patterns = f.Value.ToArray() }).ToList();
+            FilePickerSaveOptions options = new()
+            {
+                FileTypeChoices = typefilters,
+                SuggestedFileName = suggestedName,
+                SuggestedStartLocation = dirPath,
+                ShowOverwritePrompt = true
+            };
+            try
+            {
+                var path = await App.MainWindow.StorageProvider.SaveFilePickerAsync(options);
+                return path?.Path.LocalPath;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
                 throw;
             }
         }

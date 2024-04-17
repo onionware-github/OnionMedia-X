@@ -125,10 +125,8 @@
                     <StackPanel>
                         <TextBlock Text="{res:Resource DownloaderPage/selectFileFormat.Text}" Margin="0,10"
                                    FontWeight="SemiBold" FontSize="16" />
-                        <RadioButton GroupName="FormatSelection" Content="{res:Resource DownloaderPage/Mp3.Content}"
-                                     IsEnabled="{Binding QueueIsNotEmpty}" />
-                        <RadioButton GroupName="FormatSelection" Content="{res:Resource DownloaderPage/Mp4.Content}"
-                                     IsEnabled="{Binding QueueIsNotEmpty}" IsChecked="{Binding GetMP4, Mode=TwoWay}" />
+                        <RadioButton GroupName="FormatSelection" Content="{res:Resource DownloaderPage/Mp3.Content}"/>
+                        <RadioButton GroupName="FormatSelection" Content="{res:Resource DownloaderPage/Mp4.Content}" IsChecked="{Binding GetMP4, Mode=TwoWay}" />
                     </StackPanel>
 
                     <StackPanel IsVisible="{Binding ResolutionsAvailable}">
@@ -204,10 +202,45 @@
                                                 <Grid>
                                                     <Grid.ContextFlyout>
                                                         <MenuFlyout>
-                                                            <controls:MenuFlyoutItem
-                                                                Text="{res:Resource DownloaderPage/openURLInBrowser.Text}"
-                                                                Command="{x:Static vm:YouTubeDownloaderViewModel.OpenUrlCommand}"
-                                                                CommandParameter="{Binding Video.Url}" />
+                                                            <MenuItem Header="{res:Resource DownloaderPage/openURLInBrowser.Text}"
+                                                                      Command="{x:Static vm:YouTubeDownloaderViewModel.OpenUrlCommand}"
+                                                                      CommandParameter="{Binding Video.Url}">
+                                                                <MenuItem.Icon>
+                                                                    <controls:SymbolIcon Symbol="Video"/>
+                                                                </MenuItem.Icon>
+                                                            </MenuItem>
+                                                            
+                                                            <MenuItem Header="{res:Resource DownloaderPage/copyUrl.Text}"
+                                                                      Command="{Binding #page.ViewModel.CopyUrlCommand}"
+                                                                      CommandParameter="{Binding Video.Url}">
+                                                                <MenuItem.Icon>
+                                                                    <controls:SymbolIcon Symbol="Copy"/>
+                                                                </MenuItem.Icon>
+                                                            </MenuItem>
+                                                            
+                                                            <MenuItem Header="{res:Resource DownloaderPage/downloadThumbnail.Text}"
+                                                                      Command="{Binding #page.ViewModel.DownloadThumbnailCommand}"
+                                                                      CommandParameter="{Binding .}">
+                                                                <MenuItem.Icon>
+                                                                    <controls:SymbolIcon Symbol="Pictures"/>
+                                                                </MenuItem.Icon>
+                                                            </MenuItem>
+                                                            
+                                                            <MenuItem Header="{res:Resource DownloaderPage/viewLog.Text}"
+                                                                      Command="{Binding #page.ViewModel.ShowLogCommand}"
+                                                                      CommandParameter="{Binding .}">
+                                                                <MenuItem.Icon>
+                                                                    <controls:SymbolIcon Symbol="Document"/>
+                                                                </MenuItem.Icon>
+                                                            </MenuItem>
+                                                            
+                                                            <MenuItem Header="{res:Resource DownloaderPage/editTags.Text}"
+                                                                      Command="{Binding #page.ViewModel.EditTagsCommand}"
+                                                                      CommandParameter="{Binding .}">
+                                                                <MenuItem.Icon>
+                                                                    <controls:SymbolIcon Symbol="List"/>
+                                                                </MenuItem.Icon>
+                                                            </MenuItem>
                                                         </MenuFlyout>
                                                     </Grid.ContextFlyout>
 

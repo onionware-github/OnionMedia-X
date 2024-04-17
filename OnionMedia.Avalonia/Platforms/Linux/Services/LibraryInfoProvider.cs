@@ -27,7 +27,8 @@ public class LibraryInfoProvider : IDataCollectionProvider<LibraryInfo>
         new("Newtonsoft.Json", "James Newton-King", "MIT License", Path.Combine(pathProvider.LicensesDir, "mit-license"), "https://github.com/JamesNK/Newtonsoft.Json", 2007),
         new("DesktopNotifications.FreeDesktop", "Luis von der Eltz", "MIT License", Path.Combine(pathProvider.LicensesDir, "mit-license"), "https://github.com/pr8x/DesktopNotifications", 2021),
         new("TagLib#", "mono", "LGPL v2.1", Path.Combine(pathProvider.LicensesDir, "TagLibSharp.txt"), "https://github.com/mono/taglib-sharp"),
-        new("xFFmpeg.NET", "Tobias Haimerl(cmxl)", "MIT License", Path.Combine(pathProvider.LicensesDir, "mit-license"), "https://github.com/cmxl/FFmpeg.NET", 2018),
+        new("TextCopy", "Simon Cropp", "MIT License", Path.Combine(pathProvider.LicensesDir, "mit-license"), "https://github.com/CopyText/TextCopy", 2018),
+		new("xFFmpeg.NET", "Tobias Haimerl(cmxl)", "MIT License", Path.Combine(pathProvider.LicensesDir, "mit-license"), "https://github.com/cmxl/FFmpeg.NET", 2018),
         new("YoutubeDLSharp", "Bluegrams", "BSD 3-Clause License", Path.Combine(pathProvider.LicensesDir, "YoutubeDLSharp.txt"), "https://github.com/Bluegrams/YoutubeDLSharp"),
         new("YoutubeExplode", "Tyrrrz", "LGPL v3", Path.Combine(pathProvider.LicensesDir, "YoutubeExplode.txt"), "https://github.com/Tyrrrz/YoutubeExplode")
     };

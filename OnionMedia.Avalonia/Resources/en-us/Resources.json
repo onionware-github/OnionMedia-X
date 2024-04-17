@@ -47,5 +47,16 @@
   "askForPlaylistDownloadTitle": "Download the playlist?",
   "playlist": "Playlist",
   "video": "Video",
-  "mediaFiles": "Media files"
+  "mediaFiles": "Media files",
+  "close": "Close",
+  "copy": "Copy",
+  "emptyLog": "The log for this process is empty.",
+  "save": "Save",
+  "Hibernate": "Hibernate",
+  "None": "Do nothing",
+  "Shutdown": "Shutdown",
+  "Sleep": "Sleep",
+  "executeOnErrors.Content": "Run even on failed operations",
+  "shutdownFlyout.ActionButtonContent": "Apply",
+  "shutdownFlyout.Title": "When done:"
 }

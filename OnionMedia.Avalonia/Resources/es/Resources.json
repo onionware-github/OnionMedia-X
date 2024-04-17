@@ -46,5 +46,16 @@
   "askForPlaylistDownloadContent": "Has introducido una URL de una lista de reproducción. ¿Quieres añadir sólo el vídeo o toda la lista de reproducción?",
   "askForPlaylistDownloadTitle": "¿Descargar la lista de reproducción?",
   "playlist": "Lista de reproducción",
-  "video": "Vídeo"
+  "video": "Vídeo",
+  "close": "Cerrar",
+  "copy": "Copia",
+  "emptyLog": "El registro de este proceso está vacío.",
+  "save": "Guardar",
+  "Hibernate": "Hibernar",
+  "None": "No hacer nada",
+  "Shutdown": "Apagar",
+  "Sleep": "Suspendar",
+  "executeOnErrors.Content": "Ejecutar incluso en operaciones fallidas",
+  "shutdownFlyout.ActionButtonContent": "Aplicar",
+  "shutdownFlyout.Title": "Cuando esté hecho:"
 }

@@ -47,5 +47,16 @@
   "askForPlaylistDownloadTitle": "Playlist herunterladen?",
   "playlist": "Playlist",
   "video": "Video",
-  "mediaFiles": "Media-Dateien"
+  "mediaFiles": "Media-Dateien",
+  "close": "Schließen",
+  "copy": "Kopieren",
+  "emptyLog": "Für diesen Prozess existiert kein Log.",
+  "save": "Speichern",
+  "Hibernate": "Ruhezustand",
+  "None": "Nichts tun",
+  "Shutdown": "Herunterfahren",
+  "Sleep": "Energie sparen",
+  "executeOnErrors.Content": "Auch bei fehlgeschlagenen Vorgängen ausführen",
+  "shutdownFlyout.ActionButtonContent": "Übernehmen",
+  "shutdownFlyout.Title": "Wenn fertig:"
 }

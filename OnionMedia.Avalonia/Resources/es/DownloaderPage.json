@@ -2,12 +2,15 @@
   "addToPlaylistBtn.Text": "Guardar",
   "addVideosOnLeft.Text": "Añade vídeos utilizando el lado izquierdo.",
   "converting.Text": "Convirtiendo",
+  "copyUrl.Text": "Copiar URL",
   "currentPlaylist.Text": "Vídeos",
   "donationBanner.Text": "OnionMedia es un proyecto voluntario de un desarrollador individual, abierto y sin publicidad. Si aprecias mi trabajo y puedes permitírtelo, no dudes en apoyarme con una pequeña donación.",
   "donationBtn.Content": "Donar ❤",
   "done.Text": "Hecho",
   "downloading.Text": "Descargando",
   "downloadStreamBtn.Text": "Descargar",
+  "downloadThumbnail.Text": "Descargar miniatura",
+  "editTags.Text": "Editar etiquetas",
   "failed.Text": "Fallido",
   "Mp3.Content": "Sólo audio",
   "Mp4.Content": "Vídeo",
@@ -24,6 +27,7 @@
   "selectQuality.Text": "Selecciona la calidad:",
   "shortVideo.Text": "Acortar el vídeo",
   "upTo.Text": "Hasta:",
+  "viewLog.Text": "Mostrar registro",
   "videoInfoHeaderText.Text": "Información en vídeo",
   "videolink.PlaceholderText": "Busca el vídeo o pega el enlace..."
 }

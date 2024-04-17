@@ -47,5 +47,16 @@
   "askForPlaylistDownloadTitle": "De afspeellijst downloaden?",
   "playlist": "Afspeellijst",
   "video": "Video",
-  "mediaFiles": "Mediabestanden"
+  "mediaFiles": "Mediabestanden",
+  "close": "Sluit",
+  "copy": "Kopie",
+  "emptyLog": "Het logboek voor dit proces is leeg.",
+  "save": "Sla",
+  "Hibernate": "Sluimerstand",
+  "None": "Niets doen",
+  "Shutdown": "Afsluiten",
+  "Sleep": "Slaapstand",
+  "executeOnErrors.Content": "Zelfs uitvoeren als bewerkingen zijn mislukt",
+  "shutdownFlyout.ActionButtonContent": "Toepassen",
+  "shutdownFlyout.Title": "Wanneer klaar:"
 }

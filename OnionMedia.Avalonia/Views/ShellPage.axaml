@@ -3,8 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-             xmlns:markup="clr-namespace:OnionMedia.Avalonia.Markup"
+             xmlns:res="clr-namespace:OnionMedia.Avalonia.Markup"
              xmlns:views="clr-namespace:OnionMedia.Avalonia.Views"
+             xmlns:enums="clr-namespace:OnionMedia.Core.Enums;assembly=OnionMedia.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="OnionMedia.Avalonia.Views.ShellPage"
              x:Name="shell"
@@ -18,6 +19,7 @@
         IsBackEnabled="{Binding #shellFrame.CanGoBack}"
         IsSettingsVisible="True"
         ExpandedModeThresholdWidth="1280"
+        DisplayModeChanged="NavigationView_OnDisplayModeChanged"
         SelectionChanged="NavigationView_OnSelectionChanged"
         Header="{ReflectionBinding #navigationView.SelectedItem.Content}">
                 <controls:NavigationView.MenuItems>
@@ -27,18 +29,51 @@
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
-                    <controls:NavigationViewItem x:Name="MediaPageItem" Content="{markup:Resource Resources/Shell_Media.Content}" IconSource="Play"/>
-                    <controls:NavigationViewItem x:Name="DownloaderPageItem" Content="{markup:Resource Resources/Shell_YouTubeDownloader.Content}" IconSource="Download"/>
+                    <controls:NavigationViewItem x:Name="MediaPageItem" Content="{res:Resource Resources/Shell_Media.Content}" IconSource="Play"/>
+                    <controls:NavigationViewItem x:Name="DownloaderPageItem" Content="{res:Resource Resources/Shell_YouTubeDownloader.Content}" IconSource="Download"/>
                     <!-- <NavigationViewItem Content="{Resource Resources/Shell_Playlists.Content}" Icon="List" helpers:NavHelper.NavigateTo="OnionMedia.Core.ViewModels.PlaylistsViewModel" /> -->
                 </controls:NavigationView.MenuItems>
                 <controls:NavigationView.HeaderTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30">
-                            <TextBlock Text="{ReflectionBinding #navigationView.SelectedItem.Content}" Classes="TitleTextBlockStyle"/>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30" Text="{ReflectionBinding #navigationView.SelectedItem.Content}" Classes="TitleTextBlockStyle"/>
+                            <Button Click="ShutdownBtn_OnClick" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20,0" IsVisible="{Binding #shell.ShowHeaderPowerButton, Mode=OneWay}">
+                                <controls:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="{Binding #shell.Glyph, Mode=OneWay}" Foreground="{Binding #shell.Brush, Mode=OneWay}"/>
+                            </Button>
                         </Grid>
                     </DataTemplate>
                 </controls:NavigationView.HeaderTemplate>
                     <controls:Frame x:Name="shellFrame" />
+                    <controls:NavigationView.PaneFooter>
+                        <controls:NavigationViewItem Tapped="ShutdownBtn_OnTap" IsVisible="{Binding !#shell.ShowHeaderPowerButton}">
+                            <controls:NavigationViewItem.IconSource>
+                                <controls:FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="{Binding #shell.Glyph, Mode=OneWay}" Foreground="{Binding #shell.Brush, Mode=OneWay}"/>
+                            </controls:NavigationViewItem.IconSource>
+                        </controls:NavigationViewItem>
+                    </controls:NavigationView.PaneFooter>
             </controls:NavigationView>
+        
+        <controls:TeachingTip x:Name="shutdownFlyout"
+                              Title="{res:Resource shutdownFlyout.Title}"
+                              ActionButtonContent="{res:Resource shutdownFlyout.ActionButtonContent}"
+                              IsOpen="{Binding #shell.ShutdownTipIsOpen, Mode=TwoWay}"
+                              PreferredPlacement="BottomLeft"
+                              ActionButtonClick="ShutdownFlyout_OnActionButtonClick"
+                              CloseButtonClick="ShutdownFlyout_OnCloseButtonClick">
+            <controls:TeachingTip.Content>
+                <StackPanel x:Name="powerFlyoutPanel">
+                    <ComboBox x:Name="actionSelector" Margin="0,10" ItemsSource="{Binding #shell.PowerOptions}" SelectedItem="{Binding #shell.SelectedPowerOption, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="enums:PCPowerOption">
+                                <TextBlock Text="{Binding Converter={StaticResource ResourceNameToTextConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <CheckBox IsChecked="{Binding #shell.ExecuteOnError, Mode=TwoWay}">
+                        <TextBlock Text="{res:Resource executeOnErrors.Content}" TextWrapping="Wrap"/>
+                    </CheckBox>
+                </StackPanel>
+            </controls:TeachingTip.Content>
+        </controls:TeachingTip>
     </Grid>
 </UserControl>

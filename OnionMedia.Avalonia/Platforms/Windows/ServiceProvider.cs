@@ -4,6 +4,7 @@ using OnionMedia.Avalonia.States;
 using OnionMedia.Avalonia.Windows.Services;
 using OnionMedia.Core.Models;
 using OnionMedia.Core.Services;
+using OnionMedia.Core.Services.Implementations;
 using OnionMedia.Core.ViewModels;
 using OnionMedia.Services;
 
@@ -28,6 +29,7 @@ namespace OnionMedia.Avalonia;
 [Singleton(typeof(IPathProvider), typeof(PathProvider))]
 [Singleton(typeof(IVersionService), typeof(VersionService))]
 [Singleton(typeof(IWindowClosingService), typeof(WindowClosingService))]
+[Singleton(typeof(IPCPower), typeof(WindowsPowerService))]
 [Singleton(typeof(IFFmpegStartup), typeof(FFmpegStartup))]
 //Views and ViewModels
 [Singleton(typeof(MediaViewModel))]
