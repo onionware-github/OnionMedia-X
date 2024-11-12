@@ -7,9 +7,9 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "OnionMedia (Package)", "Oni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia", "OnionMedia\OnionMedia\OnionMedia.csproj", "{03801EA2-5FD5-4DC7-88C0-7949533B243B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Core", "OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj", "{24D1E659-DBE7-48A0-8060-0A91DE7C46A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Core", "Core\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj", "{24D1E659-DBE7-48A0-8060-0A91DE7C46A3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeDLSharp", "YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj", "{0D6A4238-F239-489D-93C1-4646A8E8EDCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeDLSharp", "Core\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj", "{0D6A4238-F239-489D-93C1-4646A8E8EDCE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionMedia.Avalonia", "OnionMedia.Avalonia\OnionMedia.Avalonia.csproj", "{ABAB7815-F7F5-4807-9A4A-925DF74DE4C1}"
 EndProject

@@ -200,7 +200,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
-		<ProjectReference Include="..\OnionMedia.Core\OnionMedia.Core.csproj" />
+		<ProjectReference Include="..\..\Core\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
