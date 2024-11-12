@@ -65,7 +65,7 @@
     <ProjectReference Include="..\DesktopNotifications-patch-2\DesktopNotifications.FreeDesktop\DesktopNotifications.FreeDesktop.csproj" />
     <ProjectReference Include="..\FluentAvalonia.ProgressRing\FluentAvalonia.ProgressRing\FluentAvalonia.ProgressRing.csproj" />
     <ProjectReference Include="..\Core\OnionMedia\OnionMedia.Core\OnionMedia.Core.csproj" />
-    <ProjectReference Include="..\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
+    <ProjectReference Include="..\Core\YoutubeDLSharp-master\YoutubeDLSharp\YoutubeDLSharp.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\de-de\Dialogs\ConversionPresetDialog.json" />
