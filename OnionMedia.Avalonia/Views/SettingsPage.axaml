@@ -397,7 +397,7 @@
 						</controls:HyperlinkButton>
 					</WrapPanel>
 					<Border BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="1" CornerRadius="4">
-						<controls:HyperlinkButton NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
+						<controls:HyperlinkButton NavigateUri="{x:Static c:GlobalResources.LocalDonationUrl}"
                                                   HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
 							<Label Content="{me:Resource SettingsPage/donateBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
 						</controls:HyperlinkButton>
@@ -448,7 +448,7 @@
 					</controls:HyperlinkButton>
 				</WrapPanel>
 				<Border BorderBrush="{DynamicResource SystemAccentColor}" BorderThickness="1" CornerRadius="4">
-					<controls:HyperlinkButton NavigateUri="https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452"
+					<controls:HyperlinkButton NavigateUri="{x:Static c:GlobalResources.LocalDonationUrl}"
 											  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
 						<Label Content="{me:Resource SettingsPage/donateBtn.Content}" Foreground="{DynamicResource SystemAccentColor}"/>
 					</controls:HyperlinkButton>

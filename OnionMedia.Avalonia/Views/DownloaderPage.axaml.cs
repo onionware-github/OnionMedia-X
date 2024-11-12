@@ -197,7 +197,7 @@ public sealed partial class DownloaderPage : UserControl, INotifyPropertyChanged
     {
         Process.Start(new ProcessStartInfo
         {
-            FileName = "https://www.paypal.com/donate/?hosted_button_id=5TABD3FZYH452",
+            FileName = GlobalResources.LocalDonationUrl,
             UseShellExecute = true
         });
     }
