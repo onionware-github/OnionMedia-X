@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopNotifications.FreeDe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopNotifications", "DesktopNotifications-patch-2\DesktopNotifications\DesktopNotifications.csproj", "{AE7AA08B-0018-4FD4-B1D1-52D51406DA35}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFMpegCore", "FFMpegCore\FFMpegCore\FFMpegCore.csproj", "{AB554221-F686-45C2-A1ED-F46EB99A0937}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -187,22 +185,6 @@ Global
 		{AE7AA08B-0018-4FD4-B1D1-52D51406DA35}.Release|x64.Build.0 = Release|Any CPU
 		{AE7AA08B-0018-4FD4-B1D1-52D51406DA35}.Release|x86.ActiveCfg = Release|Any CPU
 		{AE7AA08B-0018-4FD4-B1D1-52D51406DA35}.Release|x86.Build.0 = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|arm64.Build.0 = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|x64.Build.0 = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Debug|x86.Build.0 = Debug|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|arm64.ActiveCfg = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|arm64.Build.0 = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|x64.ActiveCfg = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|x64.Build.0 = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|x86.ActiveCfg = Release|Any CPU
-		{AB554221-F686-45C2-A1ED-F46EB99A0937}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
